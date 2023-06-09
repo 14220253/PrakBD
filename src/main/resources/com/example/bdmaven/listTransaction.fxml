@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.Pane?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bdmaven.ListTransactionController">
+   <children>
+      <TableView fx:id="tableTransaction" layoutX="50.0" layoutY="77.0" prefHeight="200.0" prefWidth="600.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="C1" />
+          <TableColumn prefWidth="75.0" text="C2" />
+        </columns>
+      </TableView>
+      <Label layoutX="43.0" layoutY="43.0" text="Transaction" />
+      <Button fx:id="ButtonPrev" layoutX="534.0" layoutY="297.0" mnemonicParsing="false" text="Prev" />
+      <Button fx:id="ButtonNext" layoutX="595.0" layoutY="297.0" prefHeight="25.0" prefWidth="41.0" text="Next" />
+      <Button fx:id="ButtonAddTransaction" layoutX="199.0" layoutY="337.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="303.0" text="Add Transaction" />
+   </children>
+</Pane>
