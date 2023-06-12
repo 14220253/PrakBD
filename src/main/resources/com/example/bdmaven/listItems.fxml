@@ -11,8 +11,8 @@
       <Label layoutX="34.0" layoutY="27.0" text="Items" />
       <TableView layoutX="34.0" layoutY="54.0" prefHeight="270.0" prefWidth="533.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
+          <TableColumn prefWidth="128.66662979125977" text="C1" />
+          <TableColumn prefWidth="151.3332977294922" text="C2" />
         </columns>
       </TableView>
       <Button layoutX="34.0" layoutY="332.0" mnemonicParsing="false" text="add" />

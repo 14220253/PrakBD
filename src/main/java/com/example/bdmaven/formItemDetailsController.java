@@ -53,6 +53,7 @@ public class formItemDetailsController {
                 editable.setAmount(txtAmount.getText());
                 editable.setPilihan_laundry(txtPilihanlaundry.getText());
                 editable.setKondisi(txtKondisi.getText());
+                listitemdetails.set(index, editable);
             }
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information");

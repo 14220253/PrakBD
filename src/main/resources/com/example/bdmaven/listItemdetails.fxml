@@ -11,8 +11,8 @@
       <Label layoutX="34.0" layoutY="27.0" text="Item Details" />
       <TableView fx:id="tableListItemDetails" layoutX="34.0" layoutY="54.0" prefHeight="270.0" prefWidth="533.0">
         <columns>
-          <TableColumn prefWidth="117.99994277954102" text="C1" />
-          <TableColumn minWidth="0.0" prefWidth="116.66661071777344" text="C2" />
+          <TableColumn prefWidth="160.00000381469727" text="C1" />
+          <TableColumn minWidth="0.0" prefWidth="214.6666717529297" text="C2" />
         </columns>
       </TableView>
       <Button layoutX="34.0" layoutY="332.0" mnemonicParsing="false" onAction="#onAdd" text="add" />

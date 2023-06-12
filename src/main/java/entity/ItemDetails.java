@@ -7,15 +7,12 @@ public class ItemDetails {
     private SimpleStringProperty pilihan_laundry;
     private SimpleStringProperty kondisi;
 
-    public ItemDetails(String text, String txtPilihanlaundryText, String txtKondisiText){
-
+    public ItemDetails(String amount, String pilihan_laundry, String kondisi){
+        this.amount = new SimpleStringProperty(amount);
+        this.pilihan_laundry = new SimpleStringProperty(pilihan_laundry);
+        this.kondisi = new SimpleStringProperty(kondisi);
     }
 
-    public ItemDetails(SimpleStringProperty amount, SimpleStringProperty pilihan_laundry, SimpleStringProperty kondisi) {
-        this.amount = amount;
-        this.pilihan_laundry = pilihan_laundry;
-        this.kondisi = kondisi;
-    }
 
     public String getAmount() {
         return amount.get();
