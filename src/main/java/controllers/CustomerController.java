@@ -1,5 +1,6 @@
 package controllers;
 
+import DAO.CustomerDAO;
 import entity.Customer;
 import formController.FormCustomerController;
 import javafx.collections.FXCollections;
@@ -17,6 +18,8 @@ public class CustomerController {
     private Scene scene;
     @FXML
     private TableView tableCustomer;
+    private ObservableList<Customer> customers = FXCollections.observableArrayList();
+    private static final CustomerDAO customerDAO = new CustomerDAO();
     @FXML
     public void initialize(){
         TableColumn<Customer, String> customerId = new TableColumn<>("Customer ID");
@@ -42,11 +45,10 @@ public class CustomerController {
         tableCustomer.getColumns().add(customerName);
         tableCustomer.getColumns().add(customerAddress);
         tableCustomer.getColumns().add(customerPhone);
-        
         tableCustomer.setPlaceholder(new Label("No content in table"));
-        if(listCustomer == null){
-            listCustomer = new ArrayList<>();
-        }
+        customers.setAll(customerDAO.GetAllCustomers());
+        tableCustomer.setItems(customers);
+
 
 
     }
