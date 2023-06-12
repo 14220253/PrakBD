@@ -22,8 +22,8 @@
     <children>
         <TableView prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowSpan="2">
             <columns>
-                <TableColumn prefWidth="80.79998624324799" text="id_delivery" />
-                <TableColumn prefWidth="220.79999542236328" text="tanggal_pengembalian" />
+                <TableColumn prefWidth="80.79998624324799" text="job_id" />
+                <TableColumn prefWidth="220.79999542236328" text="job_name" />
             </columns>
         </TableView>
         <Button mnemonicParsing="false" text="Back" GridPane.halignment="CENTER" GridPane.rowIndex="2" />

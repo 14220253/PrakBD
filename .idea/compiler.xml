@@ -9,5 +9,8 @@
         <module name="BDMaven" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="BDMaven" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>
