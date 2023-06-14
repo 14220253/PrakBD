@@ -63,11 +63,28 @@ public class CustomerDAO {
         stm.execute();
     }
 
-    public void DeleteCustomer(){
-
+    public void DeleteCustomer(String custId) throws SQLException {
+        String sql = "DELETE FROM `customers` WHERE `cust_id` = " + custId ;
+        PreparedStatement stm = jdbc.connection.get().prepareStatement(sql);
+        stm.execute();
     }
 
-    public void UpdateCustomer(){
+    public void UpdateCustomer(
+            String custId,
+            String name,
+            String address,
+            String phone
+    ) throws SQLException {
+        String sql = "UPDATE `customers` SET " +
+                "`cust_name` = ?," +
+                "`address` = ?," +
+                "`no_telp` = ?" +
+                " WHERE `cust_id` = " + custId;
 
+        PreparedStatement stm = jdbc.connection.get().prepareStatement(sql);
+        stm.setString(1, name);
+        stm.setString(2, address);
+        stm.setString(3, phone);
+        stm.execute();
     }
 }

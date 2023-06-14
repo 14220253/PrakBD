@@ -1,5 +1,6 @@
 package formController;
 
+import DAO.CustomerDAO;
 import controllers.CustomerController;
 import entity.Customer;
 import javafx.fxml.FXML;
@@ -9,11 +10,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
-
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Optional;
+import java.sql.SQLException;
 
 public class FormCustomerController {
     @FXML
@@ -22,17 +20,12 @@ public class FormCustomerController {
     private TextField txtAddress;
     @FXML
     private TextField txtPhone;
-
-    private ArrayList<Customer> listCustomer = new ArrayList<>();
     private Scene scene;
-
     private boolean isEdit = false;
     private Customer editableCustomer;
-    private int indexCustomer;
-    @FXML
-    public void initialize(){
+    private static final CustomerDAO customerDAO = new CustomerDAO();
+    private static final CustomerController customerController= new CustomerController();
 
-    }
     public void loadEditData(){
         txtNama.setText(editableCustomer.getCustomerName());
         txtAddress.setText(editableCustomer.getCustomerAddress());
@@ -47,16 +40,13 @@ public class FormCustomerController {
         return true;
     }
     @FXML
-    public void onSave(){
+    public void onSave() throws SQLException {
         if (isValid()){
             if(!isEdit) {
-                listCustomer.add(new Customer(listCustomer.size()+"", txtNama.getText(),
-                        txtAddress.getText(), txtPhone.getText()));
+                customerDAO.AddCustomer(txtNama.getText(),txtAddress.getText(),txtPhone.getText());
+
             } else {
-                editableCustomer.setCustomerName(txtNama.getText());
-                editableCustomer.setCustomerAddress(txtAddress.getText());
-                editableCustomer.setCustomerPhone(txtPhone.getText());
-                listCustomer.set(indexCustomer, editableCustomer);
+                customerDAO.UpdateCustomer(editableCustomer.getCustomerId(), txtNama.getText(),txtAddress.getText(),txtPhone.getText());
             }
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information");
@@ -65,10 +55,9 @@ public class FormCustomerController {
             alert.showAndWait();
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/tabelCustomer.fxml"));
-                scene.setRoot((Parent) loader.load());
+                scene.setRoot(loader.load());
                 CustomerController customerController = loader.getController();
                 customerController.setScene(scene);
-                customerController.setListCustomer(listCustomer);
                 customerController.refreshTable();
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -80,12 +69,13 @@ public class FormCustomerController {
             alert.getButtonTypes().setAll(ButtonType.OK);
             alert.showAndWait();
         }
+        customerController.refreshTable();
     }
     @FXML
     public void onCancel(){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/tabelCustomer.fxml"));
-            scene.setRoot((Parent) loader.load());
+            scene.setRoot(loader.load());
             CustomerController customerController = loader.getController();
             customerController.setScene(scene);
         } catch (IOException e) {
@@ -96,36 +86,12 @@ public class FormCustomerController {
         this.scene = scene;
     }
 
-    public ArrayList<Customer> getListCustomer() {
-        return listCustomer;
-    }
-
-    public void setListCustomer(ArrayList<Customer> listCustomer) {
-        this.listCustomer = listCustomer;
-    }
-
-    public Customer getEditableCustomer() {
-        return editableCustomer;
-    }
-
     public void setEditableCustomer(Customer editableCustomer) {
         this.editableCustomer = editableCustomer;
     }
 
-    public int getIndexCustomer() {
-        return indexCustomer;
-    }
-
-    public boolean isEdit() {
-        return isEdit;
-    }
-
     public void setEdit(boolean edit) {
         isEdit = edit;
-    }
-
-    public void setIndexCustomer(int indexCustomer) {
-        this.indexCustomer = indexCustomer;
     }
 
 }
