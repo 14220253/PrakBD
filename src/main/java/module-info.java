@@ -3,7 +3,6 @@ module com.example.bdmaven {
     requires javafx.fxml;
     requires java.sql;
 
-
     opens com.example.bdmaven to javafx.fxml;
     exports com.example.bdmaven;
     exports controllers;
