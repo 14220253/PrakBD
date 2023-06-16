@@ -1,4 +1,4 @@
-package com.example.bdmaven;
+package controllers;
 
 import entity.Transaction;
 import javafx.fxml.FXML;
@@ -6,7 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
-public class ListTransactionController {
+public class TransactionController {
 
     private Scene scene;
 
@@ -21,7 +21,7 @@ public class ListTransactionController {
         this.scene = scene;
     }
     public void initialize(){
-        TableColumn<Transaction, String> transactionId = new TableColumn<>("Transaction Id");
+        TableColumn<Transaction, String> transactionId = new TableColumn<>("Transaction ID");
         transactionId.setCellValueFactory
                 (cellData -> {
                     return cellData.getValue().transactionIdProperty();
@@ -66,4 +66,5 @@ public class ListTransactionController {
         tableTransaction.getColumns().add(tanggal);
 
     }
+
 }
