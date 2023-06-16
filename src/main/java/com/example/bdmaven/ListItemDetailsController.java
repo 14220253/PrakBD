@@ -1,8 +1,8 @@
 package com.example.bdmaven;
 
+import controllers.MenuController;
 import entity.ItemDetails;
-import com.example.bdmaven.formItemDetailsController;
-import entity.ItemDetails;
+import controllers.formItemDetailsController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -109,6 +109,19 @@ public class ListItemDetailsController {
             Optional<ButtonType> result = alert.showAndWait();
         }
     }
+    @FXML
+    public void back(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/Menu.fxml"));
+            scene.setRoot((Parent) loader.load());
+            MenuController menuController = loader.getController();
+            menuController.setScene(scene);
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
     public void setScene(Scene scene) {
         this.scene = scene;
@@ -127,5 +140,8 @@ public class ListItemDetailsController {
         return listitemDetails;
     }
 
+    public Scene getScene() {
+        return scene;
+    }
 
 }

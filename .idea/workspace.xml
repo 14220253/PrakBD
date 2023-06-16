@@ -5,12 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="69fe7045-e472-4527-ab31-3a1667ee58b2" name="Changes" comment="table item,kategori">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bdmaven/formItemDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bdmaven/formItemDetailsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entity/ItemDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/ItemDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bdmaven/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bdmaven/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bdmaven/ListItemDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bdmaven/ListItemDetailsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bdmaven/formItemDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/formItemDetailsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/MenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/Menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/Menu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/formItemDetails.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/formItemDetails.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/listItemdetails.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/listItemdetails.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/listItems.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/listItems.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/bdmaven/HelloApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/bdmaven/HelloApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +62,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/Lenovo/IdeaProjects/PrakBD"
+    "last_opened_file_path": "C:/Users/Lenovo/Desktop/MultiScene.zip (Unzipped Files)"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -75,7 +80,7 @@
       <module name="BDMaven" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.bdmaven.*" />
+          <option name="PATTERN" value="controllers.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -133,7 +138,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686569711770</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="table item,kategori">
+      <created>1686574095170</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1686574095170</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

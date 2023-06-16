@@ -1,5 +1,6 @@
-package com.example.bdmaven;
+package controllers;
 
+import com.example.bdmaven.ListItemDetailsController;
 import entity.ItemDetails;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -86,6 +87,8 @@ public class formItemDetailsController {
             scene.setRoot(loader.load());
             ListItemDetailsController listItemDetailsController = loader.getController();
             listItemDetailsController.setScene(scene);
+            listItemDetailsController.setList(listitemdetails);
+            listItemDetailsController.refreshTable();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -154,6 +157,7 @@ public class formItemDetailsController {
     public void setScene(Scene scene) {
         this.scene = scene;
     }
-    
+
+
 }
         

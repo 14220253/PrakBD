@@ -6,5 +6,7 @@ module com.example.bdmaven {
 
     opens com.example.bdmaven to javafx.fxml;
     exports com.example.bdmaven;
+    exports controllers;
+    opens controllers to javafx.fxml;
 
 }

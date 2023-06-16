@@ -18,6 +18,6 @@
       <Button layoutX="34.0" layoutY="332.0" mnemonicParsing="false" onAction="#onAdd" text="add" />
       <Button layoutX="81.0" layoutY="332.0" mnemonicParsing="false" onAction="#onEdit" text="edit" />
       <Button layoutX="130.0" layoutY="332.0" mnemonicParsing="false" onAction="#onDelete" text="delete" />
-      <Button layoutX="191.0" layoutY="332.0" mnemonicParsing="false" text="back" />
+      <Button layoutX="191.0" layoutY="332.0" mnemonicParsing="false" onAction="#back" text="back" />
    </children>
 </AnchorPane>
