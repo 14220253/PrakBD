@@ -1,10 +1,6 @@
 package entity;
 
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class Delivery {
     private SimpleStringProperty id_delivery;
