@@ -63,6 +63,35 @@ public class MenuController {
         }
     }
 
+    public void Delivery(){
+        try {
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/tabelDelivery.fxml"));
+            scene.setRoot((Parent) loader.load());
+
+            DeliveryController deliveryControllerController = loader.getController();
+            deliveryControllerController.setScene(scene);
+            deliveryControllerController.refreshTable();
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void jobs(){
+        try{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/tabelJobs.fxml"));
+        scene.setRoot((Parent) loader.load());
+
+        JobsController jobsController = loader.getController();
+        jobsController.setScene(scene);
+        jobsController.refreshTable();
+
+    } catch (IOException e) {
+        throw new RuntimeException(e);
+    }
+    }
+
     public Scene getScene() {
         return scene;
     }
