@@ -1,16 +1,26 @@
 package controllers;
 
+import com.example.bdmaven.HelloApplication;
 import com.example.bdmaven.ListItemDetailsController;
+import entity.Delivery;
 import formController.formItemDetailsController;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class MenuController {
     private Scene scene;
+    private HelloApplication app;
+
+    public void setApp(HelloApplication app) {
+        this.app = app;
+    }
 
     public void setScene(Scene scene) {
         this.scene = scene;
@@ -44,6 +54,18 @@ public class MenuController {
 
             customerController.refreshTable();
 
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    @FXML
+    public void delivery(ActionEvent event){
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        try {
+
+            FXMLLoader loader = new FXMLLoader(app.getClass().getResource("tabelDelivery.fxml"));
+            stage.setScene(new Scene(loader.load(), 700, 400));
+            loader.<DeliveryController>getController().setApp(app);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
