@@ -6,8 +6,10 @@ import entity.Jobs;
 import formController.FormJobsController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -26,6 +28,8 @@ public class JobsController {
     private ObservableList<Jobs> list = FXCollections.observableArrayList();
     private static final JobsDAO DAO = new JobsDAO();
     private Jobs selectedJob;
+    private Scene scene;
+    public void setScene(Scene scene) {this.scene = scene;}
 
     @FXML
     public void initialize() {
@@ -105,5 +109,10 @@ public class JobsController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    @FXML
+    protected void back(ActionEvent event) {
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
     }
 }
