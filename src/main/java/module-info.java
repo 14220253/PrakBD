@@ -9,5 +9,6 @@ module com.example.bdmaven {
     opens controllers to javafx.fxml;
     exports formController;
     opens formController to javafx.fxml;
+    opens DAO to javafx.fxml;
 
 }
