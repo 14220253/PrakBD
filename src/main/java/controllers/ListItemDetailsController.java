@@ -1,4 +1,4 @@
-package com.example.bdmaven;
+package controllers;
 
 import DAO.ItemdetailsDAO;
 import controllers.MenuController;

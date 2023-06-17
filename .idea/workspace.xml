@@ -5,28 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="69fe7045-e472-4527-ab31-3a1667ee58b2" name="Changes" comment="table item,kategori">
-      <change afterPath="$PROJECT_DIR$/src/main/java/DAO/ItemdetailsDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/DAO/KategoriDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/KategoriController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/entity/Kategori.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/formController/formKategoriController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bdmaven/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bdmaven/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bdmaven/ListItemDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bdmaven/ListItemDetailsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bdmaven/ListItemDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ListItemDetailsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/MenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/formItemDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/formController/formItemDetailsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entity/ItemDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/ItemDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/formController/formItemDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/formController/formItemDetailsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/Menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/Menu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/formItemDetails.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/formItemDetails.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/bdmaven/HelloApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/bdmaven/ListItemDetailsController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/bdmaven/ListTransactionController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/formKategori.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/formKategori.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/listItemdetails.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/listItemdetails.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/listKategori.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/listKategori.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/bdmaven/Menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/bdmaven/Menu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/bdmaven/formItemDetails.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/bdmaven/formItemDetails.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/bdmaven/listTransaction.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/DeliveryController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/MenuController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/formItemDetailsController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/entity/Delivery.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/entity/ItemDetails.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/entity/Jobs.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/bdmaven/formKategori.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/bdmaven/formKategori.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/bdmaven/listItemdetails.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/bdmaven/listItemdetails.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/bdmaven/listKategori.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/bdmaven/listKategori.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,7 +140,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686588256840</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="table item,kategori">
+      <created>1687012622793</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1687012622793</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -162,9 +164,9 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="discount table" />
-    <MESSAGE value="table item,kategori" />
     <MESSAGE value="Table" />
     <MESSAGE value="JDBC" />
-    <option name="LAST_COMMIT_MESSAGE" value="JDBC" />
+    <MESSAGE value="table item,kategori" />
+    <option name="LAST_COMMIT_MESSAGE" value="table item,kategori" />
   </component>
 </project>

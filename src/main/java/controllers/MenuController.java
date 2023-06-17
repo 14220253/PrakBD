@@ -1,6 +1,5 @@
 package controllers;
 
-import com.example.bdmaven.ListItemDetailsController;
 import formController.formItemDetailsController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -43,6 +42,21 @@ public class MenuController {
             customerController.setScene(scene);
 
             customerController.refreshTable();
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void kategori(){
+        try {
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/listKategori.fxml"));
+            scene.setRoot((Parent) loader.load());
+
+            KategoriController kategoriController = loader.getController();
+            kategoriController.setScene(scene);
+            kategoriController.refreshTable();
 
         } catch (IOException e) {
             throw new RuntimeException(e);

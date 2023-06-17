@@ -1,8 +1,10 @@
 package formController;
-
 import DAO.ItemdetailsDAO;
+import DAO.KategoriDao;
+import controllers.KategoriController;
 import controllers.ListItemDetailsController;
 import entity.ItemDetails;
+import entity.Kategori;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -13,55 +15,50 @@ import javafx.scene.control.TextField;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Optional;
-
-public class formItemDetailsController {
+public class formKategoriController {
     private boolean isEdit = false;
-    
-    private static final ItemdetailsDAO itemdetailsDAO = new ItemdetailsDAO();
-    private static final ListItemDetailsController listitemdetails = new ListItemDetailsController();
-    private ItemDetails editable;
+
+    private static final KategoriDao kategoriDao = new KategoriDao();
+    private static final KategoriController kategoriController = new KategoriController();
+    private Kategori editable;
     private int index;
     @FXML
-    private TextField txtAmount;
+    private TextField txtid;
     @FXML
-    private TextField txtPilihanlaundry;
-    @FXML
-    private TextField txtKondisi;
-    @FXML
-    private TextField txtTanggalpengembalian;
-    
+    private TextField txtnama;
+
+
     private Scene scene;
 
     public void loadEditData() {
-        txtAmount.setText(editable.getAmount());
-        txtPilihanlaundry.setText(editable.getPilihan_laundry());
-        txtKondisi.setText(editable.getKondisi());
-        txtTanggalpengembalian.setText(editable.getTanggal_pengembalian());
+        txtid.setText(editable.getKategori_id());
+        txtnama.setText(editable.getKategori_Name());
+
     }
     private boolean isValid() {
-        if (txtAmount.getText().isBlank() || txtAmount.getText().isEmpty() || txtPilihanlaundry.getText().isBlank()
-                || txtPilihanlaundry.getText().isEmpty()) {
+        if (txtid.getText().isBlank() ||txtid.getText().isEmpty() || txtnama.getText().isBlank()
+                || txtnama.getText().isEmpty()) {
             return false;
         }
         return true;
     }
- 
+
     @FXML
     public void onSave() throws SQLException {
         if(isValid()){
             if(!isEdit){
-               itemdetailsDAO.Add(txtAmount.getText(),txtPilihanlaundry.getText(),txtKondisi.getText(),txtTanggalpengembalian.getText());
+                kategoriDao.Addkategori(txtid.getText(),txtnama.getText());
             }
             else {
-                itemdetailsDAO.Update(editable.getAmount(), editable.getTanggal_pengembalian(), editable.getKondisi(), editable.getTanggal_pengembalian());
+                kategoriDao.Updatekategori(txtid.getText(),txtnama.getText());
             }
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information");
             alert.setHeaderText("Data berhasil disimpan!");
             alert.getButtonTypes().setAll(ButtonType.OK);
-            Optional<ButtonType> result = alert.showAndWait();
+            alert.showAndWait();
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/listItemdetails.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/listKategori.fxml"));
                 scene.setRoot(loader.load());
                 ListItemDetailsController listItemDetailsController = loader.getController();
                 listItemDetailsController.setScene(scene);
@@ -74,15 +71,15 @@ public class formItemDetailsController {
             alert.setTitle("Warning");
             alert.setHeaderText("Harap Cek Data Kembali!");
             alert.getButtonTypes().setAll(ButtonType.OK);
-            Optional<ButtonType> result = alert.showAndWait();
+            alert.showAndWait();
         }
-        listitemdetails.refreshTable();
+        kategoriController.refreshTable();
     }
 
     @FXML
     public void onCancel() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/listItemdetails.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/listKategori.fxml"));
             scene.setRoot(loader.load());
             ListItemDetailsController listItemDetailsController = loader.getController();
             listItemDetailsController.setScene(scene);
@@ -100,12 +97,11 @@ public class formItemDetailsController {
         isEdit = edit;
     }
 
-
-    public ItemDetails getEditable() {
+    public Kategori getEditable() {
         return editable;
     }
 
-    public void setEditable(ItemDetails editable) {
+    public void setEditable(Kategori editable) {
         this.editable = editable;
     }
 
@@ -117,28 +113,20 @@ public class formItemDetailsController {
         this.index = index;
     }
 
-    public TextField getTxtAmount() {
-        return txtAmount;
+    public TextField getTxtid() {
+        return txtid;
     }
 
-    public void setTxtAmount(TextField txtAmount) {
-        this.txtAmount = txtAmount;
+    public void setTxtid(TextField txtid) {
+        this.txtid = txtid;
     }
 
-    public TextField getTxtPilihanlaundry() {
-        return txtPilihanlaundry;
+    public TextField getTxtnama() {
+        return txtnama;
     }
 
-    public void setTxtPilihanlaundry(TextField txtPilihanlaundry) {
-        this.txtPilihanlaundry = txtPilihanlaundry;
-    }
-
-    public TextField getTxtKondisi() {
-        return txtKondisi;
-    }
-
-    public void setTxtKondisi(TextField txtKondisi) {
-        this.txtKondisi = txtKondisi;
+    public void setTxtnama(TextField txtnama) {
+        this.txtnama = txtnama;
     }
 
     public Scene getScene() {
@@ -148,13 +136,4 @@ public class formItemDetailsController {
     public void setScene(Scene scene) {
         this.scene = scene;
     }
-
-    public TextField getTxtTanggalpengembalian() {
-        return txtTanggalpengembalian;
-    }
-
-    public void setTxtTanggalpengembalian(TextField txtTanggalpengembalian) {
-        this.txtTanggalpengembalian = txtTanggalpengembalian;
-    }
 }
-        
