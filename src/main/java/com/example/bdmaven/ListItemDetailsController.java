@@ -1,8 +1,9 @@
 package com.example.bdmaven;
 
+import DAO.ItemdetailsDAO;
 import controllers.MenuController;
 import entity.ItemDetails;
-import controllers.formItemDetailsController;
+import formController.formItemDetailsController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -12,12 +13,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Optional;
 
 public class ListItemDetailsController {
-    private ArrayList<ItemDetails> listitemDetails;
+    private static final ItemdetailsDAO listitemDetails = new ItemdetailsDAO();
 
+    private ObservableList<ItemDetails> itemDetailsObservableList = FXCollections.observableArrayList();
     private Scene scene;
 
     @FXML
@@ -36,12 +39,16 @@ public class ListItemDetailsController {
         Kondisi.setCellValueFactory(celldata -> {
             return celldata.getValue().amountProperty();
         });
-
+        TableColumn<ItemDetails, String> Tanggal_pengembalian = new TableColumn<>("Tanggal pengembalian");
+        Tanggal_pengembalian.setCellValueFactory(celldata -> {
+            return celldata.getValue().amountProperty();
+        });
         tableListItemDetails.getColumns().clear();
 
         tableListItemDetails.getColumns().add(Amount);
         tableListItemDetails.getColumns().add(Pilihan_laundry);
         tableListItemDetails.getColumns().add(Kondisi);
+        tableListItemDetails.getColumns().add(Tanggal_pengembalian);
 
         tableListItemDetails.setPlaceholder(new Label("Tidak ada data!"));
     }
@@ -52,7 +59,6 @@ public class ListItemDetailsController {
             scene.setRoot((Parent) loader.load());
             formItemDetailsController formController = loader.getController();
             formController.setScene(scene);
-            formController.setListitemdetails(listitemDetails);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -67,16 +73,11 @@ public class ListItemDetailsController {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/formItemDetails.fxml"));
                 scene.setRoot((Parent) loader.load());
                 formItemDetailsController formController = loader.getController();
-
                 formController.setScene(scene);
-                formController.setListitemdetails(listitemDetails);
-                formController.setIndex(tableListItemDetails.getSelectionModel().getSelectedIndex());
-
                 formController.setEdit(true);
-
                 formController.setEditable(itemDetails);
-
                 formController.loadEditData();
+
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -89,7 +90,7 @@ public class ListItemDetailsController {
         }
     }
     @FXML
-    public void onDelete(){
+    public void onDelete() throws SQLException {
         if(tableListItemDetails.getSelectionModel().getSelectedItem() != null){
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Confirmation");
@@ -97,9 +98,7 @@ public class ListItemDetailsController {
             alert.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);
             Optional<ButtonType> result = alert.showAndWait();
             if(alert.getResult() == ButtonType.YES){
-                ItemDetails itemDetails = (ItemDetails) tableListItemDetails.getSelectionModel().getSelectedItem();
-                listitemDetails.remove(itemDetails);
-                refreshTable();
+                listitemDetails.Delete(String.valueOf(((ItemDetails)tableListItemDetails.getSelectionModel().getSelectedItem())));
             }
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -126,19 +125,13 @@ public class ListItemDetailsController {
     public void setScene(Scene scene) {
         this.scene = scene;
     }
-    public void setList(ArrayList<ItemDetails> list) {
-        this.listitemDetails = list;
-    }
+
     public void refreshTable(){
-        ObservableList<ItemDetails> data = FXCollections.observableArrayList(
-                listitemDetails
-        );
-        tableListItemDetails.setItems(data);
+        itemDetailsObservableList.setAll(listitemDetails.GetAllItemdetails());
+        tableListItemDetails.setItems(itemDetailsObservableList);
     }
 
-    public ArrayList<ItemDetails> getList() {
-        return listitemDetails;
-    }
+
 
     public Scene getScene() {
         return scene;

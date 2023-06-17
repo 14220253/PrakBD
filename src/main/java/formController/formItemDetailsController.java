@@ -1,5 +1,6 @@
-package controllers;
+package formController;
 
+import DAO.ItemdetailsDAO;
 import com.example.bdmaven.ListItemDetailsController;
 import entity.ItemDetails;
 import javafx.fxml.FXML;
@@ -10,13 +11,15 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Optional;
 
 public class formItemDetailsController {
     private boolean isEdit = false;
     
-    private ArrayList<ItemDetails> listitemdetails = new ArrayList<>();
+    private static final ItemdetailsDAO itemdetailsDAO = new ItemdetailsDAO();
+    private static final ListItemDetailsController listitemdetails = new ListItemDetailsController();
     private ItemDetails editable;
     private int index;
     @FXML
@@ -25,6 +28,8 @@ public class formItemDetailsController {
     private TextField txtPilihanlaundry;
     @FXML
     private TextField txtKondisi;
+    @FXML
+    private TextField txtTanggalpengembalian;
     
     private Scene scene;
 
@@ -32,6 +37,7 @@ public class formItemDetailsController {
         txtAmount.setText(editable.getAmount());
         txtPilihanlaundry.setText(editable.getPilihan_laundry());
         txtKondisi.setText(editable.getKondisi());
+        txtTanggalpengembalian.setText(editable.getTanggal_pengembalian());
     }
     private boolean isValid() {
         if (txtAmount.getText().isBlank() || txtAmount.getText().isEmpty() || txtPilihanlaundry.getText().isBlank()
@@ -42,19 +48,13 @@ public class formItemDetailsController {
     }
  
     @FXML
-    public void onSave(){
+    public void onSave() throws SQLException {
         if(isValid()){
-            if(listitemdetails == null){
-                listitemdetails = new ArrayList<>();
-            }
             if(!isEdit){
-                listitemdetails.add(new ItemDetails(txtAmount.getText(),txtPilihanlaundry.getText(),txtKondisi.getText()));
+               itemdetailsDAO.Add(txtAmount.getText(),txtPilihanlaundry.getText(),txtKondisi.getText(),txtTanggalpengembalian.getText());
             }
             else {
-                editable.setAmount(txtAmount.getText());
-                editable.setPilihan_laundry(txtPilihanlaundry.getText());
-                editable.setKondisi(txtKondisi.getText());
-                listitemdetails.set(index, editable);
+                itemdetailsDAO.Update(editable.getAmount(), editable.getTanggal_pengembalian(), editable.getKondisi(), editable.getTanggal_pengembalian());
             }
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information");
@@ -66,7 +66,6 @@ public class formItemDetailsController {
                 scene.setRoot(loader.load());
                 ListItemDetailsController listItemDetailsController = loader.getController();
                 listItemDetailsController.setScene(scene);
-                listItemDetailsController.setList(listitemdetails);
                 listItemDetailsController.refreshTable();
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -78,6 +77,7 @@ public class formItemDetailsController {
             alert.getButtonTypes().setAll(ButtonType.OK);
             Optional<ButtonType> result = alert.showAndWait();
         }
+        listitemdetails.refreshTable();
     }
 
     @FXML
@@ -87,8 +87,7 @@ public class formItemDetailsController {
             scene.setRoot(loader.load());
             ListItemDetailsController listItemDetailsController = loader.getController();
             listItemDetailsController.setScene(scene);
-            listItemDetailsController.setList(listitemdetails);
-            listItemDetailsController.refreshTable();
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -102,13 +101,6 @@ public class formItemDetailsController {
         isEdit = edit;
     }
 
-    public ArrayList<ItemDetails> getListitemdetails() {
-        return listitemdetails;
-    }
-
-    public void setListitemdetails(ArrayList<ItemDetails> listitemdetails) {
-        this.listitemdetails = listitemdetails;
-    }
 
     public ItemDetails getEditable() {
         return editable;
@@ -158,6 +150,12 @@ public class formItemDetailsController {
         this.scene = scene;
     }
 
+    public TextField getTxtTanggalpengembalian() {
+        return txtTanggalpengembalian;
+    }
 
+    public void setTxtTanggalpengembalian(TextField txtTanggalpengembalian) {
+        this.txtTanggalpengembalian = txtTanggalpengembalian;
+    }
 }
         

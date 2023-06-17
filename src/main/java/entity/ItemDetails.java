@@ -7,10 +7,13 @@ public class ItemDetails {
     private SimpleStringProperty pilihan_laundry;
     private SimpleStringProperty kondisi;
 
-    public ItemDetails(String amount, String pilihan_laundry, String kondisi){
+    private SimpleStringProperty tanggal_pengembalian;
+
+    public ItemDetails(String amount, String pilihan_laundry, String kondisi, String tanggal_pengembalian){
         this.amount = new SimpleStringProperty(amount);
         this.pilihan_laundry = new SimpleStringProperty(pilihan_laundry);
         this.kondisi = new SimpleStringProperty(kondisi);
+        this.tanggal_pengembalian = new SimpleStringProperty(tanggal_pengembalian);
     }
 
 
@@ -48,5 +51,17 @@ public class ItemDetails {
 
     public void setKondisi(String kondisi) {
         this.kondisi.set(kondisi);
+    }
+
+    public String getTanggal_pengembalian() {
+        return tanggal_pengembalian.get();
+    }
+
+    public SimpleStringProperty tanggal_pengembalianProperty() {
+        return tanggal_pengembalian;
+    }
+
+    public void setTanggal_pengembalian(String tanggal_pengembalian) {
+        this.tanggal_pengembalian.set(tanggal_pengembalian);
     }
 }
