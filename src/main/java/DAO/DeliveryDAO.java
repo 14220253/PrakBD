@@ -72,7 +72,7 @@ public class DeliveryDAO {
 
         PreparedStatement stm = jdbc.connection.get().prepareStatement(sql);
         stm.setString(1, date);
-        stm.setString(2, emp_id);;
+        stm.setString(2, emp_id);
         stm.execute();
     }
 }

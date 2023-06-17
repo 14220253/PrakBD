@@ -2,6 +2,7 @@ package com.example.bdmaven;
 
 import controllers.CustomerController;
 import controllers.DeliveryController;
+import controllers.JobsController;
 import controllers.TransactionController;
 import formController.FormDeliveryController;
 import javafx.application.Application;
@@ -14,9 +15,9 @@ import java.io.IOException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("tabelDelivery.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("tabelJobs.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 700, 400);
-        fxmlLoader.<DeliveryController>getController().setApp(this);
+        fxmlLoader.<JobsController>getController().setApp(this);
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();

@@ -1,7 +1,9 @@
 package formController;
 
 import DAO.DeliveryDAO;
+import DAO.JobsDAO;
 import controllers.DeliveryController;
+import controllers.JobsController;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -13,23 +15,21 @@ import java.util.logging.Level;
 
 import static com.example.bdmaven.JDBC.LOGGER;
 
-public class FormDeliveryController {
+public class FormJobsController {
     @FXML
-    private TextField deliveryId;
+    private TextField jobId;
     @FXML
-    private DatePicker tanggalPengembalian;
-    @FXML
-    private TextField employeeId;
+    private TextField jobName;
     private Stage stage;
-    private DeliveryController controller;
+    private JobsController controller;
     private String type;
-    private DeliveryDAO dao;
+    private JobsDAO dao;
 
     public void setType(String type) {
         this.type = type;
     }
 
-    public void setDAO(DeliveryDAO DAO) {
+    public void setDAO(JobsDAO DAO) {
         this.dao = DAO;
     }
 
@@ -37,31 +37,25 @@ public class FormDeliveryController {
         this.stage = stage;
     }
 
-    public void setController(DeliveryController controller) {
+    public void setController(JobsController controller) {
         this.controller = controller;
     }
 
-    public void setInitialData(String deliveryId, String tanggalPengembalian, String employeeId) {
-        this.deliveryId.setText(deliveryId);
-        this.deliveryId.setEditable(false);
-        this.tanggalPengembalian.setValue(
-                LocalDate.of(Integer.parseInt(tanggalPengembalian.substring(0, 4)),
-                        Integer.parseInt(tanggalPengembalian.substring(5, 7)),
-                        Integer.parseInt(tanggalPengembalian.substring(8, 10))));
-        this.employeeId.setText(employeeId);
+    public void setInitialData(String jobID, String name) {
+        this.jobId.setText(jobID);
+        this.jobId.setEditable(false);
+        this.jobName.setText(name);
     }
-
     @FXML
     protected void addData() {
-        if (deliveryId.getText().length() > 0 &&
-        tanggalPengembalian.getValue() != null &&
-        employeeId.getText().length() > 0) {
+        if (jobId.getText().length() > 0 &&
+                jobName.getText().length() > 0) {
             try {
                 if (type.equalsIgnoreCase("add")) {
-                    dao.addDelivery(deliveryId.getText(), tanggalPengembalian.getValue().toString(), employeeId.getText());
+                    dao.addJob(jobId.getText(), jobName.getText());
                     System.out.println("Data successfully added");
                 } else if (type.equalsIgnoreCase("edit")) {
-                    dao.updateCustomer(deliveryId.getText(), tanggalPengembalian.getValue().toString(), employeeId.getText());
+                    dao.updateJob(jobId.getText(), jobName.getText());
                     System.out.println("Data successfully edited");
                 }
                 controller.refreshTable();
@@ -77,9 +71,8 @@ public class FormDeliveryController {
     @FXML
     protected void clear() {
         if (!type.equalsIgnoreCase("edit")) {
-            deliveryId.clear();
+            jobId.clear();
         }
-        employeeId.clear();
+        jobName.clear();
     }
-
 }

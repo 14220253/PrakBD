@@ -4,18 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69fe7045-e472-4527-ab31-3a1667ee58b2" name="Changes" comment="p">
+    <list default="true" id="69fe7045-e472-4527-ab31-3a1667ee58b2" name="Changes" comment="delivery selesai">
+      <change afterPath="$PROJECT_DIR$/src/main/java/DAO/JobsDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/JobsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/formController/FormJobsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/formJobs.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/DAO/DeliveryDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/DeliveryDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bdmaven/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bdmaven/HelloApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/DeliveryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/DeliveryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Jobs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Jobs.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/formController/FormDeliveryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/formController/FormDeliveryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/formDelivery.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/formDelivery.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/tabelDelivery.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/tabelDelivery.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/bdmaven/HelloApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/bdmaven/HelloApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/bdmaven/tabelDelivery.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/bdmaven/tabelDelivery.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/tabelJobs.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/tabelJobs.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/bdmaven/tabelJobs.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/bdmaven/tabelJobs.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controllers/DeliveryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/DeliveryController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/entity/Jobs.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/entity/Jobs.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,7 +159,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686988676995</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="delivery selesai">
+      <created>1686995605076</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1686995605076</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -176,6 +187,7 @@
     <MESSAGE value="Table" />
     <MESSAGE value="JDBC" />
     <MESSAGE value="p" />
-    <option name="LAST_COMMIT_MESSAGE" value="p" />
+    <MESSAGE value="delivery selesai" />
+    <option name="LAST_COMMIT_MESSAGE" value="delivery selesai" />
   </component>
 </project>

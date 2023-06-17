@@ -14,7 +14,6 @@ import javafx.stage.Stage;
 
 import java.sql.SQLException;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import static com.example.bdmaven.JDBC.LOGGER;
 
@@ -24,7 +23,7 @@ public class DeliveryController {
    private TableView<Delivery> table;
     private ObservableList<Delivery> list = FXCollections.observableArrayList();
     private static final DeliveryDAO DAO = new DeliveryDAO();
-    Delivery selectedDelivery;
+    private Delivery selectedDelivery;
 
     @FXML
     public void initialize() {

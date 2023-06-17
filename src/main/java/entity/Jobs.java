@@ -1,27 +1,37 @@
 package entity;
 
-public class Jobs {
-    private int job_id;
-    private String  job_name;
+import javafx.beans.property.SimpleStringProperty;
 
-    public Jobs(int job_id, String job_name) {
-        this.job_id = job_id;
-        this.job_name = job_name;
+public class Jobs {
+    private SimpleStringProperty job_id;
+    private SimpleStringProperty  job_name;
+
+    public Jobs(String job_id, String job_name) {
+        this.job_id = new SimpleStringProperty(job_id);
+        this.job_name = new SimpleStringProperty(job_name);
     }
 
-    public int getJob_id() {
+    public String getJob_id() {
+        return job_id.get();
+    }
+
+    public SimpleStringProperty job_idProperty() {
         return job_id;
     }
 
-    public void setJob_id(int job_id) {
-        this.job_id = job_id;
+    public void setJob_id(String job_id) {
+        this.job_id.set(job_id);
     }
 
     public String getJob_name() {
+        return job_name.get();
+    }
+
+    public SimpleStringProperty job_nameProperty() {
         return job_name;
     }
 
     public void setJob_name(String job_name) {
-        this.job_name = job_name;
+        this.job_name.set(job_name);
     }
 }
