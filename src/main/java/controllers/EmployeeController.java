@@ -4,10 +4,13 @@ import DAO.EmployeeDAO;
 import com.example.bdmaven.HelloApplication;
 import entity.Employees;
 import formController.FormDeliveryController;
+import formController.FormEmployeeController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -26,6 +29,8 @@ public class EmployeeController {
     private ObservableList<Employees> list = FXCollections.observableArrayList();
     private static final EmployeeDAO DAO = new EmployeeDAO();
     private Employees selectedEmployee;
+    private Scene scene;
+    public void setScene(Scene scene) {this.scene = scene;}
 
     @FXML
     public void initialize() {
@@ -79,13 +84,13 @@ public class EmployeeController {
     protected void addData(){
         try {
             Stage stage = new Stage();
-            FXMLLoader loader = new FXMLLoader(app.getClass().getResource("formDelivery.fxml"));
+            FXMLLoader loader = new FXMLLoader(app.getClass().getResource("formEmployees.fxml"));
             Scene scene1 = new Scene(loader.load(), 350, 400);
             stage.setTitle("Add Delivery");
-//            loader.<FormDeliveryController>getController().setStage(stage);
-//            loader.<FormDeliveryController>getController().setController(this);
-//            loader.<FormDeliveryController>getController().setType("add");
-//            loader.<FormDeliveryController>getController().setDAO(DAO);
+            loader.<FormEmployeeController>getController().setStage(stage);
+            loader.<FormEmployeeController>getController().setController(this);
+            loader.<FormEmployeeController>getController().setType("add");
+            loader.<FormEmployeeController>getController().setDAO(DAO);
             stage.setScene(scene1);
             stage.show();
         } catch (Exception e) {
@@ -96,23 +101,29 @@ public class EmployeeController {
     protected void editData(){
         try {
             Stage stage = new Stage();
-            FXMLLoader loader = new FXMLLoader(app.getClass().getResource("formDelivery.fxml"));
+            FXMLLoader loader = new FXMLLoader(app.getClass().getResource("formEmployees.fxml"));
             Scene scene1 = new Scene(loader.load(), 350, 400);
             stage.setTitle("Edit Delivery");
-//            loader.<FormDeliveryController>getController().setStage(stage);
-//            loader.<FormDeliveryController>getController().setController(this);
-//            loader.<FormDeliveryController>getController().setType("edit");
-//            loader.<FormDeliveryController>getController().setDAO(DAO);
-//            if (selectedDelivery != null) {
-//                loader.<FormDeliveryController>getController().setInitialData(
-//                        selectedDelivery.getId_delivery(),
-//                        selectedDelivery.getTanggal_pengembalian(),
-//                        selectedDelivery.getEmployee_id());
-//            }
+            loader.<FormEmployeeController>getController().setStage(stage);
+            loader.<FormEmployeeController>getController().setController(this);
+            loader.<FormEmployeeController>getController().setType("edit");
+            loader.<FormEmployeeController>getController().setDAO(DAO);
+            if (selectedEmployee != null) {
+                loader.<FormEmployeeController>getController().setInitialData(
+                        selectedEmployee.getEmployee_id(),
+                        selectedEmployee.getEmployee_name(),
+                        selectedEmployee.getSalary(),
+                        selectedEmployee.getJob_id());
+            }
             stage.setScene(scene1);
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    @FXML
+    protected void back(ActionEvent event) {
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
     }
 }

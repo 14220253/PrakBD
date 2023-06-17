@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="351.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="formController.FormDeliveryController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="351.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="formController.FormEmployeeController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -17,8 +17,8 @@
       <RowConstraints maxHeight="66.39999999999998" minHeight="10.0" prefHeight="66.39999999999998" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <TextField fx:id="deliveryId" prefHeight="40.0" prefWidth="175.0" GridPane.columnIndex="1" />
-      <TextField fx:id="employeeId" prefHeight="40.0" prefWidth="175.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <TextField fx:id="employeeId" prefHeight="40.0" prefWidth="175.0" GridPane.columnIndex="1" />
+      <TextField fx:id="jobId" prefHeight="40.0" prefWidth="175.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
       <Label text="Employee_id" GridPane.halignment="CENTER">
          <font>
             <Font size="24.0" />
@@ -48,7 +48,7 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <TextField fx:id="deliveryId1" layoutX="186.0" layoutY="23.0" prefHeight="40.0" prefWidth="175.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <TextField fx:id="deliveryId11" layoutX="186.0" layoutY="88.0" prefHeight="40.0" prefWidth="175.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <TextField fx:id="employeeName" layoutX="186.0" layoutY="23.0" prefHeight="40.0" prefWidth="175.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <TextField fx:id="salary" layoutX="186.0" layoutY="88.0" prefHeight="40.0" prefWidth="175.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
    </children>
 </GridPane>

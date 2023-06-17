@@ -22,7 +22,7 @@
                 <TableColumn prefWidth="220.79999542236328" text="job_name" />
             </columns>
         </TableView>
-        <Button mnemonicParsing="false" text="Back" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+        <Button mnemonicParsing="false" onAction="#back" text="Back" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
         <Button mnemonicParsing="false" onAction="#addData" text="Add" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
         <Button mnemonicParsing="false" onAction="#deleteData" text="Delete" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
         <Button mnemonicParsing="false" onAction="#editData" text="Edit" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" />

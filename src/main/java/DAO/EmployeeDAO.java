@@ -68,9 +68,9 @@ public class EmployeeDAO {
     public void updateEmployee(String id, String name, String salary, String job_id) throws SQLException {
         String sql = "UPDATE `employees` SET " +
                 "`employee_name` = ?," +
-                "`salary` = ?" +
+                "`salary` = ?," +
                 "`job_id` = ?" +
-                " WHERE `id_delivery` = " + id;
+                " WHERE `employee_id` = " + id;
 
         PreparedStatement stm = jdbc.connection.get().prepareStatement(sql);
         stm.setString(1, name);

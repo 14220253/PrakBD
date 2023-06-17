@@ -18,9 +18,7 @@ public class MenuController {
     private Scene scene;
     private HelloApplication app;
 
-    public void setApp(HelloApplication app) {
-        this.app = app;
-    }
+    public void setApp(HelloApplication app) {this.app = app;}
 
     public void setScene(Scene scene) {
         this.scene = scene;
@@ -62,14 +60,39 @@ public class MenuController {
     public void delivery(ActionEvent event){
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         try {
-
             FXMLLoader loader = new FXMLLoader(app.getClass().getResource("tabelDelivery.fxml"));
             stage.setScene(new Scene(loader.load(), 700, 400));
             loader.<DeliveryController>getController().setApp(app);
+            loader.<DeliveryController>getController().setScene(scene);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
+    @FXML
+    public void employee(ActionEvent event){
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        try {
+            FXMLLoader loader = new FXMLLoader(app.getClass().getResource("tabelEmployees.fxml"));
+            stage.setScene(new Scene(loader.load(), 700, 400));
+            loader.<EmployeeController>getController().setApp(app);
+            loader.<EmployeeController>getController().setScene(scene);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    @FXML
+    public void jobs(ActionEvent event){
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        try {
+            FXMLLoader loader = new FXMLLoader(app.getClass().getResource("tabelJobs.fxml"));
+            stage.setScene(new Scene(loader.load(), 700, 400));
+            loader.<JobsController>getController().setApp(app);
+            loader.<JobsController>getController().setScene(scene);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
     public Scene getScene() {
         return scene;

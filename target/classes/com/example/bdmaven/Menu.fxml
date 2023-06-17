@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MenuController">
    <children>
       <Label layoutX="37.0" layoutY="23.0" text="Table Menu" />
       <Button layoutX="27.0" layoutY="61.0" mnemonicParsing="false" text="Transactions" />
       <Button layoutX="275.0" layoutY="106.0" mnemonicParsing="false" text="Items" />
       <Button layoutX="27.0" layoutY="153.0" mnemonicParsing="false" onAction="#listitemdetails" text="Item Details" />
       <Button layoutX="27.0" layoutY="251.0" mnemonicParsing="false" text="Discount" />
-      <Button layoutX="275.0" layoutY="251.0" mnemonicParsing="false" text="Employees" />
+      <Button layoutX="275.0" layoutY="251.0" mnemonicParsing="false" onAction="#employee" text="Employees" />
       <Button layoutX="275.0" layoutY="61.0" mnemonicParsing="false" text="Kategori" />
       <Button layoutX="27.0" layoutY="106.0" mnemonicParsing="false" onAction="#customer" text="Customers" />
       <Button layoutX="275.0" layoutY="153.0" mnemonicParsing="false" text="Payment" />
-      <Button layoutX="27.0" layoutY="200.0" mnemonicParsing="false" text="Delivery" />
+      <Button layoutX="27.0" layoutY="200.0" mnemonicParsing="false" onAction="#delivery" text="Delivery" />
       <Button layoutX="275.0" layoutY="200.0" mnemonicParsing="false" text="Harga Delivery" />
-      <Button layoutX="27.0" layoutY="295.0" mnemonicParsing="false" text="Jobs" />
+      <Button layoutX="27.0" layoutY="295.0" mnemonicParsing="false" onAction="#jobs" text="Jobs" />
    </children>
 </AnchorPane>

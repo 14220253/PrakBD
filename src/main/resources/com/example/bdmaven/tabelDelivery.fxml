@@ -23,7 +23,7 @@
             <TableColumn fx:id="delivery_id_col1" prefWidth="98.79998779296875" text="employee_id" />
         </columns>
       </TableView>
-      <Button fx:id="backButton" mnemonicParsing="false" text="Back" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+      <Button fx:id="backButton" mnemonicParsing="false" onAction="#back" text="Back" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
       <Button fx:id="addButton" mnemonicParsing="false" onAction="#addData" text="Add" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
       <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#deleteData" text="Delete" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
       <Button fx:id="editButton" mnemonicParsing="false" onAction="#editData" text="Edit" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
