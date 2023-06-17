@@ -1,7 +1,6 @@
 package DAO;
 
 import com.example.bdmaven.JDBC;
-import entity.Customer;
 import entity.Delivery;
 
 import java.sql.PreparedStatement;
@@ -33,7 +32,7 @@ public class DeliveryDAO {
                     Delivery delivery = new Delivery(id, date, employee_id);
                     deliveries.add(delivery);
 
-                    LOGGER.log(Level.INFO, "Found {0} in database", delivery);
+//                    LOGGER.log(Level.INFO, "Found {0} in database", delivery);
                 }
 
             } catch (SQLException e) {
@@ -49,9 +48,9 @@ public class DeliveryDAO {
                 "`tanggal_pengembalian`, " +
                 "`employee_id`)" +
                 " VALUES (" +
-                Integer.parseInt(id) + "," +
-                "to_date(" + date + ", DD/MM/YYYY)," +
-                Integer.parseInt(emp_id) + ")";
+                "?," +
+                "?," +
+                "?)";
         PreparedStatement stm = jdbc.connection.get().prepareStatement(sql);
         stm.setString(1, id);
         stm.setString(2,date);
@@ -66,9 +65,9 @@ public class DeliveryDAO {
     }
 
     public void updateCustomer(String id_delivery, String date, String emp_id) throws SQLException {
-        String sql = "UPDATE `customers` SET " +
-                "`tanggal_pengembalian` = " + date + "," +
-                "`employee_id` = " + emp_id +
+        String sql = "UPDATE `delivery` SET " +
+                "`tanggal_pengembalian` = ?," +
+                "`employee_id` = ?" +
                 " WHERE `id_delivery` = " + id_delivery;
 
         PreparedStatement stm = jdbc.connection.get().prepareStatement(sql);
