@@ -5,20 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="69fe7045-e472-4527-ab31-3a1667ee58b2" name="Changes" comment="fix">
+      <change afterPath="$PROJECT_DIR$/src/main/java/DAO/HargaDeliveryDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/HargaDeliveryController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/formController/FormHargaDeliveryController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/formHargaDelivery.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/EmployeeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/EmployeeDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/DeliveryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/DeliveryController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/EmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/EmployeeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/JobsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/JobsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/MenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/formController/FormEmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/formController/FormEmployeeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/Menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/Menu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/formEmployees.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/formEmployees.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/HargaDelivery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/HargaDelivery.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/tabelDelivery.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/tabelDelivery.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/tabelEmployees.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/tabelEmployees.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/tabelHargaDelivery.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/tabelHargaDelivery.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/tabelJobs.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/tabelJobs.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/bdmaven/Menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/bdmaven/Menu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/bdmaven/tabelDelivery.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/bdmaven/tabelDelivery.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/bdmaven/tabelEmployees.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/bdmaven/tabelEmployees.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/bdmaven/tabelHargaDelivery.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/bdmaven/tabelHargaDelivery.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/bdmaven/tabelJobs.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/bdmaven/tabelJobs.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/entity/HargaDelivery.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/entity/HargaDelivery.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

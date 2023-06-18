@@ -92,6 +92,18 @@ public class MenuController {
             throw new RuntimeException(e);
         }
     }
+    @FXML
+    public void hargaDelivery(ActionEvent event){
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        try {
+            FXMLLoader loader = new FXMLLoader(app.getClass().getResource("tabelHargaDelivery.fxml"));
+            stage.setScene(new Scene(loader.load(), 700, 400));
+            loader.<HargaDeliveryController>getController().setApp(app);
+            loader.<HargaDeliveryController>getController().setScene(scene);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 
     public Scene getScene() {
