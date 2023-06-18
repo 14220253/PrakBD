@@ -5,11 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="69fe7045-e472-4527-ab31-3a1667ee58b2" name="Changes" comment="table item,kategori">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/KategoriDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/KategoriDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/KategoriController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/KategoriController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Kategori.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Kategori.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/formController/formKategoriController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/formController/formKategoriController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bdmaven/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bdmaven/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/MenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DAO/KategoriDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DAO/KategoriDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/bdmaven/HelloApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/bdmaven/HelloApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/bdmaven/ListItemDetailsController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/KategoriController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/KategoriController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/MenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/MenuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/entity/Kategori.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/entity/Kategori.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/formController/formKategoriController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/formController/formKategoriController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
