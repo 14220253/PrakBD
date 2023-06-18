@@ -4,34 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69fe7045-e472-4527-ab31-3a1667ee58b2" name="Changes" comment="fix">
-      <change afterPath="$PROJECT_DIR$/src/main/java/DAO/HargaDeliveryDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/HargaDeliveryController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/formController/FormHargaDeliveryController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/formHargaDelivery.fxml" afterDir="false" />
+    <list default="true" id="69fe7045-e472-4527-ab31-3a1667ee58b2" name="Changes" comment="table item,kategori">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/DeliveryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/DeliveryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/EmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/EmployeeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/JobsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/JobsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/MenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entity/HargaDelivery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/HargaDelivery.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/tabelDelivery.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/tabelDelivery.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/tabelEmployees.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/tabelEmployees.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/tabelHargaDelivery.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/tabelHargaDelivery.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/tabelJobs.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/tabelJobs.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/bdmaven/tabelDelivery.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/bdmaven/tabelDelivery.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/bdmaven/tabelEmployees.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/bdmaven/tabelEmployees.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/bdmaven/tabelHargaDelivery.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/bdmaven/tabelHargaDelivery.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/bdmaven/tabelJobs.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/bdmaven/tabelJobs.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/entity/HargaDelivery.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/entity/HargaDelivery.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/KategoriDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/KategoriDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/KategoriController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/KategoriController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Kategori.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Kategori.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/formController/formKategoriController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/formController/formKategoriController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="CodeStyleSettingsInfer">
-    <option name="done" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -54,9 +37,6 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectCodeStyleSettingsMigration">
-    <option name="version" value="2" />
-  </component>
   <component name="ProjectId" id="2QmzaUU63GdtUFJZD8USmHaZLXl" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -70,7 +50,8 @@
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/intellij/prakPBO&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Richard Kamitono/Univ/Basis Data/PrakBD3&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
@@ -147,14 +128,35 @@
       <option name="project" value="LOCAL" />
       <updated>1686588256840</updated>
     </task>
-    <task id="LOCAL-00007" summary="fix">
-      <created>1687014636127</created>
+    <task id="LOCAL-00007" summary="table item,kategori">
+      <created>1687012622793</created>
       <option name="number" value="00007" />
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
-      <updated>1687014636127</updated>
+      <updated>1687012622793</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="table item,kategori">
+      <created>1687017817266</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1687017817266</updated>
+    </task>
+    <task id="LOCAL-00009" summary="table item,kategori">
+      <created>1687017881283</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1687017881283</updated>
+    </task>
+    <task id="LOCAL-00010" summary="table item,kategori">
+      <created>1687019294077</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1687019294077</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -171,10 +173,9 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="discount table" />
-    <MESSAGE value="table item,kategori" />
     <MESSAGE value="Table" />
     <MESSAGE value="JDBC" />
-    <MESSAGE value="fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix" />
+    <MESSAGE value="table item,kategori" />
+    <option name="LAST_COMMIT_MESSAGE" value="table item,kategori" />
   </component>
 </project>

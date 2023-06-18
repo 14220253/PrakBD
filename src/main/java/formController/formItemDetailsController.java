@@ -1,7 +1,7 @@
 package formController;
 
 import DAO.ItemdetailsDAO;
-import com.example.bdmaven.ListItemDetailsController;
+import controllers.ListItemDetailsController;
 import entity.ItemDetails;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,7 +12,6 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Optional;
 
 public class formItemDetailsController {
