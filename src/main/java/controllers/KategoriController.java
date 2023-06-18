@@ -16,30 +16,27 @@ import java.sql.SQLException;
 import java.util.Optional;
 
 public class KategoriController {
-    private static final KategoriDao listkategori = new KategoriDao();
+    private static final KategoriDao kategoriDao = new KategoriDao();
 
     private ObservableList<Kategori> KategoriObservableList = FXCollections.observableArrayList();
     private Scene scene;
 
     @FXML
-    private TableView tableListKategori;
+    private TableView<Kategori> tableListKategori;
 
+    @FXML
     public void initialize(){
         TableColumn<Kategori, String> Kategori_id = new TableColumn<>("Kategori id");
-        Kategori_id.setCellValueFactory(celldata -> {
-            return celldata.getValue().kategori_idProperty();
-        });
+        Kategori_id.setCellValueFactory(celldata -> celldata.getValue().kategori_idProperty());
         TableColumn<Kategori, String> Kategori_name = new TableColumn<>("Nama Kategori");
-        Kategori_name.setCellValueFactory(celldata -> {
-            return celldata.getValue().kategori_NameProperty();
-        });
+        Kategori_name.setCellValueFactory(celldata -> celldata.getValue().kategori_NameProperty());
 
         tableListKategori.getColumns().clear();
 
         tableListKategori.getColumns().add(Kategori_id);
         tableListKategori.getColumns().add(Kategori_name);
-
-
+        KategoriObservableList.setAll(kategoriDao.GetAllKategori());
+        tableListKategori.setItems(KategoriObservableList);
         tableListKategori.setPlaceholder(new Label("Tidak ada data!"));
     }
     @FXML
@@ -57,7 +54,7 @@ public class KategoriController {
     @FXML
     public void onEdit(){
         if(tableListKategori.getSelectionModel().getSelectedItem() != null) {
-            Kategori Kategori = (Kategori) tableListKategori.getSelectionModel().getSelectedItem();
+            Kategori kategori = tableListKategori.getSelectionModel().getSelectedItem();
             try {
 
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/formKategori.fxml"));
@@ -65,7 +62,7 @@ public class KategoriController {
                 formKategoriController formController = loader.getController();
                 formController.setScene(scene);
                 formController.setEdit(true);
-                formController.setEditable(Kategori);
+                formController.setEditable(kategori);
                 formController.loadEditData();
 
             } catch (IOException e) {
@@ -88,7 +85,7 @@ public class KategoriController {
             alert.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);
             Optional<ButtonType> result = alert.showAndWait();
             if(alert.getResult() == ButtonType.YES){
-                listkategori.Deletekategori(String.valueOf(((Kategori)tableListKategori.getSelectionModel().getSelectedItem())));
+                kategoriDao.Deletekategori(( tableListKategori.getSelectionModel().getSelectedItem()).getKategori_id());
             }
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -97,6 +94,7 @@ public class KategoriController {
             alert.getButtonTypes().setAll(ButtonType.OK);
             Optional<ButtonType> result = alert.showAndWait();
         }
+        refreshTable();
     }
     @FXML
     public void back(){
@@ -117,10 +115,22 @@ public class KategoriController {
     }
 
     public void refreshTable(){
-        KategoriObservableList.setAll(listkategori.GetAllKategori());
+        KategoriObservableList.setAll(kategoriDao.GetAllKategori());
         tableListKategori.setItems(KategoriObservableList);
     }
 
+
+    public ObservableList<Kategori> getKategoriObservableList() {
+        return KategoriObservableList;
+    }
+
+    public void setKategoriObservableList(ObservableList<Kategori> kategoriObservableList) {
+        KategoriObservableList = kategoriObservableList;
+    }
+
+    public TableView getTableListKategori() {
+        return tableListKategori;
+    }
 
 
     public Scene getScene() {

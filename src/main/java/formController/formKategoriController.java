@@ -60,9 +60,9 @@ public class formKategoriController {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/listKategori.fxml"));
                 scene.setRoot(loader.load());
-                ListItemDetailsController listItemDetailsController = loader.getController();
-                listItemDetailsController.setScene(scene);
-                listItemDetailsController.refreshTable();
+                KategoriController listkategoricontroller = loader.getController();
+                listkategoricontroller.setScene(scene);
+                listkategoricontroller.refreshTable();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -81,8 +81,8 @@ public class formKategoriController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/listKategori.fxml"));
             scene.setRoot(loader.load());
-            ListItemDetailsController listItemDetailsController = loader.getController();
-            listItemDetailsController.setScene(scene);
+            KategoriController listkategoricontroller = loader.getController();
+            listkategoricontroller.setScene(scene);
 
         } catch (IOException e) {
             throw new RuntimeException(e);

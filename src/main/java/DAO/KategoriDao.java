@@ -1,6 +1,5 @@
 package DAO;
 import com.example.bdmaven.JDBC;
-import entity.Customer;
 import entity.Kategori;
 
 import java.sql.PreparedStatement;
@@ -43,35 +42,31 @@ public class KategoriDao {
     public void Addkategori(String id, String name) throws SQLException {
         String sql = "INSERT INTO `kategori`(" +
                 "`kategori_id`, " +
-                "`nama_kategori`), "  +
+                "`nama_kategori`) "  +
                 " VALUES (" +
                 "?," +
-                "?," +
-                "?)";
+                "?)" ;
         PreparedStatement stm = jdbc.connection.get().prepareStatement(sql);
         stm.setString(1, id);
         stm.setString(2, name);
-
         stm.execute();
     }
 
     public void Deletekategori(String kategori_id) throws SQLException {
-        String sql = "DELETE FROM `customers` WHERE `kategori_id` = " + kategori_id ;
+        String sql = "DELETE FROM `kategori` WHERE `kategori_id` = " + kategori_id ;
         PreparedStatement stm = jdbc.connection.get().prepareStatement(sql);
         stm.execute();
     }
 
     public void Updatekategori(String id, String name) throws SQLException {
-        String sql = "UPDATE `customers` SET " +
-                "`cust_name` = ?," +
-                "`address` = ?," +
-                "`no_telp` = ?" +
-                " WHERE `cust_id` = " + id;
+        String sql = "UPDATE `kategori` SET " +
+                "`nama_kategori` = ?" +
+                " WHERE `kategori_id` = " + id;
 
         PreparedStatement stm = jdbc.connection.get().prepareStatement(sql);
         stm.setString(1, name);
-        stm.setString(2, id);
 
         stm.execute();
     }
+
 }

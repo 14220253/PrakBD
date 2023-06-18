@@ -8,8 +8,8 @@ public class Kategori {
 
 
     public Kategori(String kategori_id, String kategori_Name) {
-        this.kategori_Name = new SimpleStringProperty(kategori_id);
-        this.kategori_id = new SimpleStringProperty(kategori_Name);
+        this.kategori_Name = new SimpleStringProperty(kategori_Name);
+        this.kategori_id = new SimpleStringProperty(kategori_id);
     }
 
     public String getKategori_id() {
