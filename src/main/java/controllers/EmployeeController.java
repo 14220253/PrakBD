@@ -71,9 +71,9 @@ public class EmployeeController {
     @FXML
     protected void deleteData() {
         if (selectedEmployee != null) {
-            list.remove(selectedEmployee);
             try {
                 DAO.deleteEmployee(selectedEmployee.getEmployee_id());
+                list.remove(selectedEmployee);
                 System.out.println("Data successfully deleted");
             } catch (SQLException e) {
                 LOGGER.log(Level.SEVERE, e.getMessage());
@@ -86,7 +86,7 @@ public class EmployeeController {
             Stage stage = new Stage();
             FXMLLoader loader = new FXMLLoader(app.getClass().getResource("formEmployees.fxml"));
             Scene scene1 = new Scene(loader.load(), 350, 400);
-            stage.setTitle("Add Delivery");
+            stage.setTitle("Add Employee");
             loader.<FormEmployeeController>getController().setStage(stage);
             loader.<FormEmployeeController>getController().setController(this);
             loader.<FormEmployeeController>getController().setType("add");
@@ -103,7 +103,7 @@ public class EmployeeController {
             Stage stage = new Stage();
             FXMLLoader loader = new FXMLLoader(app.getClass().getResource("formEmployees.fxml"));
             Scene scene1 = new Scene(loader.load(), 350, 400);
-            stage.setTitle("Edit Delivery");
+            stage.setTitle("Edit Employee");
             loader.<FormEmployeeController>getController().setStage(stage);
             loader.<FormEmployeeController>getController().setController(this);
             loader.<FormEmployeeController>getController().setType("edit");

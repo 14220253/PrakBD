@@ -55,6 +55,8 @@ public class JobsController {
     public void setApp(HelloApplication app) {
         this.app = app;
     }
+
+
     @FXML
     protected void getClicked() {
         selectedJob = table.getSelectionModel().getSelectedItem();
@@ -62,9 +64,9 @@ public class JobsController {
     @FXML
     protected void deleteData() {
         if (selectedJob != null) {
-            list.remove(selectedJob);
             try {
                 DAO.deleteJob(selectedJob.getJob_id());
+                list.remove(selectedJob);
                 System.out.println("Data successfully deleted");
             } catch (SQLException e) {
                 LOGGER.log(Level.SEVERE, e.getMessage());
@@ -94,7 +96,7 @@ public class JobsController {
             Stage stage = new Stage();
             FXMLLoader loader = new FXMLLoader(app.getClass().getResource("formJobs.fxml"));
             Scene scene1 = new Scene(loader.load(), 350, 400);
-            stage.setTitle("Edit Delivery");
+            stage.setTitle("Edit Job");
             loader.<FormJobsController>getController().setStage(stage);
             loader.<FormJobsController>getController().setController(this);
             loader.<FormJobsController>getController().setType("edit");
@@ -111,7 +113,7 @@ public class JobsController {
         }
     }
     @FXML
-    protected void back(ActionEvent event) {
+    public void back(ActionEvent event) {
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
     }

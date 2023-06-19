@@ -1,21 +1,31 @@
 package controllers;
 
+import com.example.bdmaven.HelloApplication;
 import formController.formItemDetailsController;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class MenuController {
     private Scene scene;
+    private HelloApplication app;
 
     public void setScene(Scene scene) {
         this.scene = scene;
     }
 
     formItemDetailsController FormItemDetailsController = new formItemDetailsController();
+
+    public void setApp(HelloApplication app) {
+        this.app = app;
+    }
+
     @FXML
     public void listitemdetails(){
 
@@ -58,6 +68,18 @@ public class MenuController {
             kategoriController.setScene(scene);
             kategoriController.refreshTable();
 
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    @FXML
+    public void hargaDelivery(ActionEvent event){
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        try {
+            FXMLLoader loader = new FXMLLoader(app.getClass().getResource("tabelHargaDelivery.fxml"));
+            stage.setScene(new Scene(loader.load(), 700, 400));
+            loader.<HargaDeliveryController>getController().setApp(app);
+            loader.<HargaDeliveryController>getController().setScene(scene);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

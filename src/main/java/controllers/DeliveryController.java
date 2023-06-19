@@ -67,9 +67,9 @@ public class DeliveryController {
     @FXML
     protected void deleteData() {
         if (selectedDelivery != null) {
-            list.remove(selectedDelivery);
             try {
                 DAO.deleteCustomer(selectedDelivery.getId_delivery());
+                list.remove(selectedDelivery);
                 System.out.println("Data successfully deleted");
             } catch (SQLException e) {
                 LOGGER.log(Level.SEVERE, e.getMessage());
