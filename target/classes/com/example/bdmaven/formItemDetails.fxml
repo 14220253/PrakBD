@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -8,13 +9,19 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="formController.formItemDetailsController">
    <children>
       <Label layoutX="37.0" layoutY="23.0" text="Form Item Details" />
-      <TextField fx:id="txtAmount" layoutX="150.0" layoutY="61.0" />
+      <TextField fx:id="txtAmount" layoutX="194.0" layoutY="61.0" />
       <Label layoutX="36.0" layoutY="65.0" text="Amount" />
       <Label layoutX="36.0" layoutY="111.0" text="Pilihan laundry" />
       <Label layoutX="37.0" layoutY="164.0" text="kondisi" />
-      <TextField fx:id="txtPilihanlaundry" layoutX="150.0" layoutY="107.0" />
-      <TextField fx:id="txtKondisi" layoutX="150.0" layoutY="160.0" />
-      <Button layoutX="37.0" layoutY="230.0" mnemonicParsing="false" onAction="#onSave" text="Save" />
-      <Button layoutX="89.0" layoutY="230.0" mnemonicParsing="false" onAction="#onCancel" text="Cancel" />
+      <TextField fx:id="txtPilihanlaundry" layoutX="194.0" layoutY="107.0" />
+      <TextField fx:id="txtKondisi" layoutX="194.0" layoutY="160.0" />
+      <Button layoutX="36.0" layoutY="336.0" mnemonicParsing="false" onAction="#onSave" text="Save" />
+      <Button layoutX="89.0" layoutY="336.0" mnemonicParsing="false" onAction="#onCancel" text="Cancel" />
+      <Label layoutX="37.0" layoutY="207.0" text="Tanggal pengembalian" />
+      <Label layoutX="37.0" layoutY="255.0" text="item id" />
+      <Label layoutX="37.0" layoutY="303.0" text="transaction id" />
+      <TextField fx:id="txtitem_id" layoutX="194.0" layoutY="251.0" />
+      <TextField fx:id="txttransaction_id" layoutX="194.0" layoutY="299.0" />
+      <DatePicker fx:id="datePickerTanggalpengembalian" layoutX="194.0" layoutY="203.0" />
    </children>
 </AnchorPane>

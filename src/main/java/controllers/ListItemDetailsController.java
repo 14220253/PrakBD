@@ -24,7 +24,7 @@ public class ListItemDetailsController {
     private Scene scene;
 
     @FXML
-    private TableView tableListItemDetails;
+    private TableView<ItemDetails> tableListItemDetails;
 
     public void initialize(){
         TableColumn<ItemDetails, String> Amount = new TableColumn<>("Amount");
@@ -33,15 +33,25 @@ public class ListItemDetailsController {
         });
         TableColumn<ItemDetails, String> Pilihan_laundry = new TableColumn<>("Pilihan Laundry");
         Pilihan_laundry.setCellValueFactory(celldata -> {
-            return celldata.getValue().amountProperty();
+            return celldata.getValue(). pilihan_laundryProperty();
         });
         TableColumn<ItemDetails, String> Kondisi = new TableColumn<>("Kondisi");
         Kondisi.setCellValueFactory(celldata -> {
-            return celldata.getValue().amountProperty();
+            return celldata.getValue().kondisiProperty();
         });
         TableColumn<ItemDetails, String> Tanggal_pengembalian = new TableColumn<>("Tanggal pengembalian");
         Tanggal_pengembalian.setCellValueFactory(celldata -> {
-            return celldata.getValue().amountProperty();
+            return celldata.getValue().tanggal_pengembalianProperty();
+        });
+
+        TableColumn<ItemDetails,String> Itemid = new TableColumn<>("Item Id");
+        Itemid.setCellValueFactory(celldata -> {
+            return celldata.getValue().item_idProperty();
+        });
+
+        TableColumn<ItemDetails,String> Transaction_id = new TableColumn<>("Transaction id");
+        Transaction_id.setCellValueFactory(celldata -> {
+            return celldata.getValue().transaction_idProperty();
         });
         tableListItemDetails.getColumns().clear();
 
@@ -49,7 +59,10 @@ public class ListItemDetailsController {
         tableListItemDetails.getColumns().add(Pilihan_laundry);
         tableListItemDetails.getColumns().add(Kondisi);
         tableListItemDetails.getColumns().add(Tanggal_pengembalian);
-
+        tableListItemDetails.getColumns().add(Itemid);
+        tableListItemDetails.getColumns().add(Transaction_id);
+        itemDetailsObservableList.setAll(listitemDetails.GetAllItemdetails());
+        tableListItemDetails.setItems(itemDetailsObservableList);
         tableListItemDetails.setPlaceholder(new Label("Tidak ada data!"));
     }
     @FXML
@@ -98,7 +111,7 @@ public class ListItemDetailsController {
             alert.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);
             Optional<ButtonType> result = alert.showAndWait();
             if(alert.getResult() == ButtonType.YES){
-                listitemDetails.Delete(String.valueOf(((ItemDetails)tableListItemDetails.getSelectionModel().getSelectedItem())));
+                listitemDetails.Delete((tableListItemDetails.getSelectionModel().getSelectedItem()).getItem_id());
             }
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -107,6 +120,7 @@ public class ListItemDetailsController {
             alert.getButtonTypes().setAll(ButtonType.OK);
             Optional<ButtonType> result = alert.showAndWait();
         }
+        refreshTable();
     }
     @FXML
     public void back(){

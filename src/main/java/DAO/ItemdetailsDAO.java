@@ -29,8 +29,10 @@ public class ItemdetailsDAO {
                     String pilihan_laundry = resultSet.getString("pilihan_laundry");
                     String kondisi = resultSet.getString("kondisi");
                     String tanggal_pengembalian = resultSet.getString("tanggal_pengembalian");
+                    String item_id = resultSet.getString("item_id");
+                    String transaction_id = resultSet.getString("transaction_id");
 
-                    ItemDetails itemDetails = new ItemDetails(amount,pilihan_laundry,kondisi,tanggal_pengembalian);
+                    ItemDetails itemDetails = new ItemDetails(amount,pilihan_laundry,kondisi,tanggal_pengembalian,item_id,transaction_id);
                     itemdetails.add(itemDetails);
 
                     LOGGER.log(Level.INFO, "Found {0} in database", itemDetails);
@@ -48,13 +50,21 @@ public class ItemdetailsDAO {
             String amount,
             String pilihan_laundry,
             String kondisi,
-            String tanggal_pengembalian
+            String tanggal_pengembalian,
+            String item_id,
+            String transaction_id
     ) throws SQLException {
         String sql = "INSERT INTO `item_details`(" +
                 "`amount`, " +
-                "`address`, " +
-                "`kondisi`)" +
-                " tanggal_pengembalian (" +
+                "`pilihan_laundry`, " +
+                "`kondisi`, " +
+                "`tanggal_pengembalian`, " +
+                "`item_id`, " +
+                "`transaction_id`) " +
+                " VALUES (" +
+                "?," +
+                "?," +
+                "?," +
                 "?," +
                 "?," +
                 "?)";
@@ -63,11 +73,13 @@ public class ItemdetailsDAO {
         stm.setString(2, pilihan_laundry);
         stm.setString(3, kondisi);
         stm.setString(4,tanggal_pengembalian);
+        stm.setString(5, item_id);
+        stm.setString(6, transaction_id);
         stm.execute();
     }
 
-    public void Delete(String custId) throws SQLException {
-        String sql = "DELETE FROM `item_details` WHERE `item_id` = " + custId ;
+    public void Delete(String itemId) throws SQLException {
+        String sql = "DELETE FROM `item_details` WHERE `item_id` = " + itemId;
         PreparedStatement stm = jdbc.connection.get().prepareStatement(sql);
         stm.execute();
     }
@@ -76,13 +88,16 @@ public class ItemdetailsDAO {
             String amount,
             String pilihan_laundry,
             String kondisi,
-            String tanggal_pengembalian
+            String tanggal_pengembalian,
+            String item_id,
+            String transaction_id
     ) throws SQLException {
-        String sql = "UPDATE `itemdetails` SET " +
-                "`amount`, " +
-                "`address`, " +
-                "`kondisi`)" +
-                " tanggal_pengembalian (" ;
+        String sql = "UPDATE `item_details` SET " +
+                "`amount` = ?" +
+                "`pilihan_laundry` = ?" +
+                "`kondisi` = ?" +
+                "`tanggal_pengembalian` = ?" +
+                " WHERE `item_id` = " + item_id;
 
 
         PreparedStatement stm = jdbc.connection.get().prepareStatement(sql);
@@ -92,4 +107,6 @@ public class ItemdetailsDAO {
         stm.setString(4,tanggal_pengembalian);
         stm.execute();
     }
+
+
 }

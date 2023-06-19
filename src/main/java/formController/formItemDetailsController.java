@@ -8,10 +8,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.Optional;
 
 public class formItemDetailsController {
@@ -28,7 +30,12 @@ public class formItemDetailsController {
     @FXML
     private TextField txtKondisi;
     @FXML
-    private TextField txtTanggalpengembalian;
+    private DatePicker datePickerTanggalpengembalian;
+
+    @FXML
+    private TextField txtitem_id;
+
+    @FXML TextField txttransaction_id;
     
     private Scene scene;
 
@@ -36,7 +43,10 @@ public class formItemDetailsController {
         txtAmount.setText(editable.getAmount());
         txtPilihanlaundry.setText(editable.getPilihan_laundry());
         txtKondisi.setText(editable.getKondisi());
-        txtTanggalpengembalian.setText(editable.getTanggal_pengembalian());
+        datePickerTanggalpengembalian.setValue(LocalDate.parse(editable.getTanggal_pengembalian()));
+        txtitem_id.setText(editable.getItem_id());
+        txttransaction_id.setText(editable.getTransaction_id());
+
     }
     private boolean isValid() {
         if (txtAmount.getText().isBlank() || txtAmount.getText().isEmpty() || txtPilihanlaundry.getText().isBlank()
@@ -50,10 +60,10 @@ public class formItemDetailsController {
     public void onSave() throws SQLException {
         if(isValid()){
             if(!isEdit){
-               itemdetailsDAO.Add(txtAmount.getText(),txtPilihanlaundry.getText(),txtKondisi.getText(),txtTanggalpengembalian.getText());
+               itemdetailsDAO.Add(txtAmount.getText(),txtPilihanlaundry.getText(),txtKondisi.getText(),datePickerTanggalpengembalian.getValue().toString(),txtitem_id.getText(),txttransaction_id.getText());
             }
             else {
-                itemdetailsDAO.Update(editable.getAmount(), editable.getTanggal_pengembalian(), editable.getKondisi(), editable.getTanggal_pengembalian());
+                itemdetailsDAO.Update(editable.getAmount(), editable.getPilihan_laundry(), editable.getKondisi(), editable.getTanggal_pengembalian(), editable.getItem_id(), editable.getTransaction_id());
             }
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information");
@@ -149,12 +159,29 @@ public class formItemDetailsController {
         this.scene = scene;
     }
 
-    public TextField getTxtTanggalpengembalian() {
-        return txtTanggalpengembalian;
+    public DatePicker getDatePickerTanggalpengembalian() {
+        return datePickerTanggalpengembalian;
     }
 
-    public void setTxtTanggalpengembalian(TextField txtTanggalpengembalian) {
-        this.txtTanggalpengembalian = txtTanggalpengembalian;
+    public void setDatePickerTanggalpengembalian(DatePicker datePickerTanggalpengembalian) {
+        this.datePickerTanggalpengembalian = datePickerTanggalpengembalian;
+    }
+
+    public TextField getTxtitem_id() {
+        return txtitem_id;
+    }
+
+    public void setTxtitem_id(TextField txtitem_id) {
+        this.txtitem_id = txtitem_id;
+    }
+
+    public TextField getTxttransaction_id() {
+        return txttransaction_id;
+    }
+
+    public void setTxttransaction_id(TextField txttransaction_id) {
+        this.txttransaction_id = txttransaction_id;
     }
 }
+
         

@@ -5,14 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="69fe7045-e472-4527-ab31-3a1667ee58b2" name="Changes" comment="table item,kategori">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bdmaven/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bdmaven/HelloApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/DAO/ItemDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/ItemController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/entity/Item.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/formController/FormItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/ItemdetailsDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/ItemdetailsDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/CustomerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ListItemDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ListItemDetailsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/MenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DAO/KategoriDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DAO/KategoriDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/bdmaven/HelloApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/bdmaven/HelloApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/bdmaven/ListItemDetailsController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/KategoriController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/KategoriController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/ItemDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/ItemDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/formController/formItemDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/formController/formItemDetailsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/formController/formKategoriController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/formController/formKategoriController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/Menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/Menu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/formItem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/formItem.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/formItemDetails.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/formItemDetails.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/listItems.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/listItems.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/tabelCustomer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/tabelCustomer.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DAO/ItemdetailsDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DAO/ItemdetailsDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/bdmaven/Menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/bdmaven/Menu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/bdmaven/formItem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/bdmaven/formItem.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/bdmaven/formItemDetails.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/bdmaven/formItemDetails.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/CustomerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/CustomerController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/ListItemDetailsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/ListItemDetailsController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controllers/MenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/MenuController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/entity/Kategori.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/entity/Kategori.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/entity/ItemDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/entity/ItemDetails.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/formController/formItemDetailsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/formController/formItemDetailsController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/formController/formKategoriController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/formController/formKategoriController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

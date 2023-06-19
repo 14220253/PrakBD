@@ -1,10 +1,8 @@
 package formController;
-import DAO.ItemdetailsDAO;
-import DAO.KategoriDao;
+import DAO.ItemDao;
+import controllers.ItemController;
 import controllers.KategoriController;
-import controllers.ListItemDetailsController;
-import entity.ItemDetails;
-import entity.Kategori;
+import entity.Item;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -14,26 +12,37 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Optional;
-public class formKategoriController {
+
+public class FormItemController {
     private boolean isEdit = false;
 
-    private static final KategoriDao kategoriDao = new KategoriDao();
-    private static final KategoriController kategoriController = new KategoriController();
-    private Kategori editable;
+    private static final ItemDao itemDao = new ItemDao();
+    private static final ItemController itemController = new ItemController();
+    private Item editable;
     private int index;
     @FXML
     private TextField txtid;
     @FXML
     private TextField txtnama;
 
+    @FXML
+    private TextField txtharga;
+
+    @FXML
+    private TextField txtlamapenyelesaian;
+
+    @FXML
+    private TextField txtkategoriid;
+
 
     private Scene scene;
 
     public void loadEditData() {
-        txtid.setText(editable.getKategori_id());
-        txtnama.setText(editable.getKategori_Name());
-
+        txtid.setText(editable.getId());
+        txtnama.setText(editable.getName());
+        txtharga.setText(editable.getHarga());
+        txtlamapenyelesaian.setText(editable.getLama_penyeleasaian());
+        txtkategoriid.setText(editable.getKategori_id());
     }
     private boolean isValid() {
         if (txtid.getText().isBlank() ||txtid.getText().isEmpty() || txtnama.getText().isBlank()
@@ -47,10 +56,10 @@ public class formKategoriController {
     public void onSave() throws SQLException {
         if(isValid()){
             if(!isEdit){
-                kategoriDao.Addkategori(txtid.getText(),txtnama.getText());
+                itemDao.AddItem(txtid.getText(),txtnama.getText(),txtharga.getText(),txtlamapenyelesaian.getText(),txtkategoriid.getText());
             }
             else {
-                kategoriDao.Updatekategori(editable.getKategori_id(), editable.getKategori_Name());
+                itemDao.UpdateItem(editable.getId(), editable.getName(),editable.getHarga(),editable.getLama_penyeleasaian(),editable.getKategori_id());
             }
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information");
@@ -58,11 +67,11 @@ public class formKategoriController {
             alert.getButtonTypes().setAll(ButtonType.OK);
             alert.showAndWait();
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/listKategori.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/listItems.fxml"));
                 scene.setRoot(loader.load());
-                KategoriController listkategoricontroller = loader.getController();
-                listkategoricontroller.setScene(scene);
-                listkategoricontroller.refreshTable();
+                ItemController listitemcontroller = loader.getController();
+                listitemcontroller.setScene(scene);
+                listitemcontroller.refreshTable();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -73,13 +82,13 @@ public class formKategoriController {
             alert.getButtonTypes().setAll(ButtonType.OK);
             alert.showAndWait();
         }
-        kategoriController.refreshTable();
+        itemController.refreshTable();
     }
 
     @FXML
     public void onCancel() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/listKategori.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/listItems.fxml"));
             scene.setRoot(loader.load());
             KategoriController listkategoricontroller = loader.getController();
             listkategoricontroller.setScene(scene);
@@ -97,11 +106,11 @@ public class formKategoriController {
         isEdit = edit;
     }
 
-    public Kategori getEditable() {
+    public Item getEditable() {
         return editable;
     }
 
-    public void setEditable(Kategori editable) {
+    public void setEditable(Item editable) {
         this.editable = editable;
     }
 
@@ -127,6 +136,30 @@ public class formKategoriController {
 
     public void setTxtnama(TextField txtnama) {
         this.txtnama = txtnama;
+    }
+
+    public TextField getTxtharga() {
+        return txtharga;
+    }
+
+    public void setTxtharga(TextField txtharga) {
+        this.txtharga = txtharga;
+    }
+
+    public TextField getTxtlamapenyelesaian() {
+        return txtlamapenyelesaian;
+    }
+
+    public void setTxtlamapenyelesaian(TextField txtlamapenyelesaian) {
+        this.txtlamapenyelesaian = txtlamapenyelesaian;
+    }
+
+    public TextField getTxtkategoriid() {
+        return txtkategoriid;
+    }
+
+    public void setTxtkategoriid(TextField txtkategoriid) {
+        this.txtkategoriid = txtkategoriid;
     }
 
     public Scene getScene() {
