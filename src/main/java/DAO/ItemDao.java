@@ -79,6 +79,8 @@ public class ItemDao {
 
         PreparedStatement stm = jdbc.connection.get().prepareStatement(sql);
         stm.setString(1, name);
+        stm.setString(2, harga);
+        stm.setString(3,lama_penyeleasaian);
 
         stm.execute();
     }

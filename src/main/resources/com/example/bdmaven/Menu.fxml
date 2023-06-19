@@ -10,7 +10,7 @@
       <Button layoutX="27.0" layoutY="61.0" mnemonicParsing="false" onAction="#Transaction" text="Transactions" />
       <Button layoutX="275.0" layoutY="106.0" mnemonicParsing="false" onAction="#Items" text="Items" />
       <Button layoutX="27.0" layoutY="153.0" mnemonicParsing="false" onAction="#listitemdetails" text="Item Details" />
-      <Button layoutX="27.0" layoutY="251.0" mnemonicParsing="false" text="Discount" />
+      <Button layoutX="27.0" layoutY="251.0" mnemonicParsing="false" onAction="#Discount" text="Discount" />
       <Button layoutX="275.0" layoutY="251.0" mnemonicParsing="false" onAction="#employee" text="Employees" />
       <Button layoutX="275.0" layoutY="61.0" mnemonicParsing="false" onAction="#kategori" text="Kategori" />
       <Button layoutX="27.0" layoutY="106.0" mnemonicParsing="false" onAction="#customer" text="Customers" />

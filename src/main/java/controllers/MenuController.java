@@ -74,6 +74,21 @@ public class MenuController {
         }
     }
 
+    public void Discount() {
+        try {
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/listDiscount.fxml"));
+            scene.setRoot((Parent) loader.load());
+
+            DiscountController discountController = loader.getController();
+            discountController.setScene(scene);
+            discountController.refreshTable();
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     @FXML
     public void hargaDelivery(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
