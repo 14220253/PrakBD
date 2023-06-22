@@ -48,7 +48,7 @@ public class FormDiscountDetailController {
             alert.getButtonTypes().setAll(ButtonType.OK);
             alert.showAndWait();
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/tabelDiscountDetail.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/tabelDiscountDetails.fxml"));
                 scene.setRoot(loader.load());
                 DiscountDetailController discountDetailController = loader.getController();
                 discountDetailController.setScene(scene);
@@ -68,7 +68,7 @@ public class FormDiscountDetailController {
     @FXML
     public void onCancel(){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/tabelDiscountDetail.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/tabelDiscountDetails.fxml"));
             scene.setRoot(loader.load());
             DiscountDetailController discountDetailController = loader.getController();
             discountDetailController.setScene(scene);

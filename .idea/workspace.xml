@@ -5,18 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="69fe7045-e472-4527-ab31-3a1667ee58b2" name="Changes" comment="sort">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/TransactionTotalController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/showTotalTransaction.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/TransactionDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/TransactionDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/DiscoundDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/DiscoundDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/ItemDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/ItemDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/ItemdetailsDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/ItemdetailsDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/KategoriDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/KategoriDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/DeliveryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/DeliveryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/KategoriController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/KategoriController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ListItemDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ListItemDetailsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/TransactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/TransactionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/tabelTransaction.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/tabelTransaction.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DAO/EmployeeDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DAO/EmployeeDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/bdmaven/tabelEmployees.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/bdmaven/tabelEmployees.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/bdmaven/tabelTransaction.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/bdmaven/tabelTransaction.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/EmployeeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/EmployeeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/formController/FormDiscountDetailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/formController/FormDiscountDetailController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/formController/FormItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/formController/FormItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/showTotalTransaction.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/showTotalTransaction.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DAO/DiscoundDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DAO/DiscoundDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DAO/ItemDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DAO/ItemDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DAO/ItemdetailsDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DAO/ItemdetailsDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DAO/KategoriDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DAO/KategoriDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/DeliveryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/DeliveryController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/ItemController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/ItemController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/KategoriController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/KategoriController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/ListItemDetailsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/ListItemDetailsController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controllers/TransactionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/TransactionController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/entity/Employees.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/entity/Employees.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/formController/FormDiscountDetailController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/formController/FormDiscountDetailController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/formController/FormItemController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/formController/FormItemController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -218,8 +230,8 @@
     <MESSAGE value="Table" />
     <MESSAGE value="JDBC" />
     <MESSAGE value="table item,kategori" />
-    <MESSAGE value="update" />
     <MESSAGE value="sort" />
-    <option name="LAST_COMMIT_MESSAGE" value="sort" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
 </project>

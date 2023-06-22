@@ -17,14 +17,16 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Optional;
 public class ItemController {
+    private Scene scene;
+    private HelloApplication app;
+    @FXML
+    private TableView tableListItem;
+
     private static final ItemDao itemDao = new ItemDao();
 
     private ObservableList<Item> itemObservableList = FXCollections.observableArrayList();
-    private Scene scene;
-    private HelloApplication app;
 
-    @FXML
-    private TableView<Item> tableListItem;
+
 
     @FXML
     public void initialize(){
@@ -55,20 +57,22 @@ public class ItemController {
     }
     @FXML
     public void onAdd(){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/formItem.fxml"));
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/formItem.fxml"));
+
             scene.setRoot((Parent) loader.load());
-            FormItemController formController = loader.getController();
-            formController.setScene(scene);
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        FormItemController formController = loader.getController();
+        formController.setScene(scene);
     }
 
     @FXML
     public void onEdit(){
         if(tableListItem.getSelectionModel().getSelectedItem() != null) {
-            Item items = tableListItem.getSelectionModel().getSelectedItem();
+            Item items = (Item) tableListItem.getSelectionModel().getSelectedItem();
             try {
 
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/formItem.fxml"));
@@ -99,7 +103,7 @@ public class ItemController {
             alert.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);
             Optional<ButtonType> result = alert.showAndWait();
             if(alert.getResult() == ButtonType.YES){
-                itemDao.DeleteItem(( tableListItem.getSelectionModel().getSelectedItem()).getId());
+                itemDao.DeleteItem(( (Item)tableListItem.getSelectionModel().getSelectedItem()).getId());
             }
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -135,17 +139,6 @@ public class ItemController {
     }
 
 
-    public ObservableList<Item> getItemObservableList() {
-        return itemObservableList;
-    }
-
-    public void setItemObservableList(ObservableList<Item> ItemObservableList) {
-        ItemObservableList = ItemObservableList;
-    }
-
-    public TableView getTableListItem() {
-        return tableListItem;
-    }
 
 
     public Scene getScene() {

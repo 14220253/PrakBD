@@ -82,7 +82,7 @@ public class DeliveryController {
     protected void addData(){
         try {
             Stage stage = new Stage();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("formDelivery.fxml"));
+            FXMLLoader loader = new FXMLLoader(app.getClass().getResource("formDelivery.fxml"));
             Scene scene1 = new Scene((Parent) loader.load(), 350, 400);
             stage.setTitle("Add Delivery");
             loader.<FormDeliveryController>getController().setStage(stage);
@@ -99,7 +99,7 @@ public class DeliveryController {
     protected void editData(){
         try {
             Stage stage = new Stage();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("formDelivery.fxml"));
+            FXMLLoader loader = new FXMLLoader(app.getClass().getResource("formDelivery.fxml"));
             Scene scene1 = new Scene((Parent) loader.load(), 350, 400);
             stage.setTitle("Edit Delivery");
             loader.<FormDeliveryController>getController().setStage(stage);

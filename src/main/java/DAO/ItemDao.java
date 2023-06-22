@@ -72,8 +72,8 @@ public class ItemDao {
 
     public void UpdateItem(String id, String name,String harga,String lama_penyeleasaian,String kategori_id) throws SQLException {
         String sql = "UPDATE `items` SET " +
-                "`item_name` = ?" +
-                "`harga` = ?" +
+                "`item_name` = ?," +
+                "`harga` = ?," +
                 "`lama_penyelesaian` = ?" +
                 " WHERE `item_id` = " + id;
 

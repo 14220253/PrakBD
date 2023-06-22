@@ -65,7 +65,6 @@ public class KategoriDao {
 
         PreparedStatement stm = jdbc.connection.get().prepareStatement(sql);
         stm.setString(1, name);
-
         stm.execute();
     }
 
