@@ -5,28 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="69fe7045-e472-4527-ab31-3a1667ee58b2" name="Changes" comment="update">
-      <change afterPath="$PROJECT_DIR$/src/main/java/DAO/PaymentDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/DAO/TransactionDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entity/Payment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/formController/FormPaymentController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/formPayment.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bdmaven/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bdmaven/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/PaymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/PaymentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/TransactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/TransactionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Transaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/formController/FormCustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/formController/FormCustomerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/formController/FormTransactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/formController/FormTransactionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/formTransaction.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/formTransaction.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/tabelPayment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/tabelPayment.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/MenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/Menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/bdmaven/Menu.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/bdmaven/HelloApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/bdmaven/HelloApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/bdmaven/tabelPayment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/bdmaven/tabelPayment.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/PaymentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/PaymentController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/TransactionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/TransactionController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/entity/Customer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/entity/Customer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/entity/Transaction.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/entity/Transaction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/formController/FormCustomerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/formController/FormCustomerController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/MenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/MenuController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +53,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/Richard Kamitono/Univ/OOP/Miki/MateriMay27",
+    "last_opened_file_path": "C:/Users/Lenovo/IdeaProjects/PrakBD",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2"

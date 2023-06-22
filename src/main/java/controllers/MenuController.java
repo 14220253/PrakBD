@@ -146,12 +146,28 @@ public class MenuController {
 
                 TransactionController transactionController = loader.getController();
                 transactionController.setScene(scene);
+                transactionController.refreshTable();
 
 
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
+    public void Payment () {
+        try {
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/tabelPayment.fxml"));
+            scene.setRoot((Parent) loader.load());
+
+            PaymentController paymentController = loader.getController();
+            paymentController.setScene(scene);
+            paymentController.refreshTable();
+
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
         public void Items () {
             try {
 
