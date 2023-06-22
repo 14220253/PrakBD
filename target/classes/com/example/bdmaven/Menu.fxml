@@ -18,5 +18,6 @@
       <Button layoutX="27.0" layoutY="200.0" mnemonicParsing="false" onAction="#Delivery" text="Delivery" />
       <Button layoutX="275.0" layoutY="200.0" mnemonicParsing="false" onAction="#hargaDelivery" text="Harga Delivery" />
       <Button layoutX="27.0" layoutY="295.0" mnemonicParsing="false" onAction="#jobs" text="Jobs" />
+      <Button layoutX="275.0" layoutY="295.0" mnemonicParsing="false" onAction="#DiscountDetail" text="Discount Details" />
    </children>
 </AnchorPane>

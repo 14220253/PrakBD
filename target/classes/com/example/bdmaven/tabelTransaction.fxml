@@ -23,5 +23,6 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
+      <Button layoutX="223.0" layoutY="293.0" mnemonicParsing="false" onAction="#back" text="Back" />
    </children>
 </Pane>

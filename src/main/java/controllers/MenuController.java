@@ -20,8 +20,6 @@ public class MenuController {
         this.scene = scene;
     }
 
-    formItemDetailsController FormItemDetailsController = new formItemDetailsController();
-
     public void setApp(HelloApplication app) {
         this.app = app;
     }
@@ -184,6 +182,20 @@ public class MenuController {
                 itemController.setScene(scene);
                 itemController.refreshTable();
                 itemController.setApp(app);
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        public void DiscountDetail(){
+            try {
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/tabelDiscountDetails.fxml"));
+                scene.setRoot((Parent) loader.load());
+                DiscountDetailController discountDetailController = loader.getController();
+                discountDetailController.setScene(scene);
+                discountDetailController.refreshTable();
+                discountDetailController.setApp(app);
 
             } catch (IOException e) {
                 throw new RuntimeException(e);
