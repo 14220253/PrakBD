@@ -1,9 +1,7 @@
 package entity;
 
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 
-import java.time.LocalDate;
 
 public class Customer {
     private SimpleStringProperty customerId;
