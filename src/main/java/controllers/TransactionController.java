@@ -172,4 +172,21 @@ public class TransactionController {
     public void setApp(HelloApplication app) {
         this.app = app;
     }
+
+    @FXML
+    public void toTotal() {
+        try {
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/showTotalTransaction.fxml"));
+            scene.setRoot((Parent) loader.load());
+
+            TransactionTotalController controller = loader.getController();
+            controller.setScene(scene);
+            controller.setApp(app);
+
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
