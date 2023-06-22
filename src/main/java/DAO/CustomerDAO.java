@@ -2,6 +2,7 @@ package DAO;
 
 import com.example.bdmaven.JDBC;
 import entity.Customer;
+import entity.SortCustomer;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -86,5 +87,22 @@ public class CustomerDAO {
         stm.setString(2, address);
         stm.setString(3, phone);
         stm.execute();
+    }
+
+    public ResultSet sortCustomer() throws SQLException{
+        String sql = "SELECT `cust_name`, count(`t`.`cust_id`) " +
+                "FROM `customers` `c` " +
+                "right outer join `transaction` `t` on `c`.`cust_id` = `t`.`cust_id` " +
+                "group by `t`.`cust_id` " +
+                "order by COUNT(`t`.`cust_id`) DESC";
+        PreparedStatement stm = jdbc.getConnection().get().prepareStatement(sql);
+        return stm.executeQuery();
+    }
+    public Collection<SortCustomer> getCustFromSort(ResultSet result) throws SQLException{
+        Collection<SortCustomer> collection = new ArrayList<>();
+        while (result.next()) {
+            collection.add(new SortCustomer(result.getString(1), result.getString(2)));
+        }
+        return collection;
     }
 }

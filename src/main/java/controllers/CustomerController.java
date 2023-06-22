@@ -114,6 +114,14 @@ public class CustomerController {
             throw new RuntimeException(e);
         }
     }
+    @FXML
+    public void transactionHistory() throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("tabelSortedCustomer.fxml"));
+        scene.setRoot((Parent) fxmlLoader.load());
+        SortedCustomerController controller = fxmlLoader.getController();
+        controller.setScene(scene);
+        controller.setApp(app);
+    }
     public void setScene(Scene scene) {
         this.scene = scene;
     }

@@ -144,4 +144,41 @@ public class TransactionDAO {
         stm.setString(10, custId);
         stm.execute();
     }
+
+    public String getTotal() throws SQLException {
+        String sql = "SELECT sum(`total_harga`) FROM `transaction` ";
+
+        PreparedStatement stm = jdbc.connection.get().prepareStatement(sql);
+        ResultSet result = stm.executeQuery();
+        String s = "";
+        if (result.next()) {
+            s = result.getString(1);
+        }
+        return s;
+    }
+
+    public String getTotalFromMonth(int month) throws SQLException {
+        String sql = "SELECT sum(`total_harga`) FROM `transaction` where extract(month from `tanggal`) = ?";
+
+        PreparedStatement stm = jdbc.connection.get().prepareStatement(sql);
+        stm.setString(1, String.valueOf(month));
+        ResultSet result = stm.executeQuery();
+        String s = "";
+        if (result.next()) {
+            s = result.getString(1);
+        }
+        return s;
+    }
+    public String getTotalFromYear(int year) throws SQLException {
+        String sql = "SELECT sum(`total_harga`) FROM `transaction` where extract(year from `tanggal`) = ?";
+
+        PreparedStatement stm = jdbc.connection.get().prepareStatement(sql);
+        stm.setString(1, String.valueOf(year));
+        ResultSet result = stm.executeQuery();
+        String s = "";
+        if (result.next()) {
+            s = result.getString(1);
+        }
+        return s;
+    }
 }
