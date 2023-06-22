@@ -15,6 +15,11 @@ public class Employees {
         this.job_id = new SimpleStringProperty(job_id);
     }
 
+    public Employees(String employee_name, String salary) {
+        this.employee_name = new SimpleStringProperty(employee_name);
+        this.salary = new SimpleStringProperty(salary);
+    }
+
     public String getJob_id() {
         return job_id.get();
     }

@@ -115,12 +115,17 @@ public class CustomerController {
         }
     }
     @FXML
-    public void transactionHistory() throws IOException{
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("tabelSortedCustomer.fxml"));
-        scene.setRoot((Parent) fxmlLoader.load());
-        SortedCustomerController controller = fxmlLoader.getController();
-        controller.setScene(scene);
-        controller.setApp(app);
+    public void transactionHistory(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/tabelSortedCustomer.fxml"));
+            scene.setRoot((Parent) loader.load());
+            SortedCustomerController controller = loader.getController();
+            controller.setScene(scene);
+            controller.setApp(app);
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
     public void setScene(Scene scene) {
         this.scene = scene;

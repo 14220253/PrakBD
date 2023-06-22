@@ -11,12 +11,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 
@@ -125,5 +127,17 @@ public class EmployeeController {
     protected void back(ActionEvent event) {
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
+    }
+    @FXML
+    public void toSortedEmployee(ActionEvent event) throws IOException {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        try {
+            FXMLLoader loader = new FXMLLoader(app.getClass().getResource("tabelSortedEmployee.fxml"));
+            stage.setScene(new Scene(loader.load(), 700, 400));
+            loader.<SortedEmployeeController>getController().setApp(app);
+            loader.<SortedEmployeeController>getController().setScene(scene);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

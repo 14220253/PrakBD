@@ -44,8 +44,6 @@ public class SortedCustomerController {
         TableColumn<SortCustomer, String> count = new TableColumn<>("Transaction Count");
         count.setCellValueFactory(celldata -> new SimpleStringProperty(celldata.getValue().getCount()));
 
-        ObservableList<String> custName = FXCollections.observableArrayList();
-
         table.getColumns().clear();
         table.getColumns().add(name);
         table.getColumns().add(count);
