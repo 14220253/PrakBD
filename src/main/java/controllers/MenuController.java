@@ -35,6 +35,7 @@ public class MenuController {
             scene.setRoot((Parent) loader.load());
             ListItemDetailsController listItemDetailsController = loader.getController();
             listItemDetailsController.setScene(scene);
+            listItemDetailsController.setApp(app);
 
             listItemDetailsController.refreshTable();
 
@@ -51,6 +52,7 @@ public class MenuController {
 
             CustomerController customerController = loader.getController();
             customerController.setScene(scene);
+            customerController.setApp(app);
 
             customerController.refreshTable();
 
@@ -68,6 +70,7 @@ public class MenuController {
             KategoriController kategoriController = loader.getController();
             kategoriController.setScene(scene);
             kategoriController.refreshTable();
+            kategoriController.setApp(app);
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -83,6 +86,7 @@ public class MenuController {
             DiscountController discountController = loader.getController();
             discountController.setScene(scene);
             discountController.refreshTable();
+            discountController.setApp(app);
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -147,6 +151,7 @@ public class MenuController {
                 TransactionController transactionController = loader.getController();
                 transactionController.setScene(scene);
                 transactionController.refreshTable();
+                transactionController.setApp(app);
 
 
             } catch (IOException e) {
@@ -162,6 +167,7 @@ public class MenuController {
             PaymentController paymentController = loader.getController();
             paymentController.setScene(scene);
             paymentController.refreshTable();
+            paymentController.setApp(app);
 
 
         } catch (IOException e) {
@@ -177,6 +183,7 @@ public class MenuController {
                 ItemController itemController = loader.getController();
                 itemController.setScene(scene);
                 itemController.refreshTable();
+                itemController.setApp(app);
 
             } catch (IOException e) {
                 throw new RuntimeException(e);

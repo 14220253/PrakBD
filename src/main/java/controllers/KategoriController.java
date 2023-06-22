@@ -1,6 +1,7 @@
 package controllers;
 
 import DAO.KategoriDao;
+import com.example.bdmaven.HelloApplication;
 import entity.Kategori;
 import formController.formKategoriController;
 import javafx.collections.FXCollections;
@@ -20,6 +21,7 @@ public class KategoriController {
 
     private ObservableList<Kategori> KategoriObservableList = FXCollections.observableArrayList();
     private Scene scene;
+    private HelloApplication app;
 
     @FXML
     private TableView<Kategori> tableListKategori;
@@ -103,6 +105,7 @@ public class KategoriController {
             scene.setRoot((Parent) loader.load());
             MenuController menuController = loader.getController();
             menuController.setScene(scene);
+            menuController.setApp(app);
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -135,5 +138,9 @@ public class KategoriController {
 
     public Scene getScene() {
         return scene;
+    }
+
+    public void setApp(HelloApplication app) {
+        this.app = app;
     }
 }

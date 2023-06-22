@@ -1,6 +1,7 @@
 package controllers;
 import DAO.DiscoundDAO;
 import DAO.ItemdetailsDAO;
+import com.example.bdmaven.HelloApplication;
 import controllers.MenuController;
 import entity.Discount;
 import entity.ItemDetails;
@@ -23,6 +24,7 @@ public class DiscountController {
 
     private ObservableList<Discount> discountObservableList = FXCollections.observableArrayList();
     private Scene scene;
+    private HelloApplication app;
 
     @FXML
     private TableView<Discount> tablediscount;
@@ -130,6 +132,7 @@ public class DiscountController {
             scene.setRoot((Parent) loader.load());
             MenuController menuController = loader.getController();
             menuController.setScene(scene);
+            menuController.setApp(app);
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -152,4 +155,7 @@ public class DiscountController {
         return scene;
     }
 
+    public void setApp(HelloApplication app) {
+        this.app = app;
+    }
 }

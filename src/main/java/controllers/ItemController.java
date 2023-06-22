@@ -1,6 +1,7 @@
 package controllers;
 import DAO.ItemDao;
 import DAO.ItemDao;
+import com.example.bdmaven.HelloApplication;
 import entity.Item;
 import entity.Item;
 import formController.FormItemController;
@@ -20,6 +21,7 @@ public class ItemController {
 
     private ObservableList<Item> itemObservableList = FXCollections.observableArrayList();
     private Scene scene;
+    private HelloApplication app;
 
     @FXML
     private TableView<Item> tableListItem;
@@ -115,6 +117,7 @@ public class ItemController {
             scene.setRoot((Parent) loader.load());
             MenuController menuController = loader.getController();
             menuController.setScene(scene);
+            menuController.setApp(app);
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -147,6 +150,10 @@ public class ItemController {
 
     public Scene getScene() {
         return scene;
+    }
+
+    public void setApp(HelloApplication app) {
+        this.app = app;
     }
 }
 

@@ -1,6 +1,7 @@
 package controllers;
 
 import DAO.TransactionDAO;
+import com.example.bdmaven.HelloApplication;
 import entity.Transaction;
 import entity.Transaction;
 import formController.FormTransactionController;
@@ -18,6 +19,7 @@ import java.sql.SQLException;
 public class TransactionController {
 
     private Scene scene;
+    private HelloApplication app;
 
     @FXML
     private TableView tableTransaction;
@@ -153,6 +155,7 @@ public class TransactionController {
             scene.setRoot((Parent) loader.load());
             MenuController menuController = loader.getController();
             menuController.setScene(scene);
+            menuController.setApp(app);
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -166,4 +169,7 @@ public class TransactionController {
         tableTransaction.setItems(transactions);
     }
 
+    public void setApp(HelloApplication app) {
+        this.app = app;
+    }
 }

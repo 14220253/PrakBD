@@ -10,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
@@ -81,8 +82,8 @@ public class DeliveryController {
     protected void addData(){
         try {
             Stage stage = new Stage();
-            FXMLLoader loader = new FXMLLoader(app.getClass().getResource("formDelivery.fxml"));
-            Scene scene1 = new Scene(loader.load(), 350, 400);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("formDelivery.fxml"));
+            Scene scene1 = new Scene((Parent) loader.load(), 350, 400);
             stage.setTitle("Add Delivery");
             loader.<FormDeliveryController>getController().setStage(stage);
             loader.<FormDeliveryController>getController().setController(this);
@@ -98,8 +99,8 @@ public class DeliveryController {
     protected void editData(){
         try {
             Stage stage = new Stage();
-            FXMLLoader loader = new FXMLLoader(app.getClass().getResource("formDelivery.fxml"));
-            Scene scene1 = new Scene(loader.load(), 350, 400);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("formDelivery.fxml"));
+            Scene scene1 = new Scene((Parent) loader.load(), 350, 400);
             stage.setTitle("Edit Delivery");
             loader.<FormDeliveryController>getController().setStage(stage);
             loader.<FormDeliveryController>getController().setController(this);

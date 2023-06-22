@@ -1,6 +1,7 @@
 package controllers;
 
 import DAO.PaymentDAO;
+import com.example.bdmaven.HelloApplication;
 import entity.Payment;
 import formController.FormPaymentController;
 import javafx.collections.FXCollections;
@@ -16,6 +17,7 @@ import java.sql.SQLException;
 
 public class PaymentController {
     private Scene scene;
+    private HelloApplication app;
     @FXML
     private TableView tablePayment;
     private ObservableList<Payment> payments = FXCollections.observableArrayList();
@@ -98,6 +100,7 @@ public class PaymentController {
             scene.setRoot((Parent) loader.load());
             MenuController menuController = loader.getController();
             menuController.setScene(scene);
+            menuController.setApp(app);
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -109,5 +112,9 @@ public class PaymentController {
     public void refreshTable(){
         payments.setAll(paymentDAO.GetAllPayments());
         tablePayment.setItems(payments);
+    }
+
+    public void setApp(HelloApplication app) {
+        this.app = app;
     }
 }

@@ -1,6 +1,7 @@
 package controllers;
 
 import DAO.CustomerDAO;
+import com.example.bdmaven.HelloApplication;
 import entity.Customer;
 import formController.FormCustomerController;
 import javafx.collections.FXCollections;
@@ -15,6 +16,7 @@ import java.sql.SQLException;
 
 public class CustomerController {
     private Scene scene;
+    private HelloApplication app;
     @FXML
     private TableView tableCustomer;
     private ObservableList<Customer> customers = FXCollections.observableArrayList();
@@ -106,6 +108,7 @@ public class CustomerController {
             scene.setRoot((Parent) loader.load());
             MenuController menuController = loader.getController();
             menuController.setScene(scene);
+            menuController.setApp(app);
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -119,4 +122,7 @@ public class CustomerController {
         tableCustomer.setItems(customers);
     }
 
+    public void setApp(HelloApplication app) {
+        this.app = app;
+    }
 }
