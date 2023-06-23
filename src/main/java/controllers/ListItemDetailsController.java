@@ -27,7 +27,7 @@ public class ListItemDetailsController {
     private HelloApplication app;
 
     @FXML
-    private TableView<ItemDetails> tableListItemDetails;
+    private TableView tableListItemDetails;
 
     public void initialize(){
         TableColumn<ItemDetails, String> Amount = new TableColumn<>("Amount");
@@ -114,7 +114,7 @@ public class ListItemDetailsController {
             alert.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);
             Optional<ButtonType> result = alert.showAndWait();
             if(alert.getResult() == ButtonType.YES){
-                listitemDetails.Delete((tableListItemDetails.getSelectionModel().getSelectedItem()).getItem_id());
+                listitemDetails.Delete(((ItemDetails)tableListItemDetails.getSelectionModel().getSelectedItem()).getItem_id());
             }
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);

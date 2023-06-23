@@ -78,4 +78,19 @@ public class EmployeeDAO {
         stm.setString(3, job_id);
         stm.execute();
     }
+
+    public Collection<Employees> getSortedEmployee() throws SQLException{
+        Collection<Employees> collection = new ArrayList<>();
+
+        String sql = "SELECT `employee_name`, `salary` FROM `employees` order by salary DESC";
+        PreparedStatement stm = jdbc.getConnection().get().prepareStatement(sql);
+        ResultSet result = stm.executeQuery();
+
+        while (result.next()) {
+            Employees e = new Employees(result.getString(1), result.getString(2));
+            collection.add(e);
+        }
+
+        return collection;
+    }
 }

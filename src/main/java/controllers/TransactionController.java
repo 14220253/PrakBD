@@ -59,9 +59,9 @@ public class TransactionController {
                     return cellData.getValue().tanggalProperty();
                 });
         TableColumn<Transaction, String> discId = new TableColumn<>("Discount ID");
-        transactionId.setCellValueFactory
+        discId.setCellValueFactory
                 (cellData -> {
-                    return cellData.getValue().transactionIdProperty();
+                    return cellData.getValue().discIdProperty();
                 });
         TableColumn<Transaction, String> paymentId = new TableColumn<>("Payment ID");
         paymentId.setCellValueFactory
@@ -76,7 +76,13 @@ public class TransactionController {
         TableColumn<Transaction, String> hargaDeliveryId= new TableColumn<>("Harga Delivery ID");
         hargaDeliveryId.setCellValueFactory
                 (cellData -> {
-                    return cellData.getValue().tanggalProperty();
+                    return cellData.getValue().hargaDeliveryIdProperty();
+                });
+
+        TableColumn<Transaction, String> customerId= new TableColumn<>("Customer ID");
+        customerId.setCellValueFactory
+                (cellData -> {
+                    return cellData.getValue().customerIdProperty();
                 });
         tableTransaction.getColumns().clear();
         tableTransaction.getColumns().add(transactionId);
@@ -89,6 +95,7 @@ public class TransactionController {
         tableTransaction.getColumns().add(paymentId);
         tableTransaction.getColumns().add(deliveryId);
         tableTransaction.getColumns().add(hargaDeliveryId);
+        tableTransaction.getColumns().add(customerId);
         tableTransaction.setPlaceholder(new Label("No content in table"));
         transactions.setAll(transactionDAO.GetAllTransactions());
         tableTransaction.setItems(transactions);
@@ -171,5 +178,22 @@ public class TransactionController {
 
     public void setApp(HelloApplication app) {
         this.app = app;
+    }
+
+    @FXML
+    public void toTotal() {
+        try {
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/showTotalTransaction.fxml"));
+            scene.setRoot((Parent) loader.load());
+
+            TransactionTotalController controller = loader.getController();
+            controller.setScene(scene);
+            controller.setApp(app);
+
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

@@ -90,8 +90,8 @@ public class FormItemController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/listItems.fxml"));
             scene.setRoot(loader.load());
-            KategoriController listkategoricontroller = loader.getController();
-            listkategoricontroller.setScene(scene);
+           ItemController itemController1 = loader.getController();
+            itemController1.setScene(scene);
 
         } catch (IOException e) {
             throw new RuntimeException(e);

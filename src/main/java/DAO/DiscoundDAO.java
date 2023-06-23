@@ -76,10 +76,10 @@ public class DiscoundDAO {
 
     public void Update(String id, String name,String tanggal_mulai,String tanggal_selesai,String percent,String disc_info) throws SQLException {
         String sql = "UPDATE `discount` SET " +
-                "`disc_name` = ?" +
-                "`disc_tanggal_mulai` = ?" +
-                "`disc_tanggal_selesai` = ?" +
-                "`disc_percent` = ?" +
+                "`disc_name` = ?," +
+                "`disc_tanggal_mulai` = ?," +
+                "`disc_tanggal_selesai` = ?," +
+                "`disc_percent` = ?," +
                 "`disc_info` = ?" +
                 " WHERE `disc_id` = " + id;
 
@@ -89,7 +89,6 @@ public class DiscoundDAO {
         stm.setString(3, tanggal_selesai);
         stm.setString(4, percent);
         stm.setString(5, disc_info);
-
         stm.execute();
     }
 }

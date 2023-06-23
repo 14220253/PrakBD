@@ -85,18 +85,19 @@ public class ItemdetailsDAO {
     }
 
     public void Update(
+            String item_id,
             String amount,
             String pilihan_laundry,
             String kondisi,
             String tanggal_pengembalian,
-            String item_id,
             String transaction_id
     ) throws SQLException {
         String sql = "UPDATE `item_details` SET " +
-                "`amount` = ?" +
-                "`pilihan_laundry` = ?" +
-                "`kondisi` = ?" +
-                "`tanggal_pengembalian` = ?" +
+                "`amount` = ?," +
+                "`pilihan_laundry` = ?," +
+                "`kondisi` = ?," +
+                "`tanggal_pengembalian` = ?," +
+                "`transaction_id` = ?" +
                 " WHERE `item_id` = " + item_id;
 
 
@@ -105,6 +106,7 @@ public class ItemdetailsDAO {
         stm.setString(2, pilihan_laundry);
         stm.setString(3, kondisi);
         stm.setString(4,tanggal_pengembalian);
+        stm.setString(5,transaction_id);
         stm.execute();
     }
 

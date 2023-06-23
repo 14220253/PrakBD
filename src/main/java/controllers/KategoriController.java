@@ -24,7 +24,7 @@ public class KategoriController {
     private HelloApplication app;
 
     @FXML
-    private TableView<Kategori> tableListKategori;
+    private TableView tableListKategori;
 
     @FXML
     public void initialize(){
@@ -56,11 +56,11 @@ public class KategoriController {
     @FXML
     public void onEdit(){
         if(tableListKategori.getSelectionModel().getSelectedItem() != null) {
-            Kategori kategori = tableListKategori.getSelectionModel().getSelectedItem();
+            Kategori kategori = (Kategori) tableListKategori.getSelectionModel().getSelectedItem();
             try {
 
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/formKategori.fxml"));
-                scene.setRoot((Parent) loader.load());
+                scene.setRoot(loader.load());
                 formKategoriController formController = loader.getController();
                 formController.setScene(scene);
                 formController.setEdit(true);
@@ -87,7 +87,7 @@ public class KategoriController {
             alert.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);
             Optional<ButtonType> result = alert.showAndWait();
             if(alert.getResult() == ButtonType.YES){
-                kategoriDao.Deletekategori(( tableListKategori.getSelectionModel().getSelectedItem()).getKategori_id());
+                kategoriDao.Deletekategori(( (Kategori) tableListKategori.getSelectionModel().getSelectedItem()).getKategori_id());
             }
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
