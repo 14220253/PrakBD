@@ -3,6 +3,8 @@ package controllers;
 import DAO.JobsDAO;
 import com.example.bdmaven.HelloApplication;
 import entity.Jobs;
+import entity.Jobs;
+import formController.FormJobsController;
 import formController.FormJobsController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -10,12 +12,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 
@@ -46,7 +48,6 @@ public class JobsController {
 
         table.setPlaceholder(new Label("No content in table"));
 
-        refreshTable();
     }
     public void refreshTable() {
         list.setAll(DAO.getAllJobs());
@@ -75,46 +76,49 @@ public class JobsController {
     }
     @FXML
     protected void addData(){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/formJobs.fxml"));
         try {
-            Stage stage = new Stage();
-            FXMLLoader loader = new FXMLLoader(app.getClass().getResource("formJobs.fxml"));
-            Scene scene1 = new Scene(loader.load(), 350, 400);
-            stage.setTitle("Add Job");
-            loader.<FormJobsController>getController().setStage(stage);
-            loader.<FormJobsController>getController().setController(this);
-            loader.<FormJobsController>getController().setType("add");
-            loader.<FormJobsController>getController().setDAO(DAO);
-            stage.setScene(scene1);
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
+            scene.setRoot(loader.load());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
+        FormJobsController formJobsController = loader.getController();
+        formJobsController.setScene(scene);
+
     }
     @FXML
     protected void editData(){
-        try {
-            Stage stage = new Stage();
-            FXMLLoader loader = new FXMLLoader(app.getClass().getResource("formJobs.fxml"));
-            Scene scene1 = new Scene(loader.load(), 350, 400);
-            stage.setTitle("Edit Job");
-            loader.<FormJobsController>getController().setStage(stage);
-            loader.<FormJobsController>getController().setController(this);
-            loader.<FormJobsController>getController().setType("edit");
-            loader.<FormJobsController>getController().setDAO(DAO);
-            if (selectedJob != null) {
-                loader.<FormJobsController>getController().setInitialData(
-                        selectedJob.getJob_id(),
-                        selectedJob.getJob_name());
+        if(table.getSelectionModel().getSelectedItem() != null) {
+            Jobs jobs = (Jobs) table.getSelectionModel().getSelectedItem();
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/formJobs.fxml"));
+                scene.setRoot(loader.load());
+                FormJobsController formJobsController = loader.getController();
+                formJobsController.setScene(scene);
+                formJobsController.setEdit(true);
+                formJobsController.setEditableJobs(jobs);
+                formJobsController.loadEditData();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
-            stage.setScene(scene1);
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning");
+            alert.setHeaderText("Tidak ada data yang dipilih");
+            alert.getButtonTypes().setAll(ButtonType.OK);
+            alert.showAndWait();
         }
     }
     @FXML
     public void back(ActionEvent event) {
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/Menu.fxml"));
+            scene.setRoot((Parent) loader.load());
+            MenuController menuController = loader.getController();
+            menuController.setScene(scene);
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

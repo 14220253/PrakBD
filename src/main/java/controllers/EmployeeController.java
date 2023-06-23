@@ -3,7 +3,6 @@ package controllers;
 import DAO.EmployeeDAO;
 import com.example.bdmaven.HelloApplication;
 import entity.Employees;
-import formController.FormDeliveryController;
 import formController.FormEmployeeController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,10 +12,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
+import queryController.SortedEmployeeController;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -56,8 +54,6 @@ public class EmployeeController {
         table.getColumns().add(jobCol);
 
         table.setPlaceholder(new Label("No content in table"));
-
-        refreshTable();
     }
     public void refreshTable() {
         list.setAll(DAO.getAllEmployees());
@@ -84,49 +80,50 @@ public class EmployeeController {
     }
     @FXML
     protected void addData(){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/formEmployees.fxml"));
         try {
-            Stage stage = new Stage();
-            FXMLLoader loader = new FXMLLoader(app.getClass().getResource("formEmployees.fxml"));
-            Scene scene1 = new Scene(loader.load(), 350, 400);
-            stage.setTitle("Add Employee");
-            loader.<FormEmployeeController>getController().setStage(stage);
-            loader.<FormEmployeeController>getController().setController(this);
-            loader.<FormEmployeeController>getController().setType("add");
-            loader.<FormEmployeeController>getController().setDAO(DAO);
-            stage.setScene(scene1);
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
+            scene.setRoot(loader.load());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
+        FormEmployeeController formEmployeeController = loader.getController();
+        formEmployeeController.setScene(scene);
+
     }
     @FXML
     protected void editData(){
-        try {
-            Stage stage = new Stage();
-            FXMLLoader loader = new FXMLLoader(app.getClass().getResource("formEmployees.fxml"));
-            Scene scene1 = new Scene(loader.load(), 350, 400);
-            stage.setTitle("Edit Employee");
-            loader.<FormEmployeeController>getController().setStage(stage);
-            loader.<FormEmployeeController>getController().setController(this);
-            loader.<FormEmployeeController>getController().setType("edit");
-            loader.<FormEmployeeController>getController().setDAO(DAO);
-            if (selectedEmployee != null) {
-                loader.<FormEmployeeController>getController().setInitialData(
-                        selectedEmployee.getEmployee_id(),
-                        selectedEmployee.getEmployee_name(),
-                        selectedEmployee.getSalary(),
-                        selectedEmployee.getJob_id());
+        if(table.getSelectionModel().getSelectedItem() != null) {
+            Employees employees = (Employees) table.getSelectionModel().getSelectedItem();
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/formEmployees.fxml"));
+                scene.setRoot(loader.load());
+                FormEmployeeController formEmployeeController = loader.getController();
+                formEmployeeController.setScene(scene);
+                formEmployeeController.setEdit(true);
+                formEmployeeController.setEditableEmployee(employees);
+                formEmployeeController.loadEditData();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
-            stage.setScene(scene1);
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning");
+            alert.setHeaderText("Tidak ada data yang dipilih");
+            alert.getButtonTypes().setAll(ButtonType.OK);
+            alert.showAndWait();
         }
     }
     @FXML
     protected void back(ActionEvent event) {
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/Menu.fxml"));
+            scene.setRoot((Parent) loader.load());
+            MenuController menuController = loader.getController();
+            menuController.setScene(scene);
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
     @FXML
     public void toSortedEmployee(ActionEvent event) throws IOException {

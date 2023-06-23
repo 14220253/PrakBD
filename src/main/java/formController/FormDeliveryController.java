@@ -1,12 +1,20 @@
 package formController;
 
 import DAO.DeliveryDAO;
+import DAO.DeliveryDAO;
 import controllers.DeliveryController;
+import controllers.DeliveryController;
+import entity.Delivery;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.logging.Level;
@@ -20,66 +28,78 @@ public class FormDeliveryController {
     private DatePicker tanggalPengembalian;
     @FXML
     private TextField employeeId;
-    private Stage stage;
-    private DeliveryController controller;
-    private String type;
-    private DeliveryDAO dao;
+    private Scene scene;
+    private boolean isEdit = false;
+    private Delivery editableDelivery;
+    private static final DeliveryDAO deliveryDAO = new DeliveryDAO();
+    private static final DeliveryController deliveryController= new DeliveryController();
 
-    public void setType(String type) {
-        this.type = type;
+    public void loadEditData(){
+        deliveryId.setText(editableDelivery.getId_delivery());
+        employeeId.setText(editableDelivery.getEmployee_id());
+        tanggalPengembalian.setValue(LocalDate.parse(editableDelivery.getTanggal_pengembalian()));
     }
-
-    public void setDAO(DeliveryDAO DAO) {
-        this.dao = DAO;
+    private boolean isValid(){
+        if(deliveryId.getText().isBlank() || deliveryId.getText().isEmpty()
+                || employeeId.getText().isBlank() || employeeId.getText().isEmpty()
+                || tanggalPengembalian.getValue() == null) {
+            return false;
+        }
+        return true;
     }
-
-    public void setStage(Stage stage) {
-        this.stage = stage;
-    }
-
-    public void setController(DeliveryController controller) {
-        this.controller = controller;
-    }
-
-    public void setInitialData(String deliveryId, String tanggalPengembalian, String employeeId) {
-        this.deliveryId.setText(deliveryId);
-        this.deliveryId.setEditable(false);
-        this.tanggalPengembalian.setValue(
-                LocalDate.of(Integer.parseInt(tanggalPengembalian.substring(0, 4)),
-                        Integer.parseInt(tanggalPengembalian.substring(5, 7)),
-                        Integer.parseInt(tanggalPengembalian.substring(8, 10))));
-        this.employeeId.setText(employeeId);
-    }
-
     @FXML
-    protected void addData() {
-        if (deliveryId.getText().length() > 0 &&
-        tanggalPengembalian.getValue() != null &&
-        employeeId.getText().length() > 0) {
-            try {
-                if (type.equalsIgnoreCase("add")) {
-                    dao.addDelivery(deliveryId.getText(), tanggalPengembalian.getValue().toString(), employeeId.getText());
-                    System.out.println("Data successfully added");
-                } else if (type.equalsIgnoreCase("edit")) {
-                    dao.updateCustomer(deliveryId.getText(), tanggalPengembalian.getValue().toString(), employeeId.getText());
-                    System.out.println("Data successfully edited");
-                }
-                controller.refreshTable();
-                stage.close();
-            } catch (SQLException e) {
-                LOGGER.log(Level.SEVERE, null, e);
+    public void addData() throws SQLException {
+        if (isValid()){
+            if(!isEdit) {
+                deliveryDAO.addDelivery(deliveryId.getText(),tanggalPengembalian.getValue().toString(),employeeId.getText());
+
+            } else {
+                deliveryDAO.updateDelivery(deliveryId.getText(),tanggalPengembalian.getValue().toString(),employeeId.getText());
             }
-        }
-        else {
-            clear();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setHeaderText("Data berhasil disimpan !" );
+            alert.getButtonTypes().setAll(ButtonType.OK);
+            alert.showAndWait();
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/tabelDelivery.fxml"));
+                scene.setRoot(loader.load());
+                DeliveryController deliveryController = loader.getController();
+                deliveryController.setScene(scene);
+                deliveryController.refreshTable();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning");
+            alert.setHeaderText("Harap Cek Data Kembali !" );
+            alert.getButtonTypes().setAll(ButtonType.OK);
+            alert.showAndWait();
         }
     }
     @FXML
-    protected void clear() {
-        if (!type.equalsIgnoreCase("edit")) {
-            deliveryId.clear();
+    public void onCancel(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/tabelDelivery.fxml"));
+            scene.setRoot(loader.load());
+            DeliveryController deliveryController = loader.getController();
+            deliveryController.setScene(scene);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
-        employeeId.clear();
     }
+    public void setScene(Scene scene) {
+        this.scene = scene;
+    }
+
+    public void setEditableDelivery(Delivery editableDelivery) {
+        this.editableDelivery = editableDelivery;
+    }
+
+    public void setEdit(boolean edit) {
+        isEdit = edit;
+    }
+
 
 }

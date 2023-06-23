@@ -1,7 +1,9 @@
-package controllers;
+package queryController;
 
 import DAO.CustomerDAO;
 import com.example.bdmaven.HelloApplication;
+import controllers.CustomerController;
+import controllers.MenuController;
 import entity.Item;
 import entity.SortCustomer;
 import javafx.beans.property.SimpleListProperty;
@@ -54,18 +56,15 @@ public class SortedCustomerController {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
-
         table.setPlaceholder(new Label("Tidak ada data!"));
     }
     @FXML
     public void back() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/tabelCustomer.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/Menu.fxml"));
             scene.setRoot((Parent) loader.load());
-            CustomerController controller = loader.getController();
-            controller.setScene(scene);
-            controller.setApp(app);
+            MenuController menuController = loader.getController();
+            menuController.setScene(scene);
 
         } catch (IOException e) {
             throw new RuntimeException(e);

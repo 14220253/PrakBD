@@ -3,7 +3,6 @@ package controllers;
 import DAO.TransactionDAO;
 import com.example.bdmaven.HelloApplication;
 import entity.Transaction;
-import entity.Transaction;
 import formController.FormTransactionController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,7 +18,6 @@ import java.sql.SQLException;
 public class TransactionController {
 
     private Scene scene;
-    private HelloApplication app;
 
     @FXML
     private TableView tableTransaction;
@@ -145,6 +143,7 @@ public class TransactionController {
             alert.showAndWait();
             if(alert.getResult() == ButtonType.YES){
                 transactionDAO.DeleteTransaction(((Transaction)tableTransaction.getSelectionModel().getSelectedItem()).getTransactionId());
+                System.out.println(((Transaction)tableTransaction.getSelectionModel().getSelectedItem()).getTransactionId());
             }
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -162,7 +161,6 @@ public class TransactionController {
             scene.setRoot((Parent) loader.load());
             MenuController menuController = loader.getController();
             menuController.setScene(scene);
-            menuController.setApp(app);
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -176,24 +174,4 @@ public class TransactionController {
         tableTransaction.setItems(transactions);
     }
 
-    public void setApp(HelloApplication app) {
-        this.app = app;
-    }
-
-    @FXML
-    public void toTotal() {
-        try {
-
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/showTotalTransaction.fxml"));
-            scene.setRoot((Parent) loader.load());
-
-            TransactionTotalController controller = loader.getController();
-            controller.setScene(scene);
-            controller.setApp(app);
-
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
 }

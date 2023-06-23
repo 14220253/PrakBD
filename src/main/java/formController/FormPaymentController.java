@@ -61,7 +61,6 @@ public class FormPaymentController {
             alert.getButtonTypes().setAll(ButtonType.OK);
             alert.showAndWait();
         }
-        paymentController.refreshTable();
     }
     @FXML
     public void onCancel(){

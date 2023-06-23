@@ -63,13 +63,13 @@ public class formItemDetailsController {
                itemdetailsDAO.Add(txtAmount.getText(),txtPilihanlaundry.getText(),txtKondisi.getText(),datePickerTanggalpengembalian.getValue().toString(),txtitem_id.getText(),txttransaction_id.getText());
             }
             else {
-                itemdetailsDAO.Update(editable.getAmount(), editable.getPilihan_laundry(), editable.getKondisi(), editable.getTanggal_pengembalian(), editable.getItem_id(), editable.getTransaction_id());
+                itemdetailsDAO.Update(txtAmount.getText(),txtPilihanlaundry.getText(),txtKondisi.getText(),datePickerTanggalpengembalian.getValue().toString(),txtitem_id.getText(),txttransaction_id.getText());
             }
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information");
             alert.setHeaderText("Data berhasil disimpan!");
             alert.getButtonTypes().setAll(ButtonType.OK);
-            Optional<ButtonType> result = alert.showAndWait();
+            alert.showAndWait();
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/listItemdetails.fxml"));
                 scene.setRoot(loader.load());
@@ -86,7 +86,6 @@ public class formItemDetailsController {
             alert.getButtonTypes().setAll(ButtonType.OK);
             Optional<ButtonType> result = alert.showAndWait();
         }
-        listitemdetails.refreshTable();
     }
 
     @FXML

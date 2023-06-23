@@ -78,27 +78,27 @@ public class ItemdetailsDAO {
         stm.execute();
     }
 
-    public void Delete(String itemId) throws SQLException {
-        String sql = "DELETE FROM `item_details` WHERE `item_id` = " + itemId;
+    public void Delete(String itemId, String transactionId) throws SQLException {
+        String sql = "DELETE FROM `item_details` WHERE `item_id` = " + itemId + " AND `transaction_id` = " + transactionId;
         PreparedStatement stm = jdbc.connection.get().prepareStatement(sql);
         stm.execute();
     }
 
     public void Update(
-            String item_id,
             String amount,
             String pilihan_laundry,
             String kondisi,
             String tanggal_pengembalian,
+            String item_id,
             String transaction_id
     ) throws SQLException {
         String sql = "UPDATE `item_details` SET " +
                 "`amount` = ?," +
                 "`pilihan_laundry` = ?," +
                 "`kondisi` = ?," +
-                "`tanggal_pengembalian` = ?," +
-                "`transaction_id` = ?" +
-                " WHERE `item_id` = " + item_id;
+                "`tanggal_pengembalian` = ?" +
+                " WHERE `transaction_id` = ?"  +
+                " AND `item_id` = " + item_id;
 
 
         PreparedStatement stm = jdbc.connection.get().prepareStatement(sql);

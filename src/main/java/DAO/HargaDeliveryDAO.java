@@ -66,7 +66,7 @@ public class HargaDeliveryDAO {
         PreparedStatement stm = jdbc.connection.get().prepareStatement(sql);
         stm.execute();
     }
-    public void updateEmployee(String id, String radius, String harga, String employee_id) throws SQLException {
+    public void updateHargaDelivery(String id, String radius, String harga, String employee_id) throws SQLException {
         String sql = "UPDATE `harga_delivery` SET " +
                 "`radius` = ?," +
                 "`harga` = ?," +

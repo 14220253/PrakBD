@@ -99,8 +99,8 @@ public class TransactionDAO {
         stm.execute();
     }
 
-    public void DeleteTransaction(String custId) throws SQLException {
-        String sql = "DELETE FROM `transaction` WHERE `cust_id` = " + custId ;
+    public void DeleteTransaction(String transactionId) throws SQLException {
+        String sql = "DELETE FROM `transaction` WHERE `transaction_id` = " + transactionId;
         PreparedStatement stm = jdbc.connection.get().prepareStatement(sql);
         stm.execute();
     }
@@ -156,7 +156,6 @@ public class TransactionDAO {
         }
         return s;
     }
-
     public String getTotalFromMonth(int month) throws SQLException {
         String sql = "SELECT sum(`total_harga`) FROM `transaction` where extract(month from `tanggal`) = ?";
 

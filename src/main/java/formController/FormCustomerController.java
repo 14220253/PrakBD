@@ -23,7 +23,6 @@ public class FormCustomerController {
     private boolean isEdit = false;
     private Customer editableCustomer;
     private static final CustomerDAO customerDAO = new CustomerDAO();
-    private static final CustomerController customerController= new CustomerController();
 
     public void loadEditData(){
         txtNama.setText(editableCustomer.getCustomerName());
@@ -68,7 +67,6 @@ public class FormCustomerController {
             alert.getButtonTypes().setAll(ButtonType.OK);
             alert.showAndWait();
         }
-        customerController.refreshTable();
     }
     @FXML
     public void onCancel(){

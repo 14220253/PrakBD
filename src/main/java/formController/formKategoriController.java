@@ -50,7 +50,7 @@ public class formKategoriController {
                 kategoriDao.Addkategori(txtid.getText(),txtnama.getText());
             }
             else {
-                kategoriDao.Updatekategori(editable.getKategori_id(), editable.getKategori_Name());
+                kategoriDao.Updatekategori(txtid.getText(),txtnama.getText());
             }
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information");

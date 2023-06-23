@@ -3,6 +3,8 @@ package controllers;
 import DAO.DeliveryDAO;
 import com.example.bdmaven.HelloApplication;
 import entity.Delivery;
+import entity.Delivery;
+import formController.FormDeliveryController;
 import formController.FormDeliveryController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,6 +17,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 
@@ -46,10 +49,7 @@ public class DeliveryController {
         table.getColumns().add(idCol);
         table.getColumns().add(dateCol);
         table.getColumns().add(empCol);
-
         table.setPlaceholder(new Label("No content in table"));
-
-        refreshTable();
     }
     public void refreshTable() {
         list.setAll(DAO.getAllDelivery());
@@ -69,7 +69,7 @@ public class DeliveryController {
     protected void deleteData() {
         if (selectedDelivery != null) {
             try {
-                DAO.deleteCustomer(selectedDelivery.getId_delivery());
+                DAO.deleteDelivery(selectedDelivery.getId_delivery());
                 list.remove(selectedDelivery);
                 System.out.println("Data successfully deleted");
             } catch (SQLException e) {
@@ -81,46 +81,48 @@ public class DeliveryController {
     @FXML
     protected void addData(){
         try {
-            Stage stage = new Stage();
-            FXMLLoader loader = new FXMLLoader(app.getClass().getResource("formDelivery.fxml"));
-            Scene scene1 = new Scene((Parent) loader.load(), 350, 400);
-            stage.setTitle("Add Delivery");
-            loader.<FormDeliveryController>getController().setStage(stage);
-            loader.<FormDeliveryController>getController().setController(this);
-            loader.<FormDeliveryController>getController().setType("add");
-            loader.<FormDeliveryController>getController().setDAO(DAO);
-            stage.setScene(scene1);
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/formDelivery.fxml"));
+            scene.setRoot((Parent) loader.load());
+            FormDeliveryController formDeliveryController = loader.getController();
+            formDeliveryController.setScene(scene);
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
     @FXML
     protected void editData(){
-        try {
-            Stage stage = new Stage();
-            FXMLLoader loader = new FXMLLoader(app.getClass().getResource("formDelivery.fxml"));
-            Scene scene1 = new Scene((Parent) loader.load(), 350, 400);
-            stage.setTitle("Edit Delivery");
-            loader.<FormDeliveryController>getController().setStage(stage);
-            loader.<FormDeliveryController>getController().setController(this);
-            loader.<FormDeliveryController>getController().setType("edit");
-            loader.<FormDeliveryController>getController().setDAO(DAO);
-            if (selectedDelivery != null) {
-                loader.<FormDeliveryController>getController().setInitialData(
-                        selectedDelivery.getId_delivery(),
-                        selectedDelivery.getTanggal_pengembalian(),
-                        selectedDelivery.getEmployee_id());
+        if(table.getSelectionModel().getSelectedItem() != null) {
+            Delivery customer = (Delivery) table.getSelectionModel().getSelectedItem();
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/formDelivery.fxml"));
+                scene.setRoot(loader.load());
+                FormDeliveryController formDeliveryController = loader.getController();
+                formDeliveryController.setScene(scene);
+                formDeliveryController.setEdit(true);
+                formDeliveryController.setEditableDelivery(customer);
+                formDeliveryController.loadEditData();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
-            stage.setScene(scene1);
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning");
+            alert.setHeaderText("Tidak ada data yang dipilih");
+            alert.getButtonTypes().setAll(ButtonType.OK);
+            alert.showAndWait();
         }
     }
     @FXML
-    protected void back(ActionEvent event) {
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
+    protected void back() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/Menu.fxml"));
+            scene.setRoot((Parent) loader.load());
+            MenuController menuController = loader.getController();
+            menuController.setScene(scene);
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

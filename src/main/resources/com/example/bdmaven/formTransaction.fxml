@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="537.0" prefWidth="614.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="formController.FormTransactionController">
+<AnchorPane minHeight="537.0" minWidth="614.0" prefHeight="537.0" prefWidth="614.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="formController.FormTransactionController">
    <children>
       <DatePicker fx:id="transactionDate" layoutX="176.0" layoutY="220.0" />
       <Button layoutX="45.0" layoutY="467.0" mnemonicParsing="false" onAction="#onSave" text="Save" />

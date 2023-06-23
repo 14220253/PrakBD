@@ -1,14 +1,22 @@
 package formController;
 
+import DAO.JobsDAO;
 import DAO.DeliveryDAO;
 import DAO.JobsDAO;
+import controllers.JobsController;
 import controllers.DeliveryController;
 import controllers.JobsController;
+import entity.Jobs;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.logging.Level;
@@ -20,59 +28,74 @@ public class FormJobsController {
     private TextField jobId;
     @FXML
     private TextField jobName;
-    private Stage stage;
-    private JobsController controller;
-    private String type;
-    private JobsDAO dao;
 
-    public void setType(String type) {
-        this.type = type;
+    private Scene scene;
+    private boolean isEdit = false;
+    private Jobs editableJobs;
+    private static final JobsDAO jobsDAO = new JobsDAO();
+
+    public void loadEditData(){
+        jobId.setText(editableJobs.getJob_id());
+        jobName.setText(editableJobs.getJob_name());
     }
-
-    public void setDAO(JobsDAO DAO) {
-        this.dao = DAO;
-    }
-
-    public void setStage(Stage stage) {
-        this.stage = stage;
-    }
-
-    public void setController(JobsController controller) {
-        this.controller = controller;
-    }
-
-    public void setInitialData(String jobID, String name) {
-        this.jobId.setText(jobID);
-        this.jobId.setEditable(false);
-        this.jobName.setText(name);
+    private boolean isValid(){
+        if(jobName.getText().isBlank() || jobName.getText().isEmpty()
+                || jobId.getText().isBlank() || jobId.getText().isEmpty()) {
+            return false;
+        }
+        return true;
     }
     @FXML
-    protected void addData() {
-        if (jobId.getText().length() > 0 &&
-                jobName.getText().length() > 0) {
-            try {
-                if (type.equalsIgnoreCase("add")) {
-                    dao.addJob(jobId.getText(), jobName.getText());
-                    System.out.println("Data successfully added");
-                } else if (type.equalsIgnoreCase("edit")) {
-                    dao.updateJob(jobId.getText(), jobName.getText());
-                    System.out.println("Data successfully edited");
-                }
-                controller.refreshTable();
-                stage.close();
-            } catch (SQLException e) {
-                LOGGER.log(Level.SEVERE, null, e);
+    public void addData() throws SQLException {
+        if (isValid()){
+            if(!isEdit) {
+                jobsDAO.addJob(jobId.getText(),jobName.getText());
+
+            } else {
+                jobsDAO.updateJob(jobId.getText(),jobName.getText());
             }
-        }
-        else {
-            clear();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setHeaderText("Data berhasil disimpan !" );
+            alert.getButtonTypes().setAll(ButtonType.OK);
+            alert.showAndWait();
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/tabelJobs.fxml"));
+                scene.setRoot(loader.load());
+                JobsController jobsController = loader.getController();
+                jobsController.setScene(scene);
+                jobsController.refreshTable();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning");
+            alert.setHeaderText("Harap Cek Data Kembali !" );
+            alert.getButtonTypes().setAll(ButtonType.OK);
+            alert.showAndWait();
         }
     }
     @FXML
-    protected void clear() {
-        if (!type.equalsIgnoreCase("edit")) {
-            jobId.clear();
+    public void onCancel(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/tabelJobs.fxml"));
+            scene.setRoot(loader.load());
+            JobsController jobsController = loader.getController();
+            jobsController.setScene(scene);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
-        jobName.clear();
+    }
+    public void setScene(Scene scene) {
+        this.scene = scene;
+    }
+
+    public void setEditableJobs(Jobs editableJobs) {
+        this.editableJobs = editableJobs;
+    }
+
+    public void setEdit(boolean edit) {
+        isEdit = edit;
     }
 }

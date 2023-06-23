@@ -1,19 +1,16 @@
 package formController;
 
-import DAO.DeliveryDAO;
 import DAO.EmployeeDAO;
-import controllers.DeliveryController;
 import controllers.EmployeeController;
+import entity.Employees;
 import javafx.fxml.FXML;
-import javafx.scene.control.DatePicker;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-
+import java.io.IOException;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.util.logging.Level;
-
-import static com.example.bdmaven.JDBC.LOGGER;
 
 public class FormEmployeeController {
     @FXML
@@ -24,63 +21,78 @@ public class FormEmployeeController {
     private TextField salary;
     @FXML
     private TextField jobId;
-    private Stage stage;
-    private EmployeeController controller;
-    private String type;
-    private EmployeeDAO dao;
-    public void setType(String type) {
-        this.type = type;
-    }
+    private Scene scene;
+    private boolean isEdit = false;
+    private Employees editableEmployee;
+    private static final EmployeeDAO employeeDAO = new EmployeeDAO();
+    private static final EmployeeController employeeController= new EmployeeController();
 
-    public void setDAO(EmployeeDAO DAO) {
-        this.dao = DAO;
+    public void loadEditData(){
+        employeeId.setText(editableEmployee.getEmployee_id());
+        employeeName.setText(editableEmployee.getEmployee_name());
+        salary.setText(editableEmployee.getSalary());
+        jobId.setText(editableEmployee.getJob_id());
     }
-
-    public void setStage(Stage stage) {
-        this.stage = stage;
-    }
-
-    public void setController(EmployeeController controller) {
-        this.controller = controller;
-    }
-    public void setInitialData(String employeeId, String employeeName, String salary, String jobId) {
-        this.employeeId.setText(employeeId);
-        this.employeeId.setEditable(false);
-        this.employeeName.setText(employeeName);
-        this.salary.setText(salary);
-        this.jobId.setText(jobId);
+    private boolean isValid(){
+        if(employeeId.getText().isBlank() || employeeId.getText().isEmpty()
+                || employeeName.getText().isBlank() || employeeName.getText().isEmpty()
+                || salary.getText().isBlank() || salary.getText().isEmpty()
+                || jobId.getText().isBlank() || jobId.getText().isEmpty()) {
+            return false;
+        }
+        return true;
     }
     @FXML
-    protected void addData() {
-        if (employeeName.getText().length() > 0 &&
-                employeeId.getText().length() > 0 &&
-                salary.getText().length() > 0 &&
-                jobId.getText().length() > 0 ){
-            try {
-                if (type.equalsIgnoreCase("add")) {
-                    dao.addEmployee(employeeId.getText(), employeeName.getText(), salary.getText(), jobId.getText());
-                    System.out.println("Data successfully added");
-                } else if (type.equalsIgnoreCase("edit")) {
-                    dao.updateEmployee(employeeId.getText(), employeeName.getText(), salary.getText(), jobId.getText());
-                    System.out.println("Data successfully edited");
-                }
-                controller.refreshTable();
-                stage.close();
-            } catch (SQLException e) {
-                LOGGER.log(Level.SEVERE, null, e);
+    public void addData() throws SQLException {
+        if (isValid()){
+            if(!isEdit) {
+                employeeDAO.addEmployee(employeeId.getText(),employeeName.getText(),salary.getText(),jobId.getText());
+
+            } else {
+                employeeDAO.updateEmployee(employeeId.getText(),employeeName.getText(),salary.getText(),jobId.getText());
             }
-        }
-        else {
-            clear();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setHeaderText("Data berhasil disimpan !" );
+            alert.getButtonTypes().setAll(ButtonType.OK);
+            alert.showAndWait();
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/tabelEmployees.fxml"));
+                scene.setRoot(loader.load());
+                EmployeeController employeeController = loader.getController();
+                employeeController.setScene(scene);
+                employeeController.refreshTable();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning");
+            alert.setHeaderText("Harap Cek Data Kembali !" );
+            alert.getButtonTypes().setAll(ButtonType.OK);
+            alert.showAndWait();
         }
     }
     @FXML
-    protected void clear() {
-        if (!type.equalsIgnoreCase("edit")) {
-            employeeId.clear();
+    public void onCancel(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/tabelEmployees.fxml"));
+            scene.setRoot(loader.load());
+            EmployeeController employeeController = loader.getController();
+            employeeController.setScene(scene);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
-        employeeName.clear();
-        salary.clear();
-        jobId.clear();
+    }
+    public void setScene(Scene scene) {
+        this.scene = scene;
+    }
+
+    public void setEditableEmployee(Employees editableEmployee) {
+        this.editableEmployee = editableEmployee;
+    }
+
+    public void setEdit(boolean edit) {
+        isEdit = edit;
     }
 }

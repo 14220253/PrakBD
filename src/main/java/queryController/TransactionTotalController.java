@@ -1,7 +1,9 @@
-package controllers;
+package queryController;
 
 import DAO.TransactionDAO;
 import com.example.bdmaven.HelloApplication;
+import controllers.MenuController;
+import controllers.TransactionController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,10 +16,13 @@ import javafx.scene.control.Label;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.DateFormatSymbols;
 
 public class TransactionTotalController {
     @FXML
     Label label;
+    @FXML
+    Label total;
     @FXML
     ChoiceBox<Integer> choicebox1;
     @FXML
@@ -30,7 +35,7 @@ public class TransactionTotalController {
     @FXML
     public void initialize() {
         choicebox1.getItems().addAll(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12);
-        choicebox2.getItems().addAll(2023);
+        choicebox2.getItems().addAll(2023, 2024, 2025);
 
         try {
             update();
@@ -79,26 +84,24 @@ public class TransactionTotalController {
     }
     public void updateMonth(int month) throws SQLException{
         label.setText(dao.getTotalFromMonth(month));
+        total.setText("Total Penjualan " + new DateFormatSymbols().getMonths()[month - 1]);
     }
     public void updateYear(int year) throws SQLException {
         label.setText(dao.getTotalFromYear(year));
+        total.setText("Total Penjualan " + year);
     }
     public void updateBoth(int month, int year) throws SQLException {
         label.setText(dao.getTotalFromBoth(month, year));
+        total.setText("Total Penjualan " + new DateFormatSymbols().getMonths()[month - 1] + " " + year);
     }
 
     @FXML
     public void back() {
         try {
-
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/tabelTransaction.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/Menu.fxml"));
             scene.setRoot((Parent) loader.load());
-
-            TransactionController transactionController = loader.getController();
-            transactionController.setScene(scene);
-            transactionController.refreshTable();
-            transactionController.setApp(app);
-
+            MenuController menuController = loader.getController();
+            menuController.setScene(scene);
 
         } catch (IOException e) {
             throw new RuntimeException(e);

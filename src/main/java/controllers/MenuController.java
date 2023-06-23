@@ -9,6 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import queryController.TransactionTotalController;
 
 import java.io.IOException;
 
@@ -20,9 +21,6 @@ public class MenuController {
         this.scene = scene;
     }
 
-    public void setApp(HelloApplication app) {
-        this.app = app;
-    }
 
     @FXML
     public void listitemdetails() {
@@ -33,9 +31,6 @@ public class MenuController {
             scene.setRoot((Parent) loader.load());
             ListItemDetailsController listItemDetailsController = loader.getController();
             listItemDetailsController.setScene(scene);
-            listItemDetailsController.setApp(app);
-
-            listItemDetailsController.refreshTable();
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -47,12 +42,8 @@ public class MenuController {
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/tabelCustomer.fxml"));
             scene.setRoot((Parent) loader.load());
-
             CustomerController customerController = loader.getController();
             customerController.setScene(scene);
-            customerController.setApp(app);
-
-            customerController.refreshTable();
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -67,8 +58,6 @@ public class MenuController {
 
             KategoriController kategoriController = loader.getController();
             kategoriController.setScene(scene);
-            kategoriController.refreshTable();
-            kategoriController.setApp(app);
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -83,8 +72,6 @@ public class MenuController {
 
             DiscountController discountController = loader.getController();
             discountController.setScene(scene);
-            discountController.refreshTable();
-            discountController.setApp(app);
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -92,70 +79,67 @@ public class MenuController {
     }
 
     @FXML
-    public void hargaDelivery(ActionEvent event) {
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    public void hargaDelivery() {
         try {
-            FXMLLoader loader = new FXMLLoader(app.getClass().getResource("tabelHargaDelivery.fxml"));
-            stage.setScene(new Scene(loader.load(), 700, 400));
-            loader.<HargaDeliveryController>getController().setApp(app);
-            loader.<HargaDeliveryController>getController().setScene(scene);
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/tabelHargaDelivery.fxml"));
+            scene.setRoot((Parent) loader.load());
+            HargaDeliveryController hargaDeliveryController = loader.getController();
+            hargaDeliveryController.setScene(scene);
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public void Delivery(ActionEvent event) {
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            try {
-                FXMLLoader loader = new FXMLLoader(app.getClass().getResource("tabelDelivery.fxml"));
-                stage.setScene(new Scene(loader.load(), 700, 400));
-                loader.<DeliveryController>getController().setApp(app);
-                loader.<DeliveryController>getController().setScene(scene);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+    public void Delivery() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/tabelDelivery.fxml"));
+            scene.setRoot((Parent) loader.load());
+            DeliveryController deliveryController = loader.getController();
+            deliveryController.setScene(scene);
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
-        public void jobs (ActionEvent event) {
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            try {
-                FXMLLoader loader = new FXMLLoader(app.getClass().getResource("tabelJobs.fxml"));
-                stage.setScene(new Scene(loader.load(), 700, 400));
-                loader.<JobsController>getController().setApp(app);
-                loader.<JobsController>getController().setScene(scene);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+    }
+    public void jobs () {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/tabelJobs.fxml"));
+            scene.setRoot((Parent) loader.load());
+            JobsController jobsController = loader.getController();
+            jobsController.setScene(scene);
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
+    }
+    public void employee () {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/tabelEmployees.fxml"));
+            scene.setRoot((Parent) loader.load());
+            EmployeeController employeeController = loader.getController();
+            employeeController.setScene(scene);
 
-        public void employee (ActionEvent event) {
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            try {
-                FXMLLoader loader = new FXMLLoader(app.getClass().getResource("tabelEmployees.fxml"));
-                stage.setScene(new Scene(loader.load(), 700, 400));
-                loader.<EmployeeController>getController().setApp(app);
-                loader.<EmployeeController>getController().setScene(scene);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
+    }
 
 
-        public void Transaction () {
-            try {
+    public void Transaction () {
+        try {
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/tabelTransaction.fxml"));
-                scene.setRoot((Parent) loader.load());
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/tabelTransaction.fxml"));
+            scene.setRoot((Parent) loader.load());
 
-                TransactionController transactionController = loader.getController();
-                transactionController.setScene(scene);
-                transactionController.refreshTable();
-                transactionController.setApp(app);
+            TransactionController transactionController = loader.getController();
+            transactionController.setScene(scene);
 
-
-            } catch (IOException e) {
+        } catch (IOException e) {
                 throw new RuntimeException(e);
-            }
         }
+    }
     public void Payment () {
         try {
 
@@ -164,9 +148,6 @@ public class MenuController {
 
             PaymentController paymentController = loader.getController();
             paymentController.setScene(scene);
-            paymentController.refreshTable();
-            paymentController.setApp(app);
-
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -180,8 +161,6 @@ public class MenuController {
 
                 ItemController itemController = loader.getController();
                 itemController.setScene(scene);
-                itemController.refreshTable();
-                itemController.setApp(app);
 
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -194,8 +173,21 @@ public class MenuController {
                 scene.setRoot((Parent) loader.load());
                 DiscountDetailController discountDetailController = loader.getController();
                 discountDetailController.setScene(scene);
-                discountDetailController.refreshTable();
-                discountDetailController.setApp(app);
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        public void totalPenjualan(){
+            try {
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/showTotalTransaction.fxml"));
+                scene.setRoot((Parent) loader.load());
+
+                TransactionTotalController controller = loader.getController();
+                controller.setScene(scene);
+                controller.setApp(app);
+
 
             } catch (IOException e) {
                 throw new RuntimeException(e);

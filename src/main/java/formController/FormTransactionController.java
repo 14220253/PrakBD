@@ -115,7 +115,6 @@ public class FormTransactionController {
             alert.getButtonTypes().setAll(ButtonType.OK);
             alert.showAndWait();
         }
-        transactionController.refreshTable();
     }
     @FXML
     public void onCancel(){

@@ -1,8 +1,10 @@
-package controllers;
+package queryController;
 
 import DAO.CustomerDAO;
 import DAO.EmployeeDAO;
 import com.example.bdmaven.HelloApplication;
+import controllers.EmployeeController;
+import controllers.MenuController;
 import entity.Employees;
 import entity.SortCustomer;
 import javafx.beans.property.SimpleStringProperty;
@@ -53,13 +55,13 @@ public class SortedEmployeeController {
         table.setPlaceholder(new Label("Tidak ada data!"));
     }
     @FXML
-    public void back(ActionEvent event) {
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    public void back() {
         try {
-            FXMLLoader loader = new FXMLLoader(app.getClass().getResource("tabelEmployees.fxml"));
-            stage.setScene(new Scene(loader.load(), 700, 400));
-            loader.<EmployeeController>getController().setApp(app);
-            loader.<EmployeeController>getController().setScene(scene);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/Menu.fxml"));
+            scene.setRoot((Parent) loader.load());
+            MenuController menuController = loader.getController();
+            menuController.setScene(scene);
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

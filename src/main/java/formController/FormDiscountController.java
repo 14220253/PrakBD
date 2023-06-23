@@ -63,7 +63,7 @@ public class FormDiscountController {
                 discoundDAO.Add(txtdisc_id.getText(),txtdisc_name.getText(),datePickerdisc_tanggal_mulai.getValue().toString(),datePickerdisc_tanggal_selesai.getValue().toString(),txtdisc_percent.getText(),txtdisc_info.getText());
             }
             else {
-                discoundDAO.Update(editable.getDisc_id(), editable.getDisc_name(), editable.getDisc_tanggal_mulai(), editable.getDisc_tanggal_selesai(), editable.getDisc_percent(), editable.getDisc_info());
+                discoundDAO.Update(txtdisc_id.getText(),txtdisc_name.getText(),datePickerdisc_tanggal_mulai.getValue().toString(),datePickerdisc_tanggal_selesai.getValue().toString(),txtdisc_percent.getText(),txtdisc_info.getText());
             }
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information");
@@ -86,7 +86,6 @@ public class FormDiscountController {
             alert.getButtonTypes().setAll(ButtonType.OK);
             Optional<ButtonType> result = alert.showAndWait();
         }
-        discountController.refreshTable();
     }
 
     @FXML
@@ -94,8 +93,8 @@ public class FormDiscountController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/listDiscount.fxml"));
             scene.setRoot(loader.load());
-            ListItemDetailsController listItemDetailsController = loader.getController();
-            listItemDetailsController.setScene(scene);
+            DiscountController discountController1 = loader.getController();
+            discountController1.setScene(scene);
 
         } catch (IOException e) {
             throw new RuntimeException(e);

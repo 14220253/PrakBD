@@ -23,14 +23,8 @@ public class FormDiscountDetailController {
     @FXML
     private TextField txtDiscountId;
     private Scene scene;
-    private DiscountDetail editableDiscountDetail;
     private static final DiscountDetailDAO discountDetailDAO = new DiscountDetailDAO();
-    private static final DiscountDetailController discountDetailController= new DiscountDetailController();
 
-    public void loadEditData(){
-        txtDiscountId.setText(editableDiscountDetail.getDiscountId());
-        txtCategoryId.setText(editableDiscountDetail.getCategoryId());
-    }
     private boolean isValid(){
         if(txtDiscountId.getText().isBlank() || txtDiscountId.getText().isEmpty()
                 || txtCategoryId.getText().isBlank() || txtCategoryId.getText().isEmpty()) {
@@ -63,7 +57,6 @@ public class FormDiscountDetailController {
             alert.getButtonTypes().setAll(ButtonType.OK);
             alert.showAndWait();
         }
-        discountDetailController.refreshTable();
     }
     @FXML
     public void onCancel(){
@@ -78,9 +71,5 @@ public class FormDiscountDetailController {
     }
     public void setScene(Scene scene) {
         this.scene = scene;
-    }
-
-    public void setEditableDiscountDetail(DiscountDetail editableDiscountDetail) {
-        this.editableDiscountDetail = editableDiscountDetail;
     }
 }

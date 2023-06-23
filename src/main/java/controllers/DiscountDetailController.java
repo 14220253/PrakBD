@@ -36,7 +36,6 @@ public class DiscountDetailController {
         tableDiscountDetail.setPlaceholder(new Label("No content in table"));
         discountDetails.setAll(discountDetailDAO.GetAllDiscountDetails());
         tableDiscountDetail.setItems(discountDetails);
-
     }
     @FXML
     public void onAdd(){
@@ -78,7 +77,6 @@ public class DiscountDetailController {
             scene.setRoot((Parent) loader.load());
             MenuController menuController = loader.getController();
             menuController.setScene(scene);
-            menuController.setApp(app);
 
         } catch (IOException e) {
             throw new RuntimeException(e);

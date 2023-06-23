@@ -18,7 +18,6 @@ import java.sql.SQLException;
 import java.util.Optional;
 public class ItemController {
     private Scene scene;
-    private HelloApplication app;
     @FXML
     private TableView tableListItem;
 
@@ -121,7 +120,6 @@ public class ItemController {
             scene.setRoot((Parent) loader.load());
             MenuController menuController = loader.getController();
             menuController.setScene(scene);
-            menuController.setApp(app);
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -145,8 +143,5 @@ public class ItemController {
         return scene;
     }
 
-    public void setApp(HelloApplication app) {
-        this.app = app;
-    }
 }
 

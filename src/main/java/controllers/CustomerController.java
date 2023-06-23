@@ -11,6 +11,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import queryController.SortedCustomerController;
+
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -44,7 +46,6 @@ public class CustomerController {
         tableCustomer.setPlaceholder(new Label("No content in table"));
         customers.setAll(customerDAO.GetAllCustomers());
         tableCustomer.setItems(customers);
-
     }
     @FXML
     public void onAdd(){
@@ -108,7 +109,6 @@ public class CustomerController {
             scene.setRoot((Parent) loader.load());
             MenuController menuController = loader.getController();
             menuController.setScene(scene);
-            menuController.setApp(app);
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -121,7 +121,6 @@ public class CustomerController {
             scene.setRoot((Parent) loader.load());
             SortedCustomerController controller = loader.getController();
             controller.setScene(scene);
-            controller.setApp(app);
 
         } catch (IOException e) {
             throw new RuntimeException(e);

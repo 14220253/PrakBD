@@ -24,8 +24,6 @@ public class ListItemDetailsController {
     private ObservableList<ItemDetails> itemDetailsObservableList = FXCollections.observableArrayList();
     private Scene scene;
 
-    private HelloApplication app;
-
     @FXML
     private TableView tableListItemDetails;
 
@@ -114,7 +112,8 @@ public class ListItemDetailsController {
             alert.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);
             Optional<ButtonType> result = alert.showAndWait();
             if(alert.getResult() == ButtonType.YES){
-                listitemDetails.Delete(((ItemDetails)tableListItemDetails.getSelectionModel().getSelectedItem()).getItem_id());
+                listitemDetails.Delete(((ItemDetails)tableListItemDetails.getSelectionModel().getSelectedItem()).getItem_id(),
+                        ((ItemDetails) tableListItemDetails.getSelectionModel().getSelectedItem()).getTransaction_id());
             }
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -132,7 +131,6 @@ public class ListItemDetailsController {
             scene.setRoot((Parent) loader.load());
             MenuController menuController = loader.getController();
             menuController.setScene(scene);
-            menuController.setApp(app);
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -148,11 +146,6 @@ public class ListItemDetailsController {
         itemDetailsObservableList.setAll(listitemDetails.GetAllItemdetails());
         tableListItemDetails.setItems(itemDetailsObservableList);
     }
-
-    public void setApp(HelloApplication app) {
-        this.app = app;
-    }
-
     public Scene getScene() {
         return scene;
     }

@@ -82,7 +82,6 @@ public class FormItemController {
             alert.getButtonTypes().setAll(ButtonType.OK);
             alert.showAndWait();
         }
-        itemController.refreshTable();
     }
 
     @FXML

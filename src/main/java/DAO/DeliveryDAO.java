@@ -58,13 +58,13 @@ public class DeliveryDAO {
         stm.execute();
     }
 
-    public void deleteCustomer(String id_delivery) throws SQLException {
+    public void deleteDelivery(String id_delivery) throws SQLException {
         String sql = "DELETE FROM `delivery` WHERE `id_delivery` = " + id_delivery ;
         PreparedStatement stm = jdbc.connection.get().prepareStatement(sql);
         stm.execute();
     }
 
-    public void updateCustomer(String id_delivery, String date, String emp_id) throws SQLException {
+    public void updateDelivery(String id_delivery, String date, String emp_id) throws SQLException {
         String sql = "UPDATE `delivery` SET " +
                 "`tanggal_pengembalian` = ?," +
                 "`employee_id` = ?" +

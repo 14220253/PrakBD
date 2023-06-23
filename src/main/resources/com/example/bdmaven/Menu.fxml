@@ -3,21 +3,44 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MenuController">
    <children>
-      <Label layoutX="37.0" layoutY="23.0" text="Table Menu" />
-      <Button layoutX="27.0" layoutY="61.0" mnemonicParsing="false" onAction="#Transaction" text="Transactions" />
-      <Button layoutX="275.0" layoutY="106.0" mnemonicParsing="false" onAction="#Items" text="Items" />
-      <Button layoutX="27.0" layoutY="153.0" mnemonicParsing="false" onAction="#listitemdetails" text="Item Details" />
-      <Button layoutX="27.0" layoutY="251.0" mnemonicParsing="false" onAction="#Discount" text="Discount" />
-      <Button layoutX="275.0" layoutY="251.0" mnemonicParsing="false" onAction="#employee" text="Employees" />
-      <Button layoutX="275.0" layoutY="61.0" mnemonicParsing="false" onAction="#kategori" text="Kategori" />
-      <Button layoutX="27.0" layoutY="106.0" mnemonicParsing="false" onAction="#customer" text="Customers" />
-      <Button layoutX="275.0" layoutY="153.0" mnemonicParsing="false" onAction="#Payment" text="Payment" />
-      <Button layoutX="27.0" layoutY="200.0" mnemonicParsing="false" onAction="#Delivery" text="Delivery" />
-      <Button layoutX="275.0" layoutY="200.0" mnemonicParsing="false" onAction="#hargaDelivery" text="Harga Delivery" />
-      <Button layoutX="27.0" layoutY="295.0" mnemonicParsing="false" onAction="#jobs" text="Jobs" />
-      <Button layoutX="275.0" layoutY="295.0" mnemonicParsing="false" onAction="#DiscountDetail" text="Discount Details" />
+      <Label layoutX="323.0" layoutY="39.0" text="Menu">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font></Label>
+      <Button layoutX="262.0" layoutY="174.0" mnemonicParsing="false" onAction="#Transaction" text="Transactions" />
+      <Button layoutX="371.0" layoutY="174.0" mnemonicParsing="false" onAction="#Items" text="Items" />
+      <Button layoutX="442.0" layoutY="174.0" mnemonicParsing="false" onAction="#listitemdetails" text="Item Details" />
+      <Button layoutX="164.0" layoutY="268.0" mnemonicParsing="false" onAction="#Discount" text="Discount" />
+      <Button layoutX="458.0" layoutY="221.0" mnemonicParsing="false" onAction="#employee" text="Employees" />
+      <Button layoutX="164.0" layoutY="221.0" mnemonicParsing="false" onAction="#kategori" text="Kategori" />
+      <Button layoutX="164.0" layoutY="174.0" mnemonicParsing="false" onAction="#customer" text="Customers" />
+      <Button layoutX="370.0" layoutY="221.0" mnemonicParsing="false" onAction="#Payment" text="Payment" />
+      <Button layoutX="375.0" layoutY="268.0" mnemonicParsing="false" onAction="#Delivery" text="Delivery" />
+      <Button layoutX="250.0" layoutY="221.0" mnemonicParsing="false" onAction="#hargaDelivery" text="Harga Delivery" />
+      <Button layoutX="460.0" layoutY="268.0" mnemonicParsing="false" onAction="#jobs" text="Jobs" />
+      <Button layoutX="252.0" layoutY="268.0" mnemonicParsing="false" onAction="#DiscountDetail" text="Discount Details" />
+      <Label layoutX="76.0" layoutY="333.0" text="Report &amp; Fungsi Analisis">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="76.0" layoutY="116.0" text="List Table">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <Line endX="574.0" layoutX="113.0" layoutY="316.0" startX="-100.0" />
+      <Line endX="574.0" layoutX="113.0" layoutY="106.0" startX="-100.0" />
+      <Label layoutX="76.0" layoutY="376.0" text="Total Penjualan per Bulan">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Button layoutX="250.0" layoutY="373.0" mnemonicParsing="false" onAction="#totalPenjualan" text="Click Here" />
    </children>
 </AnchorPane>

@@ -21,7 +21,6 @@ public class KategoriController {
 
     private ObservableList<Kategori> KategoriObservableList = FXCollections.observableArrayList();
     private Scene scene;
-    private HelloApplication app;
 
     @FXML
     private TableView tableListKategori;
@@ -105,7 +104,6 @@ public class KategoriController {
             scene.setRoot((Parent) loader.load());
             MenuController menuController = loader.getController();
             menuController.setScene(scene);
-            menuController.setApp(app);
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -140,7 +138,4 @@ public class KategoriController {
         return scene;
     }
 
-    public void setApp(HelloApplication app) {
-        this.app = app;
-    }
 }

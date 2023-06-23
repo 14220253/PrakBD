@@ -57,7 +57,6 @@ public class DiscountController {
             return celldata.getValue().disc_infoProperty();
         });
         tablediscount.getColumns().clear();
-
         tablediscount.getColumns().add(disc_id);
         tablediscount.getColumns().add(disc_name);
         tablediscount.getColumns().add(disc_tanggal_mulai);
@@ -132,7 +131,6 @@ public class DiscountController {
             scene.setRoot((Parent) loader.load());
             MenuController menuController = loader.getController();
             menuController.setScene(scene);
-            menuController.setApp(app);
 
         } catch (IOException e) {
             throw new RuntimeException(e);
