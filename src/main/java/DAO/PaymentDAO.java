@@ -2,6 +2,8 @@ package DAO;
 
 import com.example.bdmaven.JDBC;
 import entity.Payment;
+import entity.SortCustomer;
+import entity.SortPayment;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -71,5 +73,21 @@ public class PaymentDAO {
         PreparedStatement stm = jdbc.connection.get().prepareStatement(sql);
         stm.setString(1, name);
         stm.execute();
+    }
+    public ResultSet sortPayment() throws SQLException{
+        String sql = "SELECT `payment_name`, count(`t`.`payment_id`) " +
+                "FROM `payment` `p` " +
+                "right outer join `transaction` `t` on `p`.`payment_id` = `t`.`payment_id` " +
+                "group by `t`.`payment_id` " +
+                "order by COUNT(`t`.`payment_id`) DESC";
+        PreparedStatement stm = jdbc.getConnection().get().prepareStatement(sql);
+        return stm.executeQuery();
+    }
+    public Collection<SortPayment> getPaymentFromSort(ResultSet result) throws SQLException{
+        Collection<SortPayment> collection = new ArrayList<>();
+        while (result.next()) {
+            collection.add(new SortPayment(result.getString(1), result.getString(2)));
+        }
+        return collection;
     }
 }

@@ -1,12 +1,8 @@
 package controllers;
-import DAO.DiscoundDAO;
-import DAO.ItemdetailsDAO;
+import DAO.DiscountDAO;
 import com.example.bdmaven.HelloApplication;
-import controllers.MenuController;
 import entity.Discount;
-import entity.ItemDetails;
 import formController.FormDiscountController;
-import formController.formItemDetailsController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -17,10 +13,9 @@ import javafx.scene.control.*;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Optional;
 public class DiscountController {
-    private static final DiscoundDAO discoundDAO = new DiscoundDAO();
+    private static final DiscountDAO discoundDAO = new DiscountDAO();
 
     private ObservableList<Discount> discountObservableList = FXCollections.observableArrayList();
     private Scene scene;

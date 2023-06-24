@@ -1,10 +1,7 @@
 package formController;
-import DAO.DiscoundDAO;
-import DAO.ItemdetailsDAO;
+import DAO.DiscountDAO;
 import controllers.DiscountController;
-import controllers.ListItemDetailsController;
 import entity.Discount;
-import entity.ItemDetails;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -20,7 +17,7 @@ import java.util.Optional;
 public class FormDiscountController {
     private boolean isEdit = false;
 
-    private static final DiscoundDAO discoundDAO = new DiscoundDAO();
+    private static final DiscountDAO discoundDAO = new DiscountDAO();
     private static final DiscountController discountController = new DiscountController();
     private Discount editable;
     private int index;

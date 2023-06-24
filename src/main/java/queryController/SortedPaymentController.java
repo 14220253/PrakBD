@@ -1,51 +1,52 @@
 package queryController;
 
-import DAO.CustomerDAO;
 import DAO.EmployeeDAO;
-import com.example.bdmaven.HelloApplication;
-import controllers.EmployeeController;
+import DAO.PaymentDAO;
 import controllers.MenuController;
 import entity.Employees;
-import entity.SortCustomer;
+import entity.Payment;
+import entity.SortPayment;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class SortedEmployeeController {
-    EmployeeDAO dao = new EmployeeDAO();
+public class SortedPaymentController {
+    PaymentDAO dao = new PaymentDAO();
     private Scene scene;
-    private HelloApplication app;
     @FXML
-    TableView<Employees> table;
+    TableView<SortPayment> table;
     @FXML
     protected void initialize() {
-        TableColumn<Employees, String> name = new TableColumn<>("Customer Name");
-        name.setCellValueFactory(celldata -> new SimpleStringProperty(celldata.getValue().getEmployee_name()));
+        ResultSet results;
+        try {
+            results = dao.sortPayment();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        TableColumn<SortPayment, String> name = new TableColumn<>("Payment Name");
+        name.setCellValueFactory(celldata -> new SimpleStringProperty(celldata.getValue().getName()));
 
 
-        TableColumn<Employees, String> salary = new TableColumn<>("Transaction Count");
-        salary.setCellValueFactory(celldata -> new SimpleStringProperty(celldata.getValue().getSalary()));
+        TableColumn<SortPayment, String> count = new TableColumn<>("Transaction Count");
+        count.setCellValueFactory(celldata -> new SimpleStringProperty(celldata.getValue().getCount()));
 
         table.getColumns().clear();
         table.getColumns().add(name);
-        table.getColumns().add(salary);
-        ObservableList<Employees> list = FXCollections.observableArrayList();
+        table.getColumns().add(count);
+        ObservableList<SortPayment> list = FXCollections.observableArrayList();
         try {
-            list.addAll(dao.getSortedEmployee());
+            list.addAll(dao.getPaymentFromSort(results));
             table.setItems(list);
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -71,7 +72,4 @@ public class SortedEmployeeController {
         this.scene = scene;
     }
 
-    public void setApp(HelloApplication app) {
-        this.app = app;
-    }
 }

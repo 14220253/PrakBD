@@ -1,7 +1,8 @@
 package DAO;
 import com.example.bdmaven.JDBC;
 import entity.Discount;
-import entity.Item;
+import entity.SortDiscount;
+import entity.SortPayment;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.logging.Level;
 import static com.example.bdmaven.JDBC.LOGGER;
-public class DiscoundDAO {
+public class DiscountDAO {
     private final JDBC jdbc = new JDBC();
 
     public Collection<Discount> GetAll(){
@@ -90,5 +91,21 @@ public class DiscoundDAO {
         stm.setString(4, percent);
         stm.setString(5, disc_info);
         stm.execute();
+    }
+    public ResultSet sortDiscount() throws SQLException{
+        String sql = "SELECT `disc_name`, count(`t`.`disc_id`) " +
+                "FROM `discount` `d` " +
+                "right outer join `transaction` `t` on `d`.`disc_id` = `t`.`disc_id` " +
+                "group by `t`.`disc_id` " +
+                "order by COUNT(`t`.`disc_id`) DESC";
+        PreparedStatement stm = jdbc.getConnection().get().prepareStatement(sql);
+        return stm.executeQuery();
+    }
+    public Collection<SortDiscount> getDiscountFromSort(ResultSet result) throws SQLException{
+        Collection<SortDiscount> collection = new ArrayList<>();
+        while (result.next()) {
+            collection.add(new SortDiscount(result.getString(1), result.getString(2)));
+        }
+        return collection;
     }
 }

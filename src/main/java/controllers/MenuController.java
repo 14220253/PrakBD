@@ -9,6 +9,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import queryController.SortedCustomerController;
+import queryController.SortedDiscountController;
+import queryController.SortedPaymentController;
 import queryController.TransactionTotalController;
 
 import java.io.IOException;
@@ -193,6 +196,40 @@ public class MenuController {
                 throw new RuntimeException(e);
             }
         }
+        public void sortCustomer(){
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/tabelSortedCustomer.fxml"));
+                scene.setRoot((Parent) loader.load());
+                SortedCustomerController controller = loader.getController();
+                controller.setScene(scene);
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        public void sortPayment(){
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/tabelSortedPayment.fxml"));
+                scene.setRoot((Parent) loader.load());
+                SortedPaymentController controller = loader.getController();
+                controller.setScene(scene);
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        public void sortDiscount(){
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/tabelSortedDiscount.fxml"));
+                scene.setRoot((Parent) loader.load());
+                SortedDiscountController controller = loader.getController();
+                controller.setScene(scene);
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
         public Scene getScene () {
             return scene;
         }

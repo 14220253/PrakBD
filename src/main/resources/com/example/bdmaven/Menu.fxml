@@ -41,6 +41,24 @@
             <Font size="13.0" />
          </font>
       </Label>
-      <Button layoutX="250.0" layoutY="373.0" mnemonicParsing="false" onAction="#totalPenjualan" text="Click Here" />
+      <Button layoutX="310.0" layoutY="373.0" mnemonicParsing="false" onAction="#totalPenjualan" text="Click Here" />
+      <Label layoutX="76.0" layoutY="414.0" text="Sort Customer by Transaction Count">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Button layoutX="310.0" layoutY="411.0" mnemonicParsing="false" onAction="#sortCustomer" text="Click Here" />
+      <Label layoutX="76.0" layoutY="452.0" text="Sort Discount by Transaction Count">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Button layoutX="310.0" layoutY="449.0" mnemonicParsing="false" onAction="#sortDiscount" text="Click Here" />
+      <Label layoutX="76.0" layoutY="490.0" text="Sort Payment by Transaction Count">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Button layoutX="310.0" layoutY="487.0" mnemonicParsing="false" onAction="#sortPayment" text="Click Here" />
    </children>
 </AnchorPane>

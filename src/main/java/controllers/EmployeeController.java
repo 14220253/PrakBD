@@ -14,7 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import queryController.SortedEmployeeController;
+import queryController.SortedPaymentController;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -129,10 +129,9 @@ public class EmployeeController {
     public void toSortedEmployee(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         try {
-            FXMLLoader loader = new FXMLLoader(app.getClass().getResource("tabelSortedEmployee.fxml"));
+            FXMLLoader loader = new FXMLLoader(app.getClass().getResource("tabelSortedPayment.fxml"));
             stage.setScene(new Scene(loader.load(), 700, 400));
-            loader.<SortedEmployeeController>getController().setApp(app);
-            loader.<SortedEmployeeController>getController().setScene(scene);
+            loader.<SortedPaymentController>getController().setScene(scene);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

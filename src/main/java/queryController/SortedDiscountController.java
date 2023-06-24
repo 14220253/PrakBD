@@ -1,12 +1,8 @@
 package queryController;
 
-import DAO.CustomerDAO;
-import com.example.bdmaven.HelloApplication;
-import controllers.CustomerController;
+import DAO.DiscountDAO;
 import controllers.MenuController;
-import entity.Item;
-import entity.SortCustomer;
-import javafx.beans.property.SimpleListProperty;
+import entity.SortDiscount;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,40 +17,39 @@ import javafx.scene.control.TableView;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
-public class SortedCustomerController {
-    CustomerDAO dao = new CustomerDAO();
+public class SortedDiscountController {
+    DiscountDAO dao = new DiscountDAO();
     private Scene scene;
     @FXML
-    TableView<SortCustomer> table;
+    TableView<SortDiscount> table;
     @FXML
     protected void initialize() {
         ResultSet results;
         try {
-            results = dao.sortCustomer();
+            results = dao.sortDiscount();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
-        TableColumn<SortCustomer, String> name = new TableColumn<>("Customer Name");
+        TableColumn<SortDiscount, String> name = new TableColumn<>("Discount Name");
         name.setCellValueFactory(celldata -> new SimpleStringProperty(celldata.getValue().getName()));
 
 
-        TableColumn<SortCustomer, String> count = new TableColumn<>("Transaction Count");
+        TableColumn<SortDiscount, String> count = new TableColumn<>("Transaction Count");
         count.setCellValueFactory(celldata -> new SimpleStringProperty(celldata.getValue().getCount()));
 
         table.getColumns().clear();
         table.getColumns().add(name);
         table.getColumns().add(count);
-        ObservableList<SortCustomer> list = FXCollections.observableArrayList();
+        ObservableList<SortDiscount> list = FXCollections.observableArrayList();
         try {
-            list.addAll(dao.getCustFromSort(results));
+            list.addAll(dao.getDiscountFromSort(results));
             table.setItems(list);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
+
         table.setPlaceholder(new Label("Tidak ada data!"));
     }
     @FXML
@@ -73,5 +68,4 @@ public class SortedCustomerController {
     public void setScene(Scene scene) {
         this.scene = scene;
     }
-
 }
