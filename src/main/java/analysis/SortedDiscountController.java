@@ -1,11 +1,7 @@
-package queryController;
+package analysis;
 
-import DAO.EmployeeDAO;
-import DAO.PaymentDAO;
-import controllers.MenuController;
-import entity.Employees;
-import entity.Payment;
-import entity.SortPayment;
+import DAO.DiscountDAO;
+import com.example.bdmaven.MenuController;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,32 +17,32 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class SortedPaymentController {
-    PaymentDAO dao = new PaymentDAO();
+public class SortedDiscountController {
+    DiscountDAO dao = new DiscountDAO();
     private Scene scene;
     @FXML
-    TableView<SortPayment> table;
+    TableView<SortDiscount> table;
     @FXML
     protected void initialize() {
         ResultSet results;
         try {
-            results = dao.sortPayment();
+            results = dao.sortDiscount();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        TableColumn<SortPayment, String> name = new TableColumn<>("Payment Name");
+        TableColumn<SortDiscount, String> name = new TableColumn<>("Discount Name");
         name.setCellValueFactory(celldata -> new SimpleStringProperty(celldata.getValue().getName()));
 
 
-        TableColumn<SortPayment, String> count = new TableColumn<>("Transaction Count");
+        TableColumn<SortDiscount, String> count = new TableColumn<>("Transaction Count");
         count.setCellValueFactory(celldata -> new SimpleStringProperty(celldata.getValue().getCount()));
 
         table.getColumns().clear();
         table.getColumns().add(name);
         table.getColumns().add(count);
-        ObservableList<SortPayment> list = FXCollections.observableArrayList();
+        ObservableList<SortDiscount> list = FXCollections.observableArrayList();
         try {
-            list.addAll(dao.getPaymentFromSort(results));
+            list.addAll(dao.getDiscountFromSort(results));
             table.setItems(list);
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -71,5 +67,4 @@ public class SortedPaymentController {
     public void setScene(Scene scene) {
         this.scene = scene;
     }
-
 }

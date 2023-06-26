@@ -1,30 +1,21 @@
 package controllers;
 
-import DAO.EmployeeDAO;
 import DAO.HargaDeliveryDAO;
 import com.example.bdmaven.HelloApplication;
+import com.example.bdmaven.MenuController;
 import entity.HargaDelivery;
-import entity.Employees;
-import entity.HargaDelivery;
-import formController.FormHargaDeliveryController;
-import formController.FormEmployeeController;
 import formController.FormHargaDeliveryController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.logging.Level;
-
-import static com.example.bdmaven.JDBC.LOGGER;
 
 public class HargaDeliveryController {
     private HelloApplication app;
@@ -32,7 +23,6 @@ public class HargaDeliveryController {
     private TableView<HargaDelivery> table;
     private ObservableList<HargaDelivery> list = FXCollections.observableArrayList();
     private static final HargaDeliveryDAO DAO = new HargaDeliveryDAO();
-    private HargaDelivery selectedHargaDelivery;
     private Scene scene;
     public void setScene(Scene scene) {this.scene = scene;}
     @FXML
@@ -57,30 +47,32 @@ public class HargaDeliveryController {
         table.getColumns().add(empIdCol);
 
         table.setPlaceholder(new Label("No content in table"));
-
+        list.setAll(DAO.getAllHargaDelivery());
+        table.setItems(list);
     }
     public void refreshTable() {
         list.setAll(DAO.getAllHargaDelivery());
         table.setItems(list);
     }
-    public void setApp(HelloApplication app) {
-        this.app = app;
-    }
     @FXML
-    protected void getClicked() {
-        selectedHargaDelivery = table.getSelectionModel().getSelectedItem();
-    }
-    @FXML
-    protected void deleteData() {
-        if (selectedHargaDelivery != null) {
-            try {
-                DAO.deleteHargaDelivery(selectedHargaDelivery.getEmployee_id());
-                list.remove(selectedHargaDelivery);
-                System.out.println("Data successfully deleted");
-            } catch (SQLException e) {
-                LOGGER.log(Level.SEVERE, e.getMessage());
+    protected void deleteData() throws SQLException {
+        if(table.getSelectionModel().getSelectedItem() != null){
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation");
+            alert.setHeaderText("Apakah anda yakin ingin menghapus data ?" );
+            alert.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);
+            alert.showAndWait();
+            if(alert.getResult() == ButtonType.YES){
+                DAO.deleteHargaDelivery(((HargaDelivery)table.getSelectionModel().getSelectedItem()).getId_harga_delivery());
             }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning");
+            alert.setHeaderText("Tidak ada data yang dipilih");
+            alert.getButtonTypes().setAll(ButtonType.OK);
+            alert.showAndWait();
         }
+        refreshTable();
     }
     @FXML
     protected void addData(){

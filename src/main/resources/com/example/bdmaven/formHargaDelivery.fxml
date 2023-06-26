@@ -21,13 +21,7 @@
       <RowConstraints maxHeight="66.39999999999998" minHeight="10.0" prefHeight="66.39999999999998" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <TextField fx:id="idHargaDelivery" prefHeight="40.0" prefWidth="175.0" GridPane.columnIndex="1" />
       <TextField fx:id="employeeId" prefHeight="40.0" prefWidth="175.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-      <Label text="Id_harga_delivery" GridPane.halignment="CENTER">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </Label>
       <Label text="Harga" GridPane.halignment="CENTER" GridPane.rowIndex="2">
          <font>
             <Font size="23.0" />
@@ -52,7 +46,7 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <TextField fx:id="radius" layoutX="186.0" layoutY="23.0" prefHeight="40.0" prefWidth="175.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <TextField fx:id="radius" layoutX="186.0" layoutY="23.0" prefHeight="40.0" prefWidth="173.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
       <TextField fx:id="harga" layoutX="186.0" layoutY="88.0" prefHeight="40.0" prefWidth="175.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
    </children>
 </GridPane>

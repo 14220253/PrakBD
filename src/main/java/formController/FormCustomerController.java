@@ -48,7 +48,7 @@ public class FormCustomerController {
             }
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information");
-            alert.setHeaderText("Data berhasil disimpan !" );
+            alert.setHeaderText("Data berhasil disimpan !");
             alert.getButtonTypes().setAll(ButtonType.OK);
             alert.showAndWait();
             try {

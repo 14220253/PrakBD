@@ -1,6 +1,7 @@
 package controllers;
 import DAO.DiscountDAO;
 import com.example.bdmaven.HelloApplication;
+import com.example.bdmaven.MenuController;
 import entity.Discount;
 import formController.FormDiscountController;
 import javafx.collections.FXCollections;

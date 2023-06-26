@@ -28,7 +28,7 @@ public class KategoriDao {
                     Kategori kategori = new Kategori(id,name);
                     kategoris.add(kategori);
 
-                    LOGGER.log(Level.INFO, "Found {0} in database", kategori);
+//                    LOGGER.log(Level.INFO, "Found {0} in database", kategori);
                 }
 
             } catch (SQLException ex) {
@@ -39,16 +39,13 @@ public class KategoriDao {
         return kategoris;
     }
 
-    public void Addkategori(String id, String name) throws SQLException {
+    public void AddKategori(String name) throws SQLException {
         String sql = "INSERT INTO `kategori`(" +
-                "`kategori_id`, " +
                 "`nama_kategori`) "  +
                 " VALUES (" +
-                "?," +
                 "?)" ;
         PreparedStatement stm = jdbc.connection.get().prepareStatement(sql);
-        stm.setString(1, id);
-        stm.setString(2, name);
+        stm.setString(1, name);
         stm.execute();
     }
 

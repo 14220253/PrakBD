@@ -2,7 +2,7 @@ package DAO;
 
 import com.example.bdmaven.JDBC;
 import entity.Customer;
-import entity.SortCustomer;
+import analysis.SortCustomer;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -33,7 +33,7 @@ public class CustomerDAO {
                     Customer customer = new Customer(id, name, address, phone);
                     customers.add(customer);
 
-                    LOGGER.log(Level.INFO, "Found {0} in database", customer);
+//                    LOGGER.log(Level.INFO, "Found {0} in database", customer);
                 }
 
             } catch (SQLException ex) {

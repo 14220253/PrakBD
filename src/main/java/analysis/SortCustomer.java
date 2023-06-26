@@ -1,12 +1,12 @@
-package entity;
+package analysis;
 
 import javafx.beans.property.SimpleStringProperty;
 
-public class SortDiscount {
+public class SortCustomer {
     SimpleStringProperty name;
     SimpleStringProperty count;
 
-    public SortDiscount(String name, String count) {
+    public SortCustomer(String name, String count) {
         this.name = new SimpleStringProperty(name);
         this.count = new SimpleStringProperty(count);
     }

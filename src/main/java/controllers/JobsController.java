@@ -2,20 +2,17 @@ package controllers;
 
 import DAO.JobsDAO;
 import com.example.bdmaven.HelloApplication;
+import com.example.bdmaven.MenuController;
 import entity.Jobs;
-import entity.Jobs;
-import formController.FormJobsController;
 import formController.FormJobsController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -47,7 +44,7 @@ public class JobsController {
         table.getColumns().add(nameCol);
 
         table.setPlaceholder(new Label("No content in table"));
-
+        refreshTable();
     }
     public void refreshTable() {
         list.setAll(DAO.getAllJobs());

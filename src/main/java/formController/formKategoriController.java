@@ -19,11 +19,8 @@ public class formKategoriController {
     private boolean isEdit = false;
 
     private static final KategoriDao kategoriDao = new KategoriDao();
-    private static final KategoriController kategoriController = new KategoriController();
     private Kategori editable;
     private int index;
-    @FXML
-    private TextField txtid;
     @FXML
     private TextField txtnama;
 
@@ -31,13 +28,11 @@ public class formKategoriController {
     private Scene scene;
 
     public void loadEditData() {
-        txtid.setText(editable.getKategori_id());
         txtnama.setText(editable.getKategori_Name());
 
     }
     private boolean isValid() {
-        if (txtid.getText().isBlank() ||txtid.getText().isEmpty() || txtnama.getText().isBlank()
-                || txtnama.getText().isEmpty()) {
+        if (txtnama.getText().isBlank() || txtnama.getText().isEmpty()) {
             return false;
         }
         return true;
@@ -47,10 +42,10 @@ public class formKategoriController {
     public void onSave() throws SQLException {
         if(isValid()){
             if(!isEdit){
-                kategoriDao.Addkategori(txtid.getText(),txtnama.getText());
+                kategoriDao.AddKategori(txtnama.getText());
             }
             else {
-                kategoriDao.Updatekategori(txtid.getText(),txtnama.getText());
+                kategoriDao.Updatekategori(editable.getKategori_id(),txtnama.getText());
             }
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information");
@@ -73,7 +68,6 @@ public class formKategoriController {
             alert.getButtonTypes().setAll(ButtonType.OK);
             alert.showAndWait();
         }
-        kategoriController.refreshTable();
     }
 
     @FXML
@@ -111,14 +105,6 @@ public class formKategoriController {
 
     public void setIndex(int index) {
         this.index = index;
-    }
-
-    public TextField getTxtid() {
-        return txtid;
-    }
-
-    public void setTxtid(TextField txtid) {
-        this.txtid = txtid;
     }
 
     public TextField getTxtnama() {

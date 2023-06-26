@@ -1,7 +1,7 @@
 package controllers;
 
 import DAO.TransactionDAO;
-import com.example.bdmaven.HelloApplication;
+import com.example.bdmaven.MenuController;
 import entity.Transaction;
 import formController.FormTransactionController;
 import javafx.collections.FXCollections;
@@ -46,11 +46,6 @@ public class TransactionController {
                 (cellData -> {
                     return cellData.getValue().deliveryAddressProperty();
                 });
-        TableColumn<Transaction, String> radiusAddress = new TableColumn<>("Radius Address");
-        radiusAddress.setCellValueFactory
-                (cellData -> {
-                    return cellData.getValue().radiusAddressProperty();
-                });
         TableColumn<Transaction, String> tanggal = new TableColumn<>("Tanggal");
         tanggal.setCellValueFactory
                 (cellData -> {
@@ -87,7 +82,6 @@ public class TransactionController {
         tableTransaction.getColumns().add(totalHarga);
         tableTransaction.getColumns().add(dpAmount);
         tableTransaction.getColumns().add(deliveryAddress);
-        tableTransaction.getColumns().add(radiusAddress);
         tableTransaction.getColumns().add(tanggal);
         tableTransaction.getColumns().add(discId);
         tableTransaction.getColumns().add(paymentId);
@@ -111,7 +105,7 @@ public class TransactionController {
 
     }
     @FXML
-    public void onEdit(){
+    public void onEdit() throws SQLException {
         if(tableTransaction.getSelectionModel().getSelectedItem() != null) {
             Transaction transaction = (Transaction) tableTransaction.getSelectionModel().getSelectedItem();
             try {
@@ -143,7 +137,6 @@ public class TransactionController {
             alert.showAndWait();
             if(alert.getResult() == ButtonType.YES){
                 transactionDAO.DeleteTransaction(((Transaction)tableTransaction.getSelectionModel().getSelectedItem()).getTransactionId());
-                System.out.println(((Transaction)tableTransaction.getSelectionModel().getSelectedItem()).getTransactionId());
             }
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);

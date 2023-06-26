@@ -2,20 +2,16 @@ package controllers;
 
 import DAO.DeliveryDAO;
 import com.example.bdmaven.HelloApplication;
+import com.example.bdmaven.MenuController;
 import entity.Delivery;
-import entity.Delivery;
-import formController.FormDeliveryController;
 import formController.FormDeliveryController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -50,6 +46,7 @@ public class DeliveryController {
         table.getColumns().add(dateCol);
         table.getColumns().add(empCol);
         table.setPlaceholder(new Label("No content in table"));
+        refreshTable();
     }
     public void refreshTable() {
         list.setAll(DAO.getAllDelivery());

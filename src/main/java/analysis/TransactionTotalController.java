@@ -1,11 +1,7 @@
-package queryController;
+package analysis;
 
 import DAO.TransactionDAO;
-import com.example.bdmaven.HelloApplication;
-import controllers.MenuController;
-import controllers.TransactionController;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import com.example.bdmaven.MenuController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,7 +24,6 @@ public class TransactionTotalController {
     @FXML
     ChoiceBox<Integer> choicebox2;
     Scene scene;
-    HelloApplication app;
     TransactionDAO dao = new TransactionDAO();
     int month = 0;
     int year = 0;
@@ -110,9 +105,5 @@ public class TransactionTotalController {
 
     public void setScene(Scene scene) {
         this.scene = scene;
-    }
-
-    public void setApp(HelloApplication app) {
-        this.app = app;
     }
 }

@@ -1,7 +1,7 @@
 package controllers;
 
 import DAO.KategoriDao;
-import com.example.bdmaven.HelloApplication;
+import com.example.bdmaven.MenuController;
 import entity.Kategori;
 import formController.formKategoriController;
 import javafx.collections.FXCollections;

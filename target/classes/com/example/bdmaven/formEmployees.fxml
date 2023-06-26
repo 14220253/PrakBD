@@ -21,13 +21,7 @@
       <RowConstraints maxHeight="66.39999999999998" minHeight="10.0" prefHeight="66.39999999999998" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <TextField fx:id="employeeId" prefHeight="40.0" prefWidth="175.0" GridPane.columnIndex="1" />
       <TextField fx:id="jobId" prefHeight="40.0" prefWidth="175.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-      <Label text="Employee_id" GridPane.halignment="CENTER">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
       <Label text="Salary" GridPane.halignment="CENTER" GridPane.rowIndex="2">
          <font>
             <Font size="23.0" />

@@ -7,22 +7,22 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TransactionController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TransactionController">
    <children>
-      <TableView fx:id="tableTransaction" layoutX="50.0" layoutY="77.0" prefHeight="200.0" prefWidth="600.0">
+      <TableView fx:id="tableTransaction" layoutX="50.0" layoutY="77.0" prefHeight="392.0" prefWidth="600.0">
         <columns>
           <TableColumn prefWidth="75.0" text="C1" />
           <TableColumn prefWidth="75.0" text="C2" />
         </columns>
       </TableView>
-      <Button fx:id="btnAdd" layoutX="52.0" layoutY="293.0" mnemonicParsing="false" onAction="#onAdd" text="Add" />
-      <Button fx:id="btnEdit" layoutX="104.0" layoutY="293.0" mnemonicParsing="false" onAction="#onEdit" text="Edit" />
-      <Button fx:id="btnDelete" layoutX="157.0" layoutY="293.0" mnemonicParsing="false" onAction="#onDelete" text="Delete" />
+      <Button fx:id="btnAdd" layoutX="52.0" layoutY="489.0" mnemonicParsing="false" onAction="#onAdd" text="Add" />
+      <Button fx:id="btnEdit" layoutX="104.0" layoutY="489.0" mnemonicParsing="false" onAction="#onEdit" text="Edit" />
+      <Button fx:id="btnDelete" layoutX="157.0" layoutY="489.0" mnemonicParsing="false" onAction="#onDelete" text="Delete" />
       <Label layoutX="52.0" layoutY="47.0" text="Table Transaction">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button layoutX="223.0" layoutY="293.0" mnemonicParsing="false" onAction="#back" text="Back" />
+      <Button layoutX="223.0" layoutY="489.0" mnemonicParsing="false" onAction="#back" text="Back" />
    </children>
 </Pane>

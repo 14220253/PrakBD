@@ -2,6 +2,7 @@ package controllers;
 
 import DAO.CustomerDAO;
 import com.example.bdmaven.HelloApplication;
+import com.example.bdmaven.MenuController;
 import entity.Customer;
 import formController.FormCustomerController;
 import javafx.collections.FXCollections;
@@ -11,7 +12,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import queryController.SortedCustomerController;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -37,7 +37,6 @@ public class CustomerController {
         TableColumn<Customer, String> customerPhone = new TableColumn<>("Phone Number");
         customerPhone.setCellValueFactory(cellData -> cellData.getValue().customerPhoneProperty());
 
-        customerPhone.setMinWidth(100);
         tableCustomer.getColumns().clear();
         tableCustomer.getColumns().add(customerId);
         tableCustomer.getColumns().add(customerName);
@@ -120,9 +119,5 @@ public class CustomerController {
     public void refreshTable(){
         customers.setAll(customerDAO.GetAllCustomers());
         tableCustomer.setItems(customers);
-    }
-
-    public void setApp(HelloApplication app) {
-        this.app = app;
     }
 }

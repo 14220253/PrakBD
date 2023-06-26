@@ -31,7 +31,7 @@ public class ItemDao {
                     Item item = new Item(id,name,harga,lama_penyelesaian,kategori_id);
                     Items.add(item);
 
-                    LOGGER.log(Level.INFO, "Found {0} in database", item);
+//                    LOGGER.log(Level.INFO, "Found {0} in database", item);
                 }
 
             } catch (SQLException ex) {
@@ -42,9 +42,8 @@ public class ItemDao {
         return Items;
     }
 
-    public void AddItem(String id, String name,String harga,String lama_penyeleasaian,String kategori_id) throws SQLException {
+    public void AddItem(String name,String harga,String lama_penyeleasaian,String kategori_id) throws SQLException {
         String sql = "INSERT INTO `items`(" +
-                "`item_id`, " +
                 "`item_name`, " +
                 "`harga`, " +
                 "`lama_penyelesaian`, " +
@@ -53,14 +52,12 @@ public class ItemDao {
                 "?," +
                 "?," +
                 "?," +
-                "?," +
                 "?)" ;
         PreparedStatement stm = jdbc.connection.get().prepareStatement(sql);
-        stm.setString(1, id);
-        stm.setString(2, name);
-        stm.setString(3, harga);
-        stm.setString(4, lama_penyeleasaian);
-        stm.setString(5, kategori_id);
+        stm.setString(1, name);
+        stm.setString(2, harga);
+        stm.setString(3, lama_penyeleasaian);
+        stm.setString(4, kategori_id);
         stm.execute();
     }
 
@@ -74,14 +71,15 @@ public class ItemDao {
         String sql = "UPDATE `items` SET " +
                 "`item_name` = ?," +
                 "`harga` = ?," +
-                "`lama_penyelesaian` = ?" +
+                "`lama_penyelesaian` = ?," +
+                "`kategori_id` = ?" +
                 " WHERE `item_id` = " + id;
 
         PreparedStatement stm = jdbc.connection.get().prepareStatement(sql);
         stm.setString(1, name);
         stm.setString(2, harga);
         stm.setString(3,lama_penyeleasaian);
-
+        stm.setString(4,kategori_id);
         stm.execute();
     }
 

@@ -21,8 +21,6 @@ import static com.example.bdmaven.JDBC.LOGGER;
 
 public class FormHargaDeliveryController {
     @FXML
-    private TextField idHargaDelivery;
-    @FXML
     private TextField radius;
     @FXML
     private TextField harga;
@@ -34,14 +32,12 @@ public class FormHargaDeliveryController {
     private static final HargaDeliveryDAO hargaDeliveryDAO = new HargaDeliveryDAO();
 
     public void loadEditData(){
-        idHargaDelivery.setText(editableHargaDelivery.getId_harga_delivery());
         radius.setText(editableHargaDelivery.getRadius());
         harga.setText(editableHargaDelivery.getHarga());
         employeeId.setText(editableHargaDelivery.getEmployee_id());
     }
     private boolean isValid(){
-        if(idHargaDelivery.getText().isBlank() || idHargaDelivery.getText().isEmpty()
-                || radius.getText().isBlank() || radius.getText().isEmpty()
+        if(radius.getText().isBlank() || radius.getText().isEmpty()
                 || harga.getText().isBlank() || harga.getText().isEmpty()
                 || employeeId.getText().isBlank() || employeeId.getText().isEmpty()) {
             return false;
@@ -52,10 +48,9 @@ public class FormHargaDeliveryController {
     public void addData() throws SQLException {
         if (isValid()){
             if(!isEdit) {
-                hargaDeliveryDAO.addHargaDelivery(idHargaDelivery.getText(),radius.getText(),harga.getText(),employeeId.getText());
-
+                hargaDeliveryDAO.addHargaDelivery(radius.getText(),harga.getText(),employeeId.getText());
             } else {
-                hargaDeliveryDAO.updateHargaDelivery(idHargaDelivery.getText(),radius.getText(),harga.getText(),employeeId.getText());
+                hargaDeliveryDAO.updateHargaDelivery(editableHargaDelivery.getId_harga_delivery(),radius.getText(),harga.getText(),employeeId.getText());
             }
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information");

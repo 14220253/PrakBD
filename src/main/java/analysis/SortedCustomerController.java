@@ -1,12 +1,7 @@
-package queryController;
+package analysis;
 
 import DAO.CustomerDAO;
-import com.example.bdmaven.HelloApplication;
-import controllers.CustomerController;
-import controllers.MenuController;
-import entity.Item;
-import entity.SortCustomer;
-import javafx.beans.property.SimpleListProperty;
+import com.example.bdmaven.MenuController;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,8 +16,6 @@ import javafx.scene.control.TableView;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class SortedCustomerController {
     CustomerDAO dao = new CustomerDAO();

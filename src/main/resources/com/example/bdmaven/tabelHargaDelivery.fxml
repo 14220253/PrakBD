@@ -18,7 +18,7 @@
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-        <TableView fx:id="table" onMouseClicked="#getClicked" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowSpan="2">
+        <TableView fx:id="table" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowSpan="2">
             <columns>
                 <TableColumn prefWidth="112.79998779296875" text="id_harga_delivery" />
                 <TableColumn prefWidth="123.20001220703125" text="radius" />

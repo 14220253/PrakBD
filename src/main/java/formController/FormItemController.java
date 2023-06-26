@@ -17,11 +17,7 @@ public class FormItemController {
     private boolean isEdit = false;
 
     private static final ItemDao itemDao = new ItemDao();
-    private static final ItemController itemController = new ItemController();
     private Item editable;
-    private int index;
-    @FXML
-    private TextField txtid;
     @FXML
     private TextField txtnama;
 
@@ -34,19 +30,19 @@ public class FormItemController {
     @FXML
     private TextField txtkategoriid;
 
-
     private Scene scene;
 
     public void loadEditData() {
-        txtid.setText(editable.getId());
         txtnama.setText(editable.getName());
         txtharga.setText(editable.getHarga());
         txtlamapenyelesaian.setText(editable.getLama_penyeleasaian());
         txtkategoriid.setText(editable.getKategori_id());
     }
     private boolean isValid() {
-        if (txtid.getText().isBlank() ||txtid.getText().isEmpty() || txtnama.getText().isBlank()
-                || txtnama.getText().isEmpty()) {
+        if (txtnama.getText().isBlank() || txtnama.getText().isEmpty()
+                || txtharga.getText().isBlank() || txtharga.getText().isEmpty()
+                || txtlamapenyelesaian.getText().isBlank() || txtlamapenyelesaian.getText().isEmpty()
+                || txtkategoriid.getText().isBlank() || txtkategoriid.getText().isEmpty()) {
             return false;
         }
         return true;
@@ -56,10 +52,10 @@ public class FormItemController {
     public void onSave() throws SQLException {
         if(isValid()){
             if(!isEdit){
-                itemDao.AddItem(txtid.getText(),txtnama.getText(),txtharga.getText(),txtlamapenyelesaian.getText(),txtkategoriid.getText());
+                itemDao.AddItem(txtnama.getText(),txtharga.getText(),txtlamapenyelesaian.getText(),txtkategoriid.getText());
             }
             else {
-                itemDao.UpdateItem(editable.getId(), editable.getName(),editable.getHarga(),editable.getLama_penyeleasaian(),editable.getKategori_id());
+                itemDao.UpdateItem(editable.getId(), txtnama.getText(),txtharga.getText(),txtlamapenyelesaian.getText(),txtkategoriid.getText());
             }
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information");
@@ -111,22 +107,6 @@ public class FormItemController {
 
     public void setEditable(Item editable) {
         this.editable = editable;
-    }
-
-    public int getIndex() {
-        return index;
-    }
-
-    public void setIndex(int index) {
-        this.index = index;
-    }
-
-    public TextField getTxtid() {
-        return txtid;
-    }
-
-    public void setTxtid(TextField txtid) {
-        this.txtid = txtid;
     }
 
     public TextField getTxtnama() {

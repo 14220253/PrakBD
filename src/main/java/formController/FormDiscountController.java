@@ -18,11 +18,7 @@ public class FormDiscountController {
     private boolean isEdit = false;
 
     private static final DiscountDAO discoundDAO = new DiscountDAO();
-    private static final DiscountController discountController = new DiscountController();
     private Discount editable;
-    private int index;
-    @FXML
-    private TextField txtdisc_id;
     @FXML
     private TextField txtdisc_name;
     @FXML
@@ -38,7 +34,6 @@ public class FormDiscountController {
     private Scene scene;
 
     public void loadEditData() {
-        txtdisc_id.setText(editable.getDisc_id());
         txtdisc_name.setText(editable.getDisc_name());
         datePickerdisc_tanggal_mulai.setValue(LocalDate.parse(editable.getDisc_tanggal_mulai()));
         datePickerdisc_tanggal_selesai.setValue(LocalDate.parse(editable.getDisc_tanggal_selesai()));
@@ -46,8 +41,11 @@ public class FormDiscountController {
         txtdisc_info.setText(editable.getDisc_info());
     }
     private boolean isValid() {
-        if (txtdisc_id.getText().isBlank() || txtdisc_id.getText().isEmpty() || txtdisc_name.getText().isBlank()
-                || txtdisc_name.getText().isEmpty()) {
+        if (txtdisc_name.getText().isBlank() || txtdisc_name.getText().isEmpty()
+                || datePickerdisc_tanggal_mulai.getValue() == null || datePickerdisc_tanggal_selesai == null
+                || txtdisc_percent.getText().isBlank() || txtdisc_percent.getText().isEmpty()
+                || datePickerdisc_tanggal_selesai.getValue().compareTo(datePickerdisc_tanggal_mulai.getValue()) < 0
+                || Integer.parseInt(txtdisc_percent.getText()) > 100 || Integer.parseInt(txtdisc_percent.getText()) <= 0 ) {
             return false;
         }
         return true;
@@ -57,10 +55,10 @@ public class FormDiscountController {
     public void onSave() throws SQLException {
         if(isValid()){
             if(!isEdit){
-                discoundDAO.Add(txtdisc_id.getText(),txtdisc_name.getText(),datePickerdisc_tanggal_mulai.getValue().toString(),datePickerdisc_tanggal_selesai.getValue().toString(),txtdisc_percent.getText(),txtdisc_info.getText());
+                discoundDAO.Add(txtdisc_name.getText(),datePickerdisc_tanggal_mulai.getValue().toString(),datePickerdisc_tanggal_selesai.getValue().toString(),txtdisc_percent.getText(),txtdisc_info.getText());
             }
             else {
-                discoundDAO.Update(txtdisc_id.getText(),txtdisc_name.getText(),datePickerdisc_tanggal_mulai.getValue().toString(),datePickerdisc_tanggal_selesai.getValue().toString(),txtdisc_percent.getText(),txtdisc_info.getText());
+                discoundDAO.Update(editable.getDisc_id(),txtdisc_name.getText(),datePickerdisc_tanggal_mulai.getValue().toString(),datePickerdisc_tanggal_selesai.getValue().toString(),txtdisc_percent.getText(),txtdisc_info.getText());
             }
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information");
@@ -113,22 +111,6 @@ public class FormDiscountController {
 
     public void setEditable(Discount editable) {
         this.editable = editable;
-    }
-
-    public int getIndex() {
-        return index;
-    }
-
-    public void setIndex(int index) {
-        this.index = index;
-    }
-
-    public TextField getTxtdisc_id() {
-        return txtdisc_id;
-    }
-
-    public void setTxtdisc_id(TextField txtdisc_id) {
-        this.txtdisc_id = txtdisc_id;
     }
 
     public TextField getTxtdisc_name() {

@@ -21,13 +21,7 @@
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <TextField fx:id="deliveryId" prefHeight="40.0" prefWidth="175.0" GridPane.columnIndex="1" />
       <TextField fx:id="employeeId" prefHeight="40.0" prefWidth="175.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-      <Label text="Delivery_id:" GridPane.halignment="CENTER">
-         <font>
-            <Font size="26.0" />
-         </font>
-      </Label>
       <Label text="Tanggal_pengembalian:" GridPane.halignment="CENTER" GridPane.rowIndex="1">
          <font>
             <Font size="16.0" />

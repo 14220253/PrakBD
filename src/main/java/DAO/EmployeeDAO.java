@@ -42,22 +42,19 @@ public class EmployeeDAO {
         });
         return employees;
     }
-    public void addEmployee(String id, String name, String salary, String job_id) throws SQLException {
+    public void addEmployee(String name, String salary, String job_id) throws SQLException {
         String sql = "INSERT INTO `employees`(" +
-                "`employee_id`, " +
                 "`employee_name`, " +
                 "`salary`, " +
                 "`job_id`)" +
                 " VALUES (" +
                 "?," +
                 "?," +
-                "?," +
                 "?)";
         PreparedStatement stm = jdbc.connection.get().prepareStatement(sql);
-        stm.setString(1, id);
-        stm.setString(2,name);
-        stm.setString(3, salary);
-        stm.setString(4, job_id);
+        stm.setString(1,name);
+        stm.setString(2, salary);
+        stm.setString(3, job_id);
         stm.execute();
     }
     public void deleteEmployee(String employee_id) throws SQLException {

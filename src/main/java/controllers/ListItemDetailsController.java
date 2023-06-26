@@ -1,8 +1,7 @@
 package controllers;
 
 import DAO.ItemdetailsDAO;
-import com.example.bdmaven.HelloApplication;
-import controllers.MenuController;
+import com.example.bdmaven.MenuController;
 import entity.ItemDetails;
 import formController.formItemDetailsController;
 import javafx.collections.FXCollections;
@@ -15,7 +14,6 @@ import javafx.scene.control.*;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Optional;
 
 public class ListItemDetailsController {

@@ -14,8 +14,6 @@ import java.sql.SQLException;
 
 public class FormEmployeeController {
     @FXML
-    private TextField employeeId;
-    @FXML
     private TextField employeeName;
     @FXML
     private TextField salary;
@@ -25,17 +23,14 @@ public class FormEmployeeController {
     private boolean isEdit = false;
     private Employees editableEmployee;
     private static final EmployeeDAO employeeDAO = new EmployeeDAO();
-    private static final EmployeeController employeeController= new EmployeeController();
 
     public void loadEditData(){
-        employeeId.setText(editableEmployee.getEmployee_id());
         employeeName.setText(editableEmployee.getEmployee_name());
         salary.setText(editableEmployee.getSalary());
         jobId.setText(editableEmployee.getJob_id());
     }
     private boolean isValid(){
-        if(employeeId.getText().isBlank() || employeeId.getText().isEmpty()
-                || employeeName.getText().isBlank() || employeeName.getText().isEmpty()
+        if(employeeName.getText().isBlank() || employeeName.getText().isEmpty()
                 || salary.getText().isBlank() || salary.getText().isEmpty()
                 || jobId.getText().isBlank() || jobId.getText().isEmpty()) {
             return false;
@@ -46,10 +41,10 @@ public class FormEmployeeController {
     public void addData() throws SQLException {
         if (isValid()){
             if(!isEdit) {
-                employeeDAO.addEmployee(employeeId.getText(),employeeName.getText(),salary.getText(),jobId.getText());
+                employeeDAO.addEmployee(employeeName.getText(),salary.getText(),jobId.getText());
 
             } else {
-                employeeDAO.updateEmployee(employeeId.getText(),employeeName.getText(),salary.getText(),jobId.getText());
+                employeeDAO.updateEmployee(editableEmployee.getEmployee_id(),employeeName.getText(),salary.getText(),jobId.getText());
             }
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information");

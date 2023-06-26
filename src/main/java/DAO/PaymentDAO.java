@@ -2,8 +2,7 @@ package DAO;
 
 import com.example.bdmaven.JDBC;
 import entity.Payment;
-import entity.SortCustomer;
-import entity.SortPayment;
+import analysis.SortPayment;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -33,7 +32,7 @@ public class PaymentDAO {
                     Payment payment = new Payment(id, name);
                     payments.add(payment);
 
-                    LOGGER.log(Level.INFO, "Found {0} in database", payment);
+//                    LOGGER.log(Level.INFO, "Found {0} in database", payment);
                 }
 
             } catch (SQLException ex) {

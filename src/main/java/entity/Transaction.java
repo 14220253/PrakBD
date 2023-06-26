@@ -8,7 +8,6 @@ public class Transaction {
     private SimpleStringProperty totalHarga;
     private SimpleStringProperty dpAmount;
     private SimpleStringProperty deliveryAddress;
-    private SimpleStringProperty radiusAddress;
     private SimpleStringProperty tanggal;
     private SimpleStringProperty customerId;
     private SimpleStringProperty paymentId;
@@ -17,14 +16,12 @@ public class Transaction {
     private SimpleStringProperty discId;
 
 
-    public Transaction(String transactionId, String totalHarga, String dpAmount, String deliveryAddress, String radiusAddress,
-                       String tanggal, String customerId, String paymentId, String deliveryId, String hargaDeliveryId,
-                       String discId) {
+    public Transaction(String transactionId, String totalHarga, String dpAmount, String deliveryAddress, String tanggal,
+                       String customerId, String paymentId, String deliveryId, String hargaDeliveryId, String discId) {
         this.transactionId = new SimpleStringProperty(transactionId);
         this.totalHarga = new SimpleStringProperty(totalHarga);
         this.dpAmount = new SimpleStringProperty(dpAmount);
         this.deliveryAddress = new SimpleStringProperty(deliveryAddress);
-        this.radiusAddress = new SimpleStringProperty(radiusAddress);
         this.tanggal = new SimpleStringProperty(tanggal);
         this.customerId = new SimpleStringProperty(customerId);
         this.paymentId = new SimpleStringProperty(paymentId);
@@ -80,18 +77,6 @@ public class Transaction {
 
     public void setDeliveryAddress(String deliveryAddress) {
         this.deliveryAddress.set(deliveryAddress);
-    }
-
-    public String getRadiusAddress() {
-        return radiusAddress.get();
-    }
-
-    public SimpleStringProperty radiusAddressProperty() {
-        return radiusAddress;
-    }
-
-    public void setRadiusAddress(String radiusAddress) {
-        this.radiusAddress.set(radiusAddress);
     }
 
     public String getTanggal() {

@@ -4,21 +4,24 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="formController.FormItemController">
    <children>
-      <Label layoutX="37.0" layoutY="23.0" text="Form Items" />
-      <TextField fx:id="txtid" layoutX="150.0" layoutY="61.0" />
-      <Label layoutX="36.0" layoutY="65.0" text="Item id" />
-      <Label layoutX="36.0" layoutY="111.0" text="Item nama" />
-      <Label layoutX="37.0" layoutY="164.0" text="harga" />
+      <Label layoutX="37.0" layoutY="23.0" text="Form Items">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Label>
+      <Label layoutX="36.0" layoutY="111.0" text="Item Name" />
+      <Label layoutX="36.0" layoutY="150.0" text="Price" />
       <TextField fx:id="txtnama" layoutX="150.0" layoutY="107.0" />
-      <TextField fx:id="txtharga" layoutX="150.0" layoutY="160.0" />
-      <Label layoutX="36.0" layoutY="209.0" text="Lama penyelesaian" />
-      <TextField fx:id="txtlamapenyelesaian" layoutX="150.0" layoutY="205.0" />
-      <Label layoutX="36.0" layoutY="259.0" text="Kategori id" />
-      <TextField fx:id="txtkategoriid" layoutX="150.0" layoutY="255.0" />
+      <TextField fx:id="txtharga" layoutX="150.0" layoutY="148.0" />
+      <Label layoutX="36.0" layoutY="193.0" text="Lama Penyelesaian" />
+      <TextField fx:id="txtlamapenyelesaian" layoutX="150.0" layoutY="189.0" />
+      <Label layoutX="36.0" layoutY="234.0" text="Kategori ID" />
+      <TextField fx:id="txtkategoriid" layoutX="150.0" layoutY="230.0" />
       <Button layoutX="39.0" layoutY="306.0" mnemonicParsing="false" onAction="#onSave" text="Save" />
       <Button layoutX="95.0" layoutY="306.0" mnemonicParsing="false" onAction="#onCancel" text="Cancel" />
+      <Label layoutX="311.0" layoutY="193.0" text="hari" />
    </children>
 </AnchorPane>

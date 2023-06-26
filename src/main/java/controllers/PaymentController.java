@@ -1,7 +1,7 @@
 package controllers;
 
 import DAO.PaymentDAO;
-import com.example.bdmaven.HelloApplication;
+import com.example.bdmaven.MenuController;
 import entity.Payment;
 import formController.FormPaymentController;
 import javafx.collections.FXCollections;

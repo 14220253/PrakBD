@@ -11,7 +11,7 @@ module com.example.bdmaven {
     exports formController;
     opens formController to javafx.fxml;
     opens DAO to javafx.fxml;
-    exports queryController;
-    opens queryController to javafx.fxml;
+    exports analysis;
+    opens analysis to javafx.fxml;
 
 }

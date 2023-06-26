@@ -31,7 +31,7 @@ public class DiscountDetailDAO {
                     DiscountDetail discountDetail = new DiscountDetail(discountId, categoryId);
                     discountDetails.add(discountDetail);
 
-                    LOGGER.log(Level.INFO, "Found {0} in database", discountDetail);
+//                    LOGGER.log(Level.INFO, "Found {0} in database", discountDetail);
                 }
 
             } catch (SQLException ex) {

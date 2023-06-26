@@ -29,18 +29,17 @@ public class TransactionDAO {
                     String totalHarga = resultSet.getString("total_harga");
                     String dpAmount = resultSet.getString("dp_amount");
                     String deliveryAddress = resultSet.getString("delivery_address");
-                    String radiusAddress = resultSet.getString("radius_address");
                     String tanggal = resultSet.getString("tanggal");
                     String discId = resultSet.getString("disc_id");
                     String paymentId = resultSet.getString("payment_id");
                     String deliveryId = resultSet.getString("id_delivery");
                     String hargaDeliveryId = resultSet.getString("id_harga_delivery");
                     String custId = resultSet.getString("cust_id");
-                    Transaction transaction = new Transaction(id, totalHarga, dpAmount, deliveryAddress, radiusAddress,
+                    Transaction transaction = new Transaction(id, totalHarga, dpAmount, deliveryAddress,
                             tanggal,custId, paymentId, deliveryId, hargaDeliveryId,discId);
                     transactions.add(transaction);
 
-                    LOGGER.log(Level.INFO, "Found {0} in database", transaction);
+//                    LOGGER.log(Level.INFO, "Found {0} in database", transaction);
                 }
 
             } catch (SQLException ex) {
@@ -52,10 +51,8 @@ public class TransactionDAO {
     }
 
     public void AddTransaction(
-            String totalHarga,
             String dpAmount,
             String deliveryAddress,
-            String radiusAddress,
             String tanggal,
             String discId,
             String paymentId,
@@ -63,11 +60,20 @@ public class TransactionDAO {
             String hargaDeliveryId,
             String custId
     ) throws SQLException {
+        String hargaDelivery = null;
+        if(hargaDeliveryId != null){
+            String sql2 = "SELECT `harga` FROM `harga_delivery` WHERE `id_harga_delivery` = ?";
+            PreparedStatement stm2 = jdbc.connection.get().prepareStatement(sql2);
+            stm2.setString(1, hargaDeliveryId);
+            ResultSet result2 = stm2.executeQuery();
+            if (result2.next()) {
+                hargaDelivery = result2.getString(1);
+            }
+        }
         String sql = "INSERT INTO `transaction`(" +
                 "`total_harga`, " +
                 "`dp_amount`, " +
                 "`delivery_address`, " +
-                "`radius_address`, " +
                 "`tanggal`, " +
                 "`disc_id`, " +
                 "`payment_id`, " +
@@ -83,19 +89,18 @@ public class TransactionDAO {
                 "?," +
                 "?," +
                 "?," +
-                "?," +
                 "?)";
         PreparedStatement stm = jdbc.connection.get().prepareStatement(sql);
-        stm.setString(1, totalHarga);
+        System.out.println((hargaDeliveryId == null) ? "0" : hargaDelivery);
+        stm.setString(1, (hargaDeliveryId == null) ? "0" : hargaDelivery);
         stm.setString(2, dpAmount);
         stm.setString(3, deliveryAddress);
-        stm.setString(4, radiusAddress);
-        stm.setString(5, tanggal);
-        stm.setString(6, discId);
-        stm.setString(7, paymentId);
-        stm.setString(8, deliveryId);
-        stm.setString(9, hargaDeliveryId);
-        stm.setString(10, custId);
+        stm.setString(4, tanggal);
+        stm.setString(5, discId);
+        stm.setString(6, paymentId);
+        stm.setString(7, (deliveryId.equals("") ? null : deliveryId));
+        stm.setString(8, hargaDeliveryId);
+        stm.setString(9, custId);
         stm.execute();
     }
 
@@ -107,22 +112,46 @@ public class TransactionDAO {
 
     public void UpdateTransaction(
             String transactionId,
-            String totalHarga,
             String dpAmount,
             String deliveryAddress,
-            String radiusAddress,
             String tanggal,
             String discId,
             String paymentId,
             String deliveryId,
             String hargaDeliveryId,
             String custId
+
     ) throws SQLException {
+        // get total price untuk update total price di transaction
+        String sql3 = "SELECT `amount`,`harga` FROM `item_details` `id` JOIN `items` `i` on `id`.`item_id` = `i`.`item_id` " +
+                "WHERE `id`.`transaction_id` = ?";
+        PreparedStatement stm3 = jdbc.connection.get().prepareStatement(sql3);
+        stm3.setString(1, transactionId);
+        ResultSet result3 = stm3.executeQuery();
+        ArrayList<String> listAmount = new ArrayList<>();
+        ArrayList<String> listHarga = new ArrayList<>();
+        while (result3.next()) {
+            listAmount.add(result3.getString(1));
+            listHarga.add(result3.getString(2));
+        }
+        int totalHarga = 0;
+        for(int i = 0; i < listAmount.size(); i++){
+            totalHarga += Integer.parseInt(listAmount.get(i)) * Integer.parseInt(listHarga.get(i));
+        }
+        if(hargaDeliveryId != null){
+            String sql5 = "SELECT `harga` FROM `harga_delivery` WHERE `id_harga_delivery` = " + hargaDeliveryId;
+            PreparedStatement stm5 = jdbc.connection.get().prepareStatement(sql5);
+            ResultSet result5 = stm5.executeQuery();
+            String hargaDelivery = null;
+            if (result5.next()) {
+                hargaDelivery = result5.getString(1);
+            }
+            totalHarga += Integer.parseInt(hargaDelivery);
+        }
         String sql = "UPDATE `transaction` SET " +
                 "`total_harga` = ?," +
                 "`dp_amount` = ?," +
                 "`delivery_address` = ?," +
-                "`radius_address` = ?," +
                 "`tanggal` = ?, " +
                 "`disc_id` = ?, " +
                 "`payment_id` = ?, " +
@@ -132,16 +161,19 @@ public class TransactionDAO {
                 " WHERE `transaction_id` = " + transactionId;
 
         PreparedStatement stm = jdbc.connection.get().prepareStatement(sql);
-        stm.setString(1, totalHarga);
+        stm.setString(1, String.valueOf(totalHarga));
         stm.setString(2, dpAmount);
         stm.setString(3, deliveryAddress);
-        stm.setString(4, radiusAddress);
-        stm.setString(5, tanggal);
-        stm.setString(6, discId);
-        stm.setString(7, paymentId);
-        stm.setString(8, deliveryId);
-        stm.setString(9, hargaDeliveryId);
-        stm.setString(10, custId);
+        stm.setString(4, tanggal);
+        stm.setString(5, discId);
+        stm.setString(6, paymentId);
+        if(deliveryId != null){
+            stm.setString(7, (deliveryId.equals("") ? null : deliveryId));
+        } else{
+            stm.setString(7, null);
+        }
+        stm.setString(8, hargaDeliveryId);
+        stm.setString(9, custId);
         stm.execute();
     }
 

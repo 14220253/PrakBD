@@ -1,8 +1,7 @@
 package DAO;
 import com.example.bdmaven.JDBC;
 import entity.Discount;
-import entity.SortDiscount;
-import entity.SortPayment;
+import analysis.SortDiscount;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -33,7 +32,7 @@ public class DiscountDAO {
                     Discount discount = new Discount(id,name,tanggal_mulai,tanggal_selesai,percent,disc_info);
                     discounts.add(discount);
 
-                    LOGGER.log(Level.INFO, "Found {0} in database", discount);
+//                    LOGGER.log(Level.INFO, "Found {0} in database", discount);
                 }
 
             } catch (SQLException ex) {
@@ -44,9 +43,8 @@ public class DiscountDAO {
         return discounts;
     }
 
-    public void Add(String id, String name,String tanggal_mulai,String tanggal_selesai,String percent,String disc_info) throws SQLException {
+    public void Add(String name,String tanggal_mulai,String tanggal_selesai,String percent,String disc_info) throws SQLException {
         String sql = "INSERT INTO `discount`(" +
-                "`disc_id`, " +
                 "`disc_name`, " +
                 "`disc_tanggal_mulai`, " +
                 "`disc_tanggal_selesai`, " +
@@ -57,15 +55,13 @@ public class DiscountDAO {
                 "?," +
                 "?," +
                 "?," +
-                "?," +
                 "?)" ;
         PreparedStatement stm = jdbc.connection.get().prepareStatement(sql);
-        stm.setString(1, id);
-        stm.setString(2, name);
-        stm.setString(3, tanggal_mulai);
-        stm.setString(4, tanggal_selesai);
-        stm.setString(5, percent);
-        stm.setString(6, disc_info);
+        stm.setString(1, name);
+        stm.setString(2, tanggal_mulai);
+        stm.setString(3, tanggal_selesai);
+        stm.setString(4, percent);
+        stm.setString(5, disc_info);
         stm.execute();
     }
 
@@ -95,7 +91,7 @@ public class DiscountDAO {
     public ResultSet sortDiscount() throws SQLException{
         String sql = "SELECT `disc_name`, count(`t`.`disc_id`) " +
                 "FROM `discount` `d` " +
-                "right outer join `transaction` `t` on `d`.`disc_id` = `t`.`disc_id` " +
+                "join `transaction` `t` on `d`.`disc_id` = `t`.`disc_id` " +
                 "group by `t`.`disc_id` " +
                 "order by COUNT(`t`.`disc_id`) DESC";
         PreparedStatement stm = jdbc.getConnection().get().prepareStatement(sql);

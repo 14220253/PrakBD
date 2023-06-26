@@ -1,8 +1,6 @@
 package controllers;
 import DAO.ItemDao;
-import DAO.ItemDao;
-import com.example.bdmaven.HelloApplication;
-import entity.Item;
+import com.example.bdmaven.MenuController;
 import entity.Item;
 import formController.FormItemController;
 import javafx.collections.FXCollections;
@@ -29,19 +27,19 @@ public class ItemController {
 
     @FXML
     public void initialize(){
-        TableColumn<Item, String> Item_id = new TableColumn<>("Item id");
+        TableColumn<Item, String> Item_id = new TableColumn<>("Item ID");
         Item_id.setCellValueFactory(celldata -> celldata.getValue().idProperty());
 
-        TableColumn<Item, String> Item_name = new TableColumn<>("Item name");
+        TableColumn<Item, String> Item_name = new TableColumn<>("Item Name");
         Item_name.setCellValueFactory(celldata -> celldata.getValue().nameProperty());
 
         TableColumn<Item, String> harga = new TableColumn<>("Harga");
         harga.setCellValueFactory(celldata -> celldata.getValue().hargaProperty());
 
-        TableColumn<Item, String> lama_penyelesaian = new TableColumn<>("lama penyelesaian");
+        TableColumn<Item, String> lama_penyelesaian = new TableColumn<>("Lama Penyelesaian");
         lama_penyelesaian.setCellValueFactory(celldata -> celldata.getValue().lama_penyeleasaianProperty());
 
-        TableColumn<Item, String> kategori_id = new TableColumn<>("kategori id");
+        TableColumn<Item, String> kategori_id = new TableColumn<>("Kategori ID");
         kategori_id.setCellValueFactory(celldata -> celldata.getValue().kategori_idProperty());
 
         tableListItem.getColumns().clear();
@@ -58,7 +56,6 @@ public class ItemController {
     public void onAdd(){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bdmaven/formItem.fxml"));
         try {
-
             scene.setRoot((Parent) loader.load());
 
         } catch (IOException e) {
@@ -90,7 +87,7 @@ public class ItemController {
             alert.setTitle("Warning");
             alert.setHeaderText("Tidak ada data yang dipilih");
             alert.getButtonTypes().setAll(ButtonType.OK);
-            Optional<ButtonType> result = alert.showAndWait();
+            alert.showAndWait();
         }
     }
     @FXML
@@ -100,7 +97,7 @@ public class ItemController {
             alert.setTitle("Confirmation");
             alert.setHeaderText("Apakah anda yakin ingin menghapus data ?" );
             alert.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);
-            Optional<ButtonType> result = alert.showAndWait();
+            alert.showAndWait();
             if(alert.getResult() == ButtonType.YES){
                 itemDao.DeleteItem(( (Item)tableListItem.getSelectionModel().getSelectedItem()).getId());
             }
@@ -125,8 +122,6 @@ public class ItemController {
             throw new RuntimeException(e);
         }
     }
-
-
     public void setScene(Scene scene) {
         this.scene = scene;
     }
@@ -135,10 +130,6 @@ public class ItemController {
         itemObservableList.setAll(itemDao.GetAll());
         tableListItem.setItems(itemObservableList);
     }
-
-
-
-
     public Scene getScene() {
         return scene;
     }

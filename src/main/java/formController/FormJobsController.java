@@ -25,8 +25,6 @@ import static com.example.bdmaven.JDBC.LOGGER;
 
 public class FormJobsController {
     @FXML
-    private TextField jobId;
-    @FXML
     private TextField jobName;
 
     private Scene scene;
@@ -35,12 +33,10 @@ public class FormJobsController {
     private static final JobsDAO jobsDAO = new JobsDAO();
 
     public void loadEditData(){
-        jobId.setText(editableJobs.getJob_id());
         jobName.setText(editableJobs.getJob_name());
     }
     private boolean isValid(){
-        if(jobName.getText().isBlank() || jobName.getText().isEmpty()
-                || jobId.getText().isBlank() || jobId.getText().isEmpty()) {
+        if(jobName.getText().isBlank() || jobName.getText().isEmpty()) {
             return false;
         }
         return true;
@@ -49,10 +45,10 @@ public class FormJobsController {
     public void addData() throws SQLException {
         if (isValid()){
             if(!isEdit) {
-                jobsDAO.addJob(jobId.getText(),jobName.getText());
+                jobsDAO.addJob(jobName.getText());
 
             } else {
-                jobsDAO.updateJob(jobId.getText(),jobName.getText());
+                jobsDAO.updateJob(editableJobs.getJob_id(),jobName.getText());
             }
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information");

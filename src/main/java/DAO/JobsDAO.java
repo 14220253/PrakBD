@@ -41,16 +41,13 @@ public class JobsDAO {
         return jobs;
     }
 
-    public void addJob(String id, String name) throws SQLException {
+    public void addJob(String name) throws SQLException {
         String sql = "INSERT INTO `jobs`(" +
-                "`job_id`, " +
                 "`job_name`) " +
                 " VALUES (" +
-                "?," +
                 "?)";
         PreparedStatement stm = jdbc.connection.get().prepareStatement(sql);
-        stm.setString(1, id);
-        stm.setString(2, name);
+        stm.setString(1, name);
         stm.execute();
     }
 

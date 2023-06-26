@@ -6,10 +6,7 @@ import entity.ItemDetails;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -20,50 +17,53 @@ public class formItemDetailsController {
     private boolean isEdit = false;
     
     private static final ItemdetailsDAO itemdetailsDAO = new ItemdetailsDAO();
-    private static final ListItemDetailsController listitemdetails = new ListItemDetailsController();
     private ItemDetails editable;
     private int index;
     @FXML
     private TextField txtAmount;
     @FXML
-    private TextField txtPilihanlaundry;
-    @FXML
     private TextField txtKondisi;
-    @FXML
-    private DatePicker datePickerTanggalpengembalian;
-
     @FXML
     private TextField txtitem_id;
 
     @FXML TextField txttransaction_id;
+
+    @FXML
+    ChoiceBox cbType;
     
     private Scene scene;
 
     public void loadEditData() {
         txtAmount.setText(editable.getAmount());
-        txtPilihanlaundry.setText(editable.getPilihan_laundry());
         txtKondisi.setText(editable.getKondisi());
-        datePickerTanggalpengembalian.setValue(LocalDate.parse(editable.getTanggal_pengembalian()));
+        cbType.setValue(editable.getPilihan_laundry());
         txtitem_id.setText(editable.getItem_id());
         txttransaction_id.setText(editable.getTransaction_id());
 
     }
     private boolean isValid() {
-        if (txtAmount.getText().isBlank() || txtAmount.getText().isEmpty() || txtPilihanlaundry.getText().isBlank()
-                || txtPilihanlaundry.getText().isEmpty()) {
+        if (txtAmount.getText().isBlank() || txtAmount.getText().isEmpty()
+                || txtitem_id.getText().isBlank() || txtitem_id.getText().isEmpty()
+                || txttransaction_id.getText().isBlank() || txttransaction_id.getText().isEmpty()
+                || cbType.getSelectionModel().isEmpty()) {
             return false;
         }
         return true;
+    }
+    @FXML
+    public void initialize(){
+        cbType.getItems().removeAll(cbType.getItems());
+        cbType.getItems().addAll("Dry Clean","Wash & Dry Clean");
     }
  
     @FXML
     public void onSave() throws SQLException {
         if(isValid()){
             if(!isEdit){
-               itemdetailsDAO.Add(txtAmount.getText(),txtPilihanlaundry.getText(),txtKondisi.getText(),datePickerTanggalpengembalian.getValue().toString(),txtitem_id.getText(),txttransaction_id.getText());
+               itemdetailsDAO.Add(txtAmount.getText(), (String) cbType.getSelectionModel().getSelectedItem(),txtKondisi.getText(),txtitem_id.getText(),txttransaction_id.getText());
             }
             else {
-                itemdetailsDAO.Update(txtAmount.getText(),txtPilihanlaundry.getText(),txtKondisi.getText(),datePickerTanggalpengembalian.getValue().toString(),txtitem_id.getText(),txttransaction_id.getText());
+                itemdetailsDAO.Update(txtAmount.getText(), (String) cbType.getSelectionModel().getSelectedItem(),txtKondisi.getText(),txtitem_id.getText(),txttransaction_id.getText());
             }
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information");
@@ -134,14 +134,6 @@ public class formItemDetailsController {
         this.txtAmount = txtAmount;
     }
 
-    public TextField getTxtPilihanlaundry() {
-        return txtPilihanlaundry;
-    }
-
-    public void setTxtPilihanlaundry(TextField txtPilihanlaundry) {
-        this.txtPilihanlaundry = txtPilihanlaundry;
-    }
-
     public TextField getTxtKondisi() {
         return txtKondisi;
     }
@@ -157,15 +149,6 @@ public class formItemDetailsController {
     public void setScene(Scene scene) {
         this.scene = scene;
     }
-
-    public DatePicker getDatePickerTanggalpengembalian() {
-        return datePickerTanggalpengembalian;
-    }
-
-    public void setDatePickerTanggalpengembalian(DatePicker datePickerTanggalpengembalian) {
-        this.datePickerTanggalpengembalian = datePickerTanggalpengembalian;
-    }
-
     public TextField getTxtitem_id() {
         return txtitem_id;
     }

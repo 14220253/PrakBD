@@ -43,22 +43,19 @@ public class HargaDeliveryDAO {
         });
         return hargaDeliveries;
     }
-    public void addHargaDelivery(String id, String radius, String harga, String employee_id) throws SQLException {
+    public void addHargaDelivery(String radius, String harga, String employee_id) throws SQLException {
         String sql = "INSERT INTO `harga_delivery`(" +
-                "`id_harga_delivery`, " +
                 "`radius`, " +
                 "`harga`, " +
                 "`employee_id`)" +
                 " VALUES (" +
                 "?," +
                 "?," +
-                "?," +
                 "?)";
         PreparedStatement stm = jdbc.connection.get().prepareStatement(sql);
-        stm.setString(1, id);
-        stm.setString(2,radius);
-        stm.setString(3, harga);
-        stm.setString(4, employee_id);
+        stm.setString(1,radius);
+        stm.setString(2, harga);
+        stm.setString(3, employee_id);
         stm.execute();
     }
     public void deleteHargaDelivery(String id_harga_delivery) throws SQLException {

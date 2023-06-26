@@ -1,18 +1,15 @@
-package controllers;
+package com.example.bdmaven;
 
 import com.example.bdmaven.HelloApplication;
-import formController.formItemDetailsController;
-import javafx.event.ActionEvent;
+import controllers.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.stage.Stage;
-import queryController.SortedCustomerController;
-import queryController.SortedDiscountController;
-import queryController.SortedPaymentController;
-import queryController.TransactionTotalController;
+import analysis.SortedCustomerController;
+import analysis.SortedDiscountController;
+import analysis.SortedPaymentController;
+import analysis.TransactionTotalController;
 
 import java.io.IOException;
 
@@ -189,8 +186,6 @@ public class MenuController {
 
                 TransactionTotalController controller = loader.getController();
                 controller.setScene(scene);
-                controller.setApp(app);
-
 
             } catch (IOException e) {
                 throw new RuntimeException(e);

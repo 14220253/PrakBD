@@ -42,19 +42,16 @@ public class DeliveryDAO {
         return deliveries;
     }
 
-    public void addDelivery(String id, String date, String emp_id) throws SQLException {
+    public void addDelivery(String date, String emp_id) throws SQLException {
         String sql = "INSERT INTO `delivery`(" +
-                "`id_delivery`, " +
                 "`tanggal_pengembalian`, " +
                 "`employee_id`)" +
                 " VALUES (" +
                 "?," +
-                "?," +
                 "?)";
         PreparedStatement stm = jdbc.connection.get().prepareStatement(sql);
-        stm.setString(1, id);
-        stm.setString(2,date);
-        stm.setString(3, emp_id);
+        stm.setString(1,date);
+        stm.setString(2, emp_id);
         stm.execute();
     }
 

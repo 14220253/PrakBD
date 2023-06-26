@@ -2,6 +2,7 @@ package controllers;
 
 import DAO.EmployeeDAO;
 import com.example.bdmaven.HelloApplication;
+import com.example.bdmaven.MenuController;
 import entity.Employees;
 import formController.FormEmployeeController;
 import javafx.collections.FXCollections;
@@ -14,7 +15,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import queryController.SortedPaymentController;
+import analysis.SortedPaymentController;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -31,7 +32,6 @@ public class EmployeeController {
     private Employees selectedEmployee;
     private Scene scene;
     public void setScene(Scene scene) {this.scene = scene;}
-
     @FXML
     public void initialize() {
         TableColumn<Employees, String> idCol = new TableColumn<>("EMPLOYEE_ID");
@@ -54,6 +54,7 @@ public class EmployeeController {
         table.getColumns().add(jobCol);
 
         table.setPlaceholder(new Label("No content in table"));
+        refreshTable();
     }
     public void refreshTable() {
         list.setAll(DAO.getAllEmployees());

@@ -23,8 +23,6 @@ import static com.example.bdmaven.JDBC.LOGGER;
 
 public class FormDeliveryController {
     @FXML
-    private TextField deliveryId;
-    @FXML
     private DatePicker tanggalPengembalian;
     @FXML
     private TextField employeeId;
@@ -32,16 +30,13 @@ public class FormDeliveryController {
     private boolean isEdit = false;
     private Delivery editableDelivery;
     private static final DeliveryDAO deliveryDAO = new DeliveryDAO();
-    private static final DeliveryController deliveryController= new DeliveryController();
 
     public void loadEditData(){
-        deliveryId.setText(editableDelivery.getId_delivery());
         employeeId.setText(editableDelivery.getEmployee_id());
         tanggalPengembalian.setValue(LocalDate.parse(editableDelivery.getTanggal_pengembalian()));
     }
     private boolean isValid(){
-        if(deliveryId.getText().isBlank() || deliveryId.getText().isEmpty()
-                || employeeId.getText().isBlank() || employeeId.getText().isEmpty()
+        if(employeeId.getText().isBlank() || employeeId.getText().isEmpty()
                 || tanggalPengembalian.getValue() == null) {
             return false;
         }
@@ -51,10 +46,10 @@ public class FormDeliveryController {
     public void addData() throws SQLException {
         if (isValid()){
             if(!isEdit) {
-                deliveryDAO.addDelivery(deliveryId.getText(),tanggalPengembalian.getValue().toString(),employeeId.getText());
+                deliveryDAO.addDelivery(tanggalPengembalian.getValue().toString(),employeeId.getText());
 
             } else {
-                deliveryDAO.updateDelivery(deliveryId.getText(),tanggalPengembalian.getValue().toString(),employeeId.getText());
+                deliveryDAO.updateDelivery(editableDelivery.getId_delivery(),tanggalPengembalian.getValue().toString(),employeeId.getText());
             }
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information");
